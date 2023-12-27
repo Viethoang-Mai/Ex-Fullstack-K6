@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <title>Ex01</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            .group-item {
+                display: flex;
+                justify-content: space-between;
+                padding-bottom: 20px;
+            }
+            label {
+                display: block;
+                font-weight: bolder;
+                margin-bottom: 5px;
+            }
+
+            input,
+            select {
+                width: 315px;
+                height: 35px;
+                border: 2px solid #bebebe;
+                padding-left: 5px;
+            }
+            button {
+                width: 210px;
+                height: 45px;
+                margin-top: 15px;
+                color: #fff;
+                background: #09768d;
+                border: 1px solid #09768d;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <main
+            style="
+                width: 720px;
+                height: 570px;
+                background: #e7e7e7;
+                padding: 16px;
+            "
+        >
+            <div class="header">
+                <h1>Try a free sample</h1>
+                <p style="max-width: 440px">
+                    Sign up to get a coupon you can redeem at your nearest
+                    Dancing Goat cafe for a sample of the Colombia Carlos
+                    Imbachi coffee. We'll also make sure you don't miss out on
+                    news introducing the new coffees that we add to our store
+                    regularly
+                </p>
+            </div>
+            <form action="">
+                <div>
+                    <div class="group-item">
+                        <div>
+                            <label for="Firstname">First Name</label>
+                            <input
+                                type="text"
+                                id="Firstname"
+                                placeholder="John"
+                            />
+                        </div>
+                        <div>
+                            <label for="Lastname">Last Name</label>
+                            <input
+                                type="text"
+                                id="Lastname"
+                                placeholder="Smith"
+                            />
+                        </div>
+                    </div>
+                    <div class="group-item">
+                        <div>
+                            <label for="email">Email address</label>
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="john@example.com"
+                            />
+                        </div>
+                        <div>
+                            <label for="Address">Address</label>
+                            <input
+                                type="text"
+                                id="Address"
+                                placeholder="Silk st"
+                            />
+                        </div>
+                    </div>
+                    <div class="group-item">
+                        <div>
+                            <label for="city">City</label>
+                            <input type="text" id="city" placeholder="London" />
+                        </div>
+                        <div>
+                            <label for="state"
+                                >State
+                                <span style="color: #a9aaa4"
+                                    >&#40;optional&#41;</span
+                                ></label
+                            >
+                            <input type="text" id="state" />
+                        </div>
+                    </div>
+                    <div class="group-item">
+                        <div>
+                            <label for="Zcode">ZIP code</label>
+                            <input
+                                type="text"
+                                id="Zcode"
+                                placeholder="ADC5vhK"
+                            />
+                        </div>
+                        <div>
+                            <label for="Country">Country</label>
+                            <select id="Country">
+                                <option value="1">The US</option>
+                                <option value="2">The UK</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit">SEND ME FREE COFFEE</button>
+            </form>
+        </main>
+
+        <a
+            href="./BTB_02.html"
+            style="
+                display: inline-block;
+                text-decoration: none;
+                padding-top: 16px;
+            "
+            >Back</a
+        >
+    </body>
+</html>
