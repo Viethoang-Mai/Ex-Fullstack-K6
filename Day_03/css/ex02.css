@@ -1,6 +1,7 @@
 .header h1 {
     text-align: center;
     position: relative;
+    font-size: 30px;
 }
 .header h1::after {
     position: absolute;

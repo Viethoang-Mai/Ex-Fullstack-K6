@@ -43,7 +43,7 @@ li {
 }
 
 .list-items a:hover {
-    transition: 0.5s;
+    transition: 0.3s;
     background: #af9656;
     cursor: pointer;
 }

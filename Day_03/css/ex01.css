@@ -9,6 +9,10 @@
 .container {
     display: flex;
     column-gap: 150px;
+    margin-top: 20px;
+}
+.header h1 {
+    font-size: 30px;
 }
 .info .item {
     color: #9d9c9c;
