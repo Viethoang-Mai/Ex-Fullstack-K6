@@ -1,0 +1,53 @@
+.header h1 {
+    text-align: center;
+    position: relative;
+}
+.header h1::after {
+    position: absolute;
+    content: "";
+    display: block;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background: rgb(34, 121, 195);
+    background: rgb(105, 190, 217);
+    background: linear-gradient(
+        90deg,
+        rgba(105, 190, 217, 1) 0%,
+        rgba(45, 122, 253, 1) 100%
+    );
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 80px;
+}
+.item {
+    display: flex;
+    flex-basis: calc(100% / 3 - 30px);
+    justify-content: center;
+    column-gap: 20px;
+}
+.item .item-inner {
+    max-width: 250px;
+}
+.item blockquote {
+    margin: 0;
+    font-style: italic;
+    color: #808080;
+}
+.item-avt {
+    width: 60px;
+    height: 60px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #93dea4;
+}
+.item-inner .name {
+    font-weight: 600;
+    color: #666666;
+}

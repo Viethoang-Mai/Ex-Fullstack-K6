@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    font-weight: lighter;
+}
+
+.btn {
+    min-width: 160px;
+    height: 50px;
+    outline: none;
+    background: #2c3033;
+    border: 1px solid #2c3033;
+    border-radius: 5px;
+}
+.container {
+    text-align: center;
+    padding: 20px;
+}
+.container > button {
+    min-width: 200px;
+    background: #8498cb;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 0;
+}
+
+.heading {
+    font-size: 45px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.heading span {
+    font-weight: 700;
+    color: #00b0f4;
+}
+
+.desc {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

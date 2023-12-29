@@ -1,0 +1,29 @@
+.form {
+    padding: 30px;
+    border: 1px solid #1c5180;
+    width: fit-content;
+}
+.group-item {
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+}
+.group-item > label:first-child {
+    display: inline-block;
+    width: 100px;
+}
+label {
+    display: block;
+}
+input,
+select,
+button {
+    border: 1px solid #1c5180;
+}
+.btn {
+    margin-top: 15px;
+    text-align: center;
+}
+button {
+    border-radius: 3px;
+}

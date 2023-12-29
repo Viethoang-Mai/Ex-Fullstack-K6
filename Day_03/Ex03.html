@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/ex03.css" />
+        <title>Ex03</title>
+    </head>
+    <body>
+        <section class="form">
+            <form action="">
+                <div class="group-item">
+                    <label for="lbl-username">User name</label>
+                    <input type="text" id="lbl-username" name="username" />
+                </div>
+                <div class="group-item">
+                    <label for="lbl-password">Password</label>
+                    <input type="password" id="lbl-password" name="password" />
+                </div>
+                <div class="group-item">
+                    <label for="lbl-city"
+                        >City of <br />
+                        Employment</label
+                    >
+                    <input type="text" id="lbl-city" name="city" />
+                </div>
+                <div class="group-item">
+                    <label for="lbl-server">Web server</label>
+                    <select name="web-server" id="lbl-server">
+                        <option value="0">--Choose a server--</option>
+                        <option value="VN">Viet Nam</option>
+                        <option value="US">The US</option>
+                        <option value="UK">The UK</option>
+                    </select>
+                </div>
+                <div class="group-item">
+                    <label
+                        >Please specify <br />
+                        your role:</label
+                    >
+                    <div class="radio">
+                        <label><input type="radio" name="role" />Admin</label>
+                        <label
+                            ><input type="radio" name="role" />Engineer</label
+                        >
+                        <label><input type="radio" name="role" />Manager</label>
+                        <label><input type="radio" name="role" />Guest</label>
+                    </div>
+                </div>
+                <div class="group-item">
+                    <label
+                        >Single Sign-on <br />
+                        the following:</label
+                    >
+                    <div class="checkbox">
+                        <label
+                            ><input type="checkbox" name="Sign-on" />Mail</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                name="Sign-on"
+                            />Payroll</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                name="Sign-on"
+                            />Self-service</label
+                        >
+                    </div>
+                </div>
+                <div class="btn">
+                    <button>Login</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+        </section>
+        <a
+            href="./BTB_03.html"
+            style="
+                display: inline-block;
+                text-decoration: none;
+                padding-top: 16px;
+            "
+            >Back</a
+        >
+    </body>
+</html>
