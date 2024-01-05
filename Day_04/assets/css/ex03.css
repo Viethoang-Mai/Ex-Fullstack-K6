@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap");
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.5;
+    font-size: 1.6rem;
+}
+img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.best-seller {
+    margin-top: 30px;
+    text-align: center;
+}
+.heading {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 3.5rem;
+    font-weight: bolder;
+}
+
+/* nav */
+.nav {
+    margin-top: 10px;
+}
+.nav label {
+    padding: 10px 27px;
+    background: #f5f5f5;
+    color: #1f1d1e;
+    font-size: 1.3rem;
+}
+/* Product-items */
+.product-items {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+.item {
+    width: 230px;
+    text-align: center;
+}
+.image {
+    position: relative;
+    margin: 0 auto;
+    width: 170px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.image img,
+.image .cta {
+    position: absolute;
+}
+.image img {
+    display: block;
+}
+.cta {
+    width: 100%;
+    bottom: 0;
+}
+.cta-row {
+    display: flex;
+    justify-content: space-between;
+}
+.cta-row a {
+    display: inline-block;
+    line-height: 40px;
+    width: 50px;
+    height: 40px;
+    background: #28388d;
+}
+.cta-row a i {
+    color: #fefeff;
+    font-size: smaller;
+}
+.btn {
+    margin-top: 8px;
+    width: 100%;
+    background: #28388d;
+    border: none;
+    color: #fefeff;
+    padding: 13px 0;
+    cursor: pointer;
+}
+/* item-info */
+
+.item-info {
+    margin-top: 50px;
+}
+.item-info .desc {
+    margin: 12px 0;
+    font-size: 1.3rem;
+    color: #686868;
+    font-weight: bold;
+}
+i {
+    font-size: 1rem;
+    margin-left: 3px;
+}
+.price {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Feature */
+input[id="skincare"]:checked ~ .nav label[for="skincare"],
+input[id="haircare"]:checked ~ .nav label[for="haircare"],
+input[id="cosmetics"]:checked ~ .nav label[for="cosmetics"],
+input[id="fragrance"]:checked ~ .nav label[for="fragrance"],
+input[id="makeup"]:checked ~ .nav label[for="makeup"] {
+    background: #29378d;
+    color: aliceblue;
+}
+.nav label {
+    cursor: pointer;
+}
+
+.image:hover img:last-of-type {
+    transition: 0.4s;
+    opacity: 0;
+}
+
+.cta {
+    width: 0px;
+    opacity: 0;
+}
+
+.image:hover .cta {
+    transition: 0.4s;
+    width: 100%;
+    opacity: 1;
+}
+input[id="skincare"]:checked ~ .Skincare-product,
+input[id="haircare"]:checked ~ .Haircare-products,
+input[id="cosmetics"]:checked ~ .Cosmetics-products,
+input[id="fragrance"]:checked ~ .Fragrance-products,
+input[id="makeup"]:checked ~ .Makeup-products {
+    display: flex;
+}
