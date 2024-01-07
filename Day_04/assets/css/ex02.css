@@ -47,7 +47,7 @@ input::placeholder,
 }
 .group-item input {
     border: 1px solid #e5e5e5;
-    padding: 0 15px;
+    padding: 0 0 0 15px;
     font-size: 1.7rem;
 }
 .group-item input::placeholder {
@@ -76,13 +76,22 @@ input[type="date"]::before,
 input[type="time"]::before {
     position: absolute;
     background: #fff;
-    width: 100%;
+    width: 330px;
+    height: 50px;
+    line-height: 50px;
+    left: 0;
+    padding-left: 15px;
     font-family: "Bebas Neue", sans-serif;
     font-size: 2rem;
     color: #45423d;
+    box-sizing: border-box;
 }
 
 input[type="date"]:focus::before,
 input[type="time"]:focus::before {
-    content: "";
+    display: none;
+}
+input[type="date"]:valid::before,
+input[type="time"]:valid::before {
+    display: none;
 }

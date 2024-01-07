@@ -26,14 +26,19 @@
                 </div>
                 <div class="group-item">
                     <label>
-                        <input type="date" name="date" />
+                        <input type="date" name="date" required />
                     </label>
                     <label>
-                        <input type="time" name="time" />
+                        <input type="time" name="time" required />
                     </label>
                 </div>
                 <div class="group-item">
-                    <input type="number" name="people" placeholder="PEOPLE" />
+                    <input
+                        type="number"
+                        name="people"
+                        placeholder="PEOPLE"
+                        min="1"
+                    />
                     <button class="btn">Find A Table</button>
                 </div>
             </form>
