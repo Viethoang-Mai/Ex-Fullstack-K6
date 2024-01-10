@@ -32,7 +32,7 @@ body {
     margin-bottom: 5px;
 }
 .content .item label::before {
-    content: "-";
+    content: "+";
     font-weight: bold;
     margin-right: 10px;
 }
@@ -44,7 +44,7 @@ input[id="howtoset"]:checked ~ .content label[for="howtoset"] + .item-content {
     display: block;
 }
 input[id="howtoset"]:checked ~ .content label[for="howtoset"]::before {
-    content: "+";
+    content: "-";
 }
 input[id="howtouse"]:checked
     ~ .content
@@ -54,7 +54,7 @@ input[id="howtouse"]:checked
     display: block;
 }
 input[id="howtouse"]:checked ~ .content label[for="howtouse"]::before {
-    content: "+";
+    content: "-";
 }
 input[id="howtochange"]:checked
     ~ .content
@@ -64,5 +64,5 @@ input[id="howtochange"]:checked
     display: block;
 }
 input[id="howtochange"]:checked ~ .content label[for="howtochange"]::before {
-    content: "+";
+    content: "-";
 }
