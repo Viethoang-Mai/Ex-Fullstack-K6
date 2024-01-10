@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Reset -->
+        <link rel="stylesheet" href="./assets/reset.css" />
+        <!-- Style -->
+        <link rel="stylesheet" href="./assets/css/ex01.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <title>Ex01</title>
+    </head>
+    <body>
+        <section class="form">
+            <div class="header">
+                <h2 class="heading">Hey there</h2>
+                <p class="desc">
+                    <span style="color: #ec5a4f"
+                        >We'd like to hear from you.</span
+                    >Send us your message or jusst say hy with our contact form
+                    or directly via phone, we love to chat.
+                </p>
+            </div>
+            <form action="" class="form-content">
+                <div class="group-item">
+                    <label>
+                        <input
+                            type="text"
+                            name="input-name"
+                            placeholder="Your name"
+                            required
+                        />
+                        <span class="image"
+                            ><i class="fa-solid fa-user"></i
+                        ></span>
+                        <span class="input-effect">
+                            <i class="fa-solid fa-xmark"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <div class="note">
+                            <div class="note-content">Enter your name</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="group-item">
+                    <label>
+                        <input
+                            type="email"
+                            name="input-email"
+                            placeholder="mvh@domain.com"
+                            required
+                        />
+                        <span class="image"
+                            ><i class="fa-solid fa-envelope"></i
+                        ></span>
+                        <span class="input-effect">
+                            <i class="fa-solid fa-xmark"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <div class="note" style="left: 120px">
+                            <div class="note-content">Enter your email</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="group-item">
+                    <label>
+                        <input
+                            type="tel"
+                            name="input-tel"
+                            placeholder="+84 977 662 113"
+                            required
+                        />
+                        <span class="image"
+                            ><i class="fa-solid fa-mobile-button"></i
+                        ></span>
+                        <div class="note">
+                            <div class="note-content">
+                                Enter your phone number
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="group-item">
+                    <label>
+                        <select name="subject" id="subject">
+                            <option value="0">Subject</option>
+                            <option value="1">Math</option>
+                            <option value="2">English</option>
+                        </select>
+                        <span class="image"
+                            ><i class="fa-solid fa-book"></i
+                        ></span>
+                        <span class="select-effect">
+                            <i class="fa-solid fa-caret-up"></i>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </span>
+                    </label>
+                </div>
+                <div class="group-item message">
+                    <label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            placeholder="Message"
+                        ></textarea>
+                        <span class="image"
+                            ><i class="fa-solid fa-message"></i
+                        ></span>
+                        <span class="input-effect">
+                            <i class="fa-solid fa-xmark"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <div class="note">
+                            <div class="note-content">Enter your message</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="row">
+                    <div class="checkbox">
+                        <input
+                            type="checkbox"
+                            name="checkbox"
+                            id="checkbox"
+                            hidden
+                        />
+                        <label for="checkbox">
+                            <span class="box"
+                                ><i class="fa-solid fa-check"></i
+                            ></span>
+                            <span>Send me a copy of this message</span>
+                        </label>
+                    </div>
+                    <button class="btn">SEND</button>
+                </div>
+            </form>
+        </section>
+
+        <a
+            href="./BTB_05.html"
+            style="
+                display: inline-block;
+                text-decoration: none;
+                padding-top: 16px;
+            "
+            >Back</a
+        >
+    </body>
+</html>

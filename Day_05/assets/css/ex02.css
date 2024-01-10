@@ -1,0 +1,68 @@
+@font-face {
+    font-family: Lato;
+    src: url("../fonts/Lato-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: Lato;
+    src: url("../fonts/Lato-Bold.ttf");
+    font-weight: 700;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Lato", sans-serif;
+    line-height: 1.5;
+    font-size: 1.6rem;
+}
+.container {
+    width: 990px;
+    padding: 10px 5px;
+}
+.content .item label {
+    display: block;
+    background: #d95925;
+    color: #f8e8dc;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.content .item label::before {
+    content: "-";
+    font-weight: bold;
+    margin-right: 10px;
+}
+.item-content {
+    padding: 15px 20px 20px 10px;
+    display: none;
+}
+input[id="howtoset"]:checked ~ .content label[for="howtoset"] + .item-content {
+    display: block;
+}
+input[id="howtoset"]:checked ~ .content label[for="howtoset"]::before {
+    content: "+";
+}
+input[id="howtouse"]:checked
+    ~ .content
+    .item
+    label[for="howtouse"]
+    + .item-content {
+    display: block;
+}
+input[id="howtouse"]:checked ~ .content label[for="howtouse"]::before {
+    content: "+";
+}
+input[id="howtochange"]:checked
+    ~ .content
+    .item
+    label[for="howtochange"]
+    + .item-content {
+    display: block;
+}
+input[id="howtochange"]:checked ~ .content label[for="howtochange"]::before {
+    content: "+";
+}

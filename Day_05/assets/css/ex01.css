@@ -1,0 +1,222 @@
+@font-face {
+    font-family: Lato;
+    src: url("../fonts/Lato-Regular.ttf");
+}
+@font-face {
+    font-family: Lobster;
+    src: url("../fonts/Lobster-Regular.ttf");
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: Lato, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #a2a2a2;
+}
+input,
+input::placeholder,
+select,
+textarea::placeholder,
+textarea {
+    font-family: inherit;
+    color: #a2a2a2;
+    font-size: 1.6rem;
+}
+input,
+textarea,
+select {
+    color: #333333;
+}
+
+/* Section */
+.form {
+    padding: 50px;
+    width: 650px;
+}
+/* Header */
+
+.header .heading {
+    font-family: Lobster, sans-serif;
+    font-size: 4.6rem;
+    color: #323232;
+}
+.header .desc {
+    max-width: 500px;
+    margin: 30px 0 20px;
+}
+
+/* Form-content */
+.group-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.form-content .message {
+    height: 200px;
+    align-items: start;
+}
+.form-content .message label {
+    height: 100%;
+}
+.group-item label {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    flex-direction: row-reverse;
+    height: 50px;
+}
+.image {
+    width: 50px;
+    background: #ddd;
+    text-align: center;
+    line-height: 50px;
+}
+.image i {
+    color: white;
+}
+.group-item input,
+.group-item select,
+.group-item textarea {
+    width: 500px;
+    border: 2px solid #ddd;
+    padding: 0 40px 0 20px;
+    appearance: none;
+}
+.group-item textarea {
+    padding-top: 12px;
+    font-size: 1.6rem;
+}
+.input-effect,
+.select-effect {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+.message .input-effect {
+    top: 20px;
+}
+.input-effect,
+.select-effect {
+    font-size: 1.2rem;
+    color: #ddd;
+}
+.select-effect {
+    display: flex;
+    flex-direction: column;
+}
+.select-effect i:first-child {
+    margin-bottom: -5px;
+}
+
+.input-effect i:first-child {
+    display: none;
+}
+
+.form-content .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+label[for="checkbox"] {
+    display: flex;
+    column-gap: 10px;
+    cursor: pointer;
+}
+label[for="checkbox"] .box {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ddd;
+    text-align: center;
+    line-height: 17px;
+    color: #323232;
+}
+.box i {
+    opacity: 0;
+}
+.checkbox input[type="checkbox"]:checked ~ label i {
+    opacity: 1;
+}
+.checkbox input[type="checkbox"]:checked ~ label span:last-child {
+    color: #333333;
+}
+.btn {
+    width: 120px;
+    height: 37px;
+    background: #e93f32;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* FEATURE */
+.group-item input:focus,
+.group-item textarea:focus,
+.group-item select:focus,
+.group-item label:hover input,
+.group-item label:hover textarea,
+.group-item label:hover select {
+    outline: none;
+    border: 2px solid #333333;
+}
+.group-item input:focus ~ .input-effect,
+.group-item textarea:focus ~ .input-effect,
+.group-item select:focus ~ .select-effect,
+.group-item label:hover .input-effect,
+.group-item label:hover .select-effect {
+    color: #7a7c8a;
+}
+
+.group-item input:focus + .image,
+.group-item select:focus + .image,
+.group-item textarea:focus + .image,
+.group-item label:hover .image {
+    background: #333333;
+}
+
+.group-item input:focus ~ .note,
+.group-item select:focus ~ .note,
+.group-item textarea:focus ~ .note {
+    display: block;
+}
+.group-item input:focus ~ .input-effect i:last-child,
+.group-item textarea:focus ~ .input-effect i:last-child {
+    display: none;
+}
+.group-item input:focus ~ .input-effect i:first-child,
+.group-item textarea:focus ~ .input-effect i:first-child {
+    display: inline;
+}
+.group-item select:focus ~ .select-effect i:first-child {
+    display: none;
+}
+
+.group-item .note {
+    display: none;
+    position: absolute;
+    top: -50px;
+    left: 56px;
+}
+
+.note-content {
+    position: relative;
+    background: #333333;
+    font-size: 1.3rem;
+    padding: 10px;
+    color: #f3f3f3;
+}
+
+.note-content::before {
+    position: absolute;
+    bottom: -23px;
+    content: "";
+    display: block;
+    border: 15px solid;
+    border-color: #333333 transparent transparent transparent;
+}
