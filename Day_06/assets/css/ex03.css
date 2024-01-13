@@ -1,0 +1,228 @@
+@font-face {
+    font-family: Nunito;
+    src: url("../fonts/Nunito-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: Nunito;
+    src: url("../fonts/Nunito-Bold.ttf");
+    font-weight: 700;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    height: 100vh;
+    font-family: "Nunito", sans-serif;
+    line-height: 1.5;
+    font-size: 1.6rem;
+    background: url("../images/login-bg2.jpg") center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    align-items: center;
+    color: #717171;
+}
+button,
+input {
+    font-family: inherit;
+    font-size: inherit;
+}
+a {
+    font-family: inherit;
+    color: inherit;
+}
+.btn {
+    height: 45px;
+    border: 0;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    color: #ff574d;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.btn:hover {
+    opacity: 0.8;
+}
+.form-login {
+    display: flex;
+    width: 850px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px 2px #47444427;
+}
+/* form-info */
+.form-info {
+    width: 40%;
+    background: #ff574d;
+    padding: 90px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.form-info .header .heading {
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+.form-info .header .heading::before {
+    color: #ff574d;
+    content: "JL";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    background: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.form-info .desc {
+    margin: 30px 0;
+    font-size: 1.5rem;
+}
+
+.form-info .btn {
+    width: 140px;
+}
+.form-info .socials {
+    margin-top: 35px;
+}
+.form-login .list-items {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+}
+.form-login .list-items .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: #db5c4f;
+    border-radius: 3px;
+}
+.form-login .list-items .item:hover {
+    transform: scale(1.3);
+    transition: 0.2s;
+}
+.form-login .list-items .item i {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+/* form-main */
+.form-main {
+    position: relative;
+    text-align: center;
+    width: 60%;
+    padding: 50px 45px;
+    background: #fff;
+    font-weight: 700;
+}
+.form-main > .direction {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    left: 0;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    box-shadow: 0 0 10px 2px #cccccc69;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-main > .direction i {
+    color: #ff574d;
+}
+
+.form-main .header .heading {
+    position: relative;
+    font-size: 2.6rem;
+    color: #ff574d;
+}
+.form-main .header .heading::after {
+    position: absolute;
+    bottom: -8px;
+    display: inline-block;
+    content: "";
+    width: 60px;
+    height: 2px;
+    background: #ff574d;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.form-main .header span {
+    color: initial;
+}
+
+.form-inner .gr-input {
+    margin: 30px 0 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+.form-inner .gr-input input {
+    height: 50px;
+    padding: 0 20px;
+    border: 2px solid #ddd;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px #efecec3b;
+}
+.form-inner .gr-input input::placeholder {
+    color: #aaa;
+}
+.form-inner .gr-input input:focus {
+    border: 2px solid #ff564da3;
+    outline: none;
+}
+.form-inner .form-row {
+    justify-content: space-between;
+
+    display: flex;
+}
+.form-inner .form-row > a:hover,
+.sub-title > a:hover {
+    transition: 0.1s;
+    color: #ff574d;
+}
+.form-inner .form-row label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.form-inner .form-row span {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.form-inner .form-row span i {
+    font-size: 1.6rem;
+    display: none;
+}
+.form-inner .form-row input[type="checkbox"]:checked ~ span i {
+    display: block;
+}
+
+.form-inner .btn {
+    margin: 25px 0 30px;
+    width: 100%;
+    color: #fff;
+    background: #ff574d;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+.sub-title > a {
+    margin-left: 8px;
+}
