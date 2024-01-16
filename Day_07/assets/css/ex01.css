@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Bold.ttf");
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Medium.ttf");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Black.ttf");
+    font-weight: 900;
+}
+@font-face {
+    font-family: "SFU";
+    src: url("../fonts/SFUDaxCondensedBold.ttf");
+    font-weight: 900;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Asap", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #3f3424;
+}
+a {
+    font-family: inherit;
+    font-size: 1.4rem;
+    color: inherit;
+}
+.cover-photo {
+    width: 1600px;
+    margin: 30px auto;
+    height: 500px;
+    max-width: calc(100vw - 50px);
+    background: url("../images/ha-noi-melody-residences-cover.jpg") no-repeat
+        top left / cover;
+    position: relative;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 14%;
+}
+.info {
+    background: #fff;
+    opacity: 0.85;
+    width: 630px;
+    padding: 30px 10px 50px 30px;
+    border-radius: 5px;
+}
+
+.info .heading {
+    font-size: 2.8rem;
+    color: #bf4240;
+    font-weight: 700;
+}
+
+.info .desc {
+    margin: 10px 0;
+}
+.info .location {
+    font-weight: 500;
+}
+.content::after {
+    content: "3,2 TỶ/CĂN";
+    position: absolute;
+    opacity: 1 !important;
+    font-family: SFU, sans-serif;
+    display: block;
+    font-size: 2.6rem;
+    color: #fff;
+    width: 150px;
+    background: #bf4240;
+    text-align: center;
+
+    padding: 5px;
+    border-radius: 5px;
+    bottom: 0;
+    right: 8%;
+    transform: translateY(50%);
+}
+
+.info .location a {
+    font-size: 1.8rem;
+}
+.location a i {
+    margin-right: 3px;
+    font-size: 1.8rem;
+}

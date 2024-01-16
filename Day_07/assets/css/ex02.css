@@ -1,0 +1,120 @@
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-SemiBold.ttf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Medium.ttf");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Black.ttf");
+    font-weight: 900;
+}
+
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Asap", sans-serif;
+    line-height: 1.5;
+    font-size: 1.6rem;
+}
+img {
+    max-width: 100%;
+    object-fit: contain;
+}
+a {
+    color: #000;
+}
+.container {
+    width: 1500px;
+    height: 320px;
+    margin: 30px auto;
+    max-width: calc(100vw - 50px);
+}
+
+.cover-photo {
+    height: 100%;
+    position: relative;
+    background: url("../images/ex02-cover.webp") center / cover no-repeat;
+}
+
+.image {
+    position: absolute;
+    padding: 40px 45px 5px;
+    background: #fff;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    bottom: 0;
+    left: 70px;
+    box-shadow: -4px -6px 5px 0 #0000002d;
+}
+.image img {
+    width: 120px;
+    aspect-ratio: 4/3;
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    left: 300px;
+    bottom: 40px;
+    color: #fff;
+}
+.info .info-name {
+    font-weight: 600;
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+.info-row {
+    display: flex;
+    column-gap: 30px;
+}
+.info-row p {
+    font-size: 1.4rem;
+}
+.info-row p span {
+    font-weight: 600;
+    font-size: 2.2rem;
+}
+/* nav */
+.navigation .list-items {
+    display: flex;
+    column-gap: 30px;
+    margin: 10px 60px 0 0;
+}
+.item:first-child {
+    margin-left: auto;
+}
+.item {
+    font-weight: 600;
+    position: relative;
+}
+.item::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0px;
+    height: 3px;
+    background: #dd5e56;
+    transition: 0.3s;
+}
+.item:hover::after {
+    width: calc(100%);
+}
+.item:hover a {
+    color: #dd5e56;
+    transition: 0.2s;
+    cursor: pointer;
+}

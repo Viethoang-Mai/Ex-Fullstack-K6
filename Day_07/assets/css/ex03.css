@@ -1,0 +1,133 @@
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-SemiBold.ttf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Asap";
+    src: url("../fonts/Asap-Medium.ttf");
+    font-weight: 500;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Asap", sans-serif;
+    line-height: 1.5;
+    font-size: 1.6rem;
+}
+img {
+    max-width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    filter: brightness(0.75);
+    transition: 0.2s;
+}
+
+a,
+label {
+    font-family: inherit;
+    color: inherit;
+}
+.container {
+    width: 1200px;
+    margin: 30px auto;
+    max-width: calc(100vw - 50px);
+}
+.heading {
+    position: relative;
+    font-size: 1.7rem;
+    font-weight: 600;
+    overflow: hidden;
+}
+.heading::after {
+    position: absolute;
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: #dfdfeb84;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
+}
+.places {
+    margin: 20px 0;
+    display: flex;
+    column-gap: 15px;
+}
+.places label {
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 6px 17px;
+    background: #e5e5e5;
+    font-weight: 600;
+    border-radius: 999px;
+}
+.places label span {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+.container > input[id="hcm"]:checked ~ .places label[for="hcm"],
+.container > input[id="binhduong"]:checked ~ .places label[for="binhduong"],
+.container > input[id="dongnai"]:checked ~ .places label[for="dongnai"],
+.container > input[id="baria-vt"]:checked ~ .places label[for="baria-vt"],
+.container > input[id="danang"]:checked ~ .places label[for="danang"],
+.container > input[id="longan"]:checked ~ .places label[for="longan"],
+.container > input[id="quangninh"]:checked ~ .places label[for="quangninh"],
+.container > input[id="hanoi"]:checked ~ .places label[for="hanoi"] {
+    color: #fff;
+    background: #af7c38;
+}
+.places-detail {
+    display: none;
+}
+.places-detail .list-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.places-detail .list-items .item {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #0000002a;
+}
+.places-detail .list-items .item:hover img {
+    filter: brightness(1);
+    transform: scale(1.1);
+}
+
+.list-items .item .desc,
+.list-items .item .name {
+    position: absolute;
+    left: 7%;
+}
+.list-items .item .desc {
+    bottom: 10%;
+    font-size: 1.5rem;
+}
+.list-items .item .name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    top: 10%;
+}
+.list-items .item .desc span {
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+.container > input:checked ~ .places-detail {
+    display: block;
+}
