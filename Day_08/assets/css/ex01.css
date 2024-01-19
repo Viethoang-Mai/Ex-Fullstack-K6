@@ -1,0 +1,110 @@
+@font-face {
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-ExtraBold.ttf");
+    font-weight: 900;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Manrope", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #474f5f;
+}
+.container {
+    width: 1400px;
+    max-width: calc(100vw - 50px);
+    margin: 0 auto;
+}
+a {
+    font-family: inherit;
+    color: inherit;
+}
+img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+}
+/* header */
+.header {
+    margin-top: 30px;
+}
+.header-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.header-inner .logo {
+    width: 160px;
+    height: 50px;
+}
+
+/* nav */
+.navigation {
+    margin-left: auto;
+}
+.navigation > .list-item {
+    display: flex;
+    column-gap: 40px;
+    margin-right: 50px;
+}
+.navigation > .list-item .item i {
+    font-size: 1.2rem;
+}
+.navigation .list-item .item:hover > a {
+    opacity: 0.6;
+}
+.navigation .list-item .item:last-of-type:hover .dropdown-content {
+    display: flex;
+}
+.navigation > .list-item > .item > a {
+    padding: 10px 10px 26px;
+}
+
+.search-area {
+    display: flex;
+    column-gap: 15px;
+}
+.search-area i {
+    font-size: 2rem;
+}
+
+/* dropdown */
+.dropdown-content {
+    display: none;
+    margin-top: 25px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    /* display: flex; */
+    box-shadow: 0 0 15px 1px #00000017;
+    padding: 40px;
+    border-radius: 7px;
+}
+.dropdown-content .list-item {
+    display: flex;
+    margin-top: 6px;
+    column-gap: 150px;
+}
+.dropdown-content .list-item .item {
+    margin-top: 15px;
+}
+
+.dropdown-left {
+    width: 35%;
+    border-right: 2px solid #cccccc41;
+    margin-right: 40px;
+}
+.dropdown-left .list-item:first-of-type {
+    margin-bottom: 40px;
+}
+.dropdown-right {
+    width: 65%;
+}
+.dropdown-right .list-item {
+    column-gap: 200px;
+}
