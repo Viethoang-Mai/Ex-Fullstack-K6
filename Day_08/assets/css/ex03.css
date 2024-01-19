@@ -50,7 +50,7 @@ img {
     margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 60px 40px;
 }
 
 .item-header .heading {
@@ -58,7 +58,7 @@ img {
     font-size: 2.5rem;
 }
 .item .desc {
-    height: 130px;
+    height: 120px;
     font-size: 1.5rem;
     color: #99989a;
 }
@@ -66,4 +66,8 @@ img {
     color: #fff;
     padding: 12px 35px;
     background: #29388d;
+    transition: 0.2s;
+}
+.link:hover {
+    opacity: 0.8;
 }
