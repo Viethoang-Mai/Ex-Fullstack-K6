@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.5;
+    font-size: 1.6rem;
+    color: #363e50;
+}
+input,
+textarea,
+select,
+label,
+button {
+    font-family: inherit;
+    font-size: inherit;
+    color: #969697;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.container {
+    width: 870px;
+    max-width: calc(100vw - 50px);
+    margin: 30px auto;
+    text-align: center;
+    background: #fdfdfd;
+    box-shadow: 0 0 5px 1px #d7d7d740;
+}
+
+.form .header .heading {
+    font-size: 3.6rem;
+    font-weight: 600;
+}
+
+.form-gr {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.form-content {
+    margin: 35px 25px;
+}
+.form-item {
+    position: relative;
+}
+.form-item input,
+select,
+textarea {
+    width: 100%;
+    height: 55px;
+    padding: 15px;
+    border: 2px solid #eff0f5;
+    border-radius: 10px;
+    outline: 0;
+    appearance: initial;
+}
+.form-item input {
+    padding: 15px 15px 0;
+}
+.form-item select {
+    position: relative;
+    /* vhm */
+}
+.form-gr .form-item:last-of-type::after {
+    position: absolute;
+    content: "\f078";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+.form-message {
+    position: relative;
+}
+.form-message textarea {
+    height: 150px;
+    padding: 25px 15px 15px 20px;
+}
+
+.form-item label,
+.form-message label {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    position: absolute;
+    transition: 0.2s;
+}
+.form-message label {
+    top: 30px;
+}
+.btn {
+    margin-top: 20px;
+    border: 0;
+    padding: 15px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #fff;
+    background: #4d77d9;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn:hover {
+    scale: 1.1;
+}
+.form-item input:focus,
+.form-message textarea:focus {
+    border-color: #d0d5ec;
+    transition: 0.2s;
+}
+.form-item input:focus ~ label,
+.form-item input:not(:placeholder-shown) ~ label,
+.form-message textarea:focus ~ label,
+.form-message textarea:valid + label {
+    transform: scale(0.78) translateY(-35px);
+}
+.form-item input:not(:placeholder-shown),
+.form-message textarea:valid {
+    background: #edf0ff;
+    border-color: #d5d5e6;
+}
+
+/* #edf0ff #d5d5e6*/

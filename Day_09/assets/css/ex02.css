@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Space+Grotesk:wght@500;700&display=swap");
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "inter", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.container {
+    width: 1200px;
+    max-width: calc(100vw - 50px);
+    margin: 50px auto;
+}
+.list-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.item {
+    position: relative;
+    border: 2px solid #f0f0f3;
+    padding: 20px 30px;
+    background-color: #fff;
+}
+.item::before {
+    position: absolute;
+    display: inline-block;
+    content: "";
+    background: url("../images/ex02.jpg") no-repeat center / cover;
+    inset: 0;
+    z-index: -1;
+}
+.item::after {
+    position: absolute;
+    display: inline-block;
+    content: "";
+    inset: 0;
+    border: 1px solid #fff;
+    z-index: -1;
+    transition: 0.2s;
+}
+.item .image {
+    font-size: 4.2rem;
+    color: #c5a699;
+}
+.item .heading {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin: 13px 0;
+    transition: 0.3s ease-in-out;
+}
+.item .desc {
+    color: #727275;
+    transition: 0.3s ease-in-out;
+    transition-delay: 0.1s;
+}
+.item .link {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    width: fit-content;
+    visibility: hidden;
+    transform: translateY(80px);
+
+    transition: 0.3s;
+    transition-delay: 0.12s;
+}
+.item .link span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    border: 1px solid #fff;
+    text-align: center;
+    line-height: 30px;
+}
+
+/* Features vhm*/
+.item {
+    transition: 0.3s;
+}
+.item:hover {
+    background-color: #a67462b6;
+    border-color: #a67462bb;
+}
+.item:hover::after {
+    scale: 0.9;
+}
+
+.item .image i {
+    transition-delay: 0.02s;
+    transition: 0.3s;
+}
+.item:hover .image i {
+    scale: 0;
+}
+.item:hover .heading,
+.item:hover .desc {
+    color: #fff;
+    transform: translateY(-65px);
+}
+.item:hover .desc {
+    transform: translateY(-60px);
+}
+.item .link:hover span {
+    transition: 0.2s;
+    background: #fff;
+    color: #000;
+    border: #fff;
+}
+
+.item:hover .link {
+    visibility: visible;
+    transform: translateY(0px);
+}
