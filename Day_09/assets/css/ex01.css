@@ -53,7 +53,7 @@ img {
 }
 .item .front {
     text-align: right;
-    transition: 0.1s;
+    transition: 0.3s;
 }
 .item:hover .front {
     transform: rotateY(180deg) translateX(190px);

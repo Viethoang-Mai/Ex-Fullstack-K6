@@ -92,7 +92,7 @@ textarea {
     transform: translateY(-50%);
     left: 20px;
     position: absolute;
-    transition: 0.2s;
+    transition: 0.15s;
 }
 .form-message label {
     top: 30px;
@@ -115,7 +115,7 @@ textarea {
 .form-item input:focus,
 .form-message textarea:focus {
     border-color: #d0d5ec;
-    transition: 0.2s;
+    transition: 0.15s;
 }
 .form-item input:focus ~ label,
 .form-item input:not(:placeholder-shown) ~ label,
