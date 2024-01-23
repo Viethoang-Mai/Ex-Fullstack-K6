@@ -70,7 +70,7 @@ body {
     column-gap: 10px;
     width: fit-content;
     visibility: hidden;
-    transform: translateY(80px);
+    transform: translateY(40px);
 
     transition: 0.3s;
     transition-delay: 0.12s;
