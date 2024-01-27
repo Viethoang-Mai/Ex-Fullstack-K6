@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #272626;
+    background: #313642;
+}
+
+.container {
+    width: fit-content;
+    margin: 150px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Mail */
+
+.mail {
+    transition: 0.25s linear;
+    width: 200px;
+    height: 100px;
+    background: #cf4a43;
+    cursor: pointer;
+}
+.cv {
+    position: relative;
+    width: 160px;
+    height: 100px;
+    left: 20px;
+    background: #fff;
+    transition: 0.2s ease;
+    transition-delay: 0.15s;
+}
+
+.cv-rim {
+    display: flex;
+    gap: 15px;
+    overflow: hidden;
+}
+.cv-rim span {
+    display: inline-block;
+    width: 15px;
+    height: 10px;
+    transform: skewX(-15deg);
+    background: #cc5b63;
+}
+
+.cv-circle {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f1cece;
+}
+
+.cv-row {
+    position: absolute;
+    top: 20px;
+}
+.cv-row span {
+    display: block;
+    background: #cd5a5d;
+    width: 70px;
+    height: 10px;
+    margin: 10px 5px;
+}
+
+.cv-row span:last-of-type {
+    width: 50px;
+}
+
+.triangle-left {
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid #e2514b;
+    border-right: 200px solid transparent;
+    position: relative;
+    bottom: 100px;
+    z-index: 2;
+}
+
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid #e76057;
+    border-left: 200px solid transparent;
+    position: relative;
+    z-index: 2;
+}
+
+.cover {
+    width: 0;
+    height: 0;
+    border-top: 50px solid #cf4a43;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    position: relative;
+    bottom: 200px;
+    transform-origin: top;
+    transition: 0.2s ease;
+    z-index: 3;
+}
+
+.shadow {
+    margin-top: 60px;
+    width: 120px;
+    height: 50px;
+    border-radius: 99px;
+    background: #03020296;
+    box-shadow: 0 0 70px 15px rgba(0, 0, 0, 0.879);
+    transform: rotateX(83deg);
+    transition: 0.25s;
+}
+.mail:not(:hover) .cover {
+    transition-delay: 0.4s;
+}
+.mail:hover .cover {
+    transform: rotateX(180deg);
+    z-index: -1;
+}
+
+.mail:hover .cv {
+    transform: translateY(-50px);
+    opacity: 1;
+}
+
+.mail:hover {
+    transform: translateY(50px);
+}
+
+.mail:hover + .shadow {
+    width: 80px;
+}

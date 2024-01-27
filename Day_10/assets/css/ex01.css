@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap");
+
+:root {
+    --primary-color: #059ce4;
+    --text-color: #fdfeff;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "inter", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+a {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.container {
+    width: 1400px;
+    height: 800px;
+    max-width: calc(100vw - 50px);
+    margin: 50px auto;
+    background: var(--primary-color);
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px 1px #eee;
+}
+.header {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.header .heading {
+    font-size: 5rem;
+    font-weight: 700;
+}
+.header .desc {
+    font-weight: 100;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+}
+.header .desc span {
+    font-size: 2.7rem;
+    margin-right: 10px;
+}
+.main-burger label[for="checkbox-menu"] {
+    position: relative;
+    top: 10px;
+    left: 20px;
+    z-index: 99;
+    cursor: pointer;
+}
+.main-burger label[for="checkbox-menu"] span {
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+.main-burger label[for="checkbox-menu"] span:first-of-type {
+    position: absolute;
+    transition: 0.25s;
+    transition-delay: 0.05s;
+}
+.overlay {
+    position: absolute;
+    inset: 0;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-bottom-right-radius: 999px;
+    transition: 0.5s;
+}
+.list-item {
+    position: relative;
+    visibility: hidden;
+    margin-top: 40px;
+}
+.list-item .link {
+    width: 200px;
+    padding: 2px 0 2px 50px;
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+.list-item .link:focus {
+    transition: 0.25s;
+    background: #eee;
+    color: #524e56;
+}
+input[type="checkbox"]:checked + .overlay {
+    transform: scale(70);
+    z-index: 1;
+}
+.fa-arrow-right {
+    opacity: 0;
+    transition: 0.25s;
+}
+input[type="checkbox"]:checked
+    ~ .main-burger
+    label[for="checkbox-menu"]
+    span
+    .fa-arrow-right {
+    transform: rotate(180deg);
+    transition-delay: 0.1s;
+    opacity: 1;
+}
+input[type="checkbox"]:checked
+    ~ .main-burger
+    label[for="checkbox-menu"]
+    span:first-of-type {
+    transform: rotate3d(1, 1, 1, 90deg);
+    opacity: 0;
+}
+input[type="checkbox"]:checked ~ .main-burger .list-item {
+    visibility: visible;
+    z-index: 1;
+}
