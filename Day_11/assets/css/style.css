@@ -77,6 +77,8 @@ a {
     font-size: 2rem;
     font-weight: 500;
     line-height: 1;
+    border: 1px solid transparent;
+    transition: 0.2s;
 }
 
 /* header */
@@ -470,6 +472,7 @@ a {
 
 .footer-copyright {
     margin-top: 74px;
+    padding-bottom: 30px;
 }
 
 .footer-copyright .list-item {
@@ -489,4 +492,10 @@ a {
 }
 .footer-grover a:hover {
     color: #2e2e2e;
+}
+.hero-grover a.btn:hover,
+.feature-wrap a.btn:hover {
+    border: 1px solid #f86061;
+    background: #fff;
+    color: #f86061;
 }
