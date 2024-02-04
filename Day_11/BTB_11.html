@@ -14,13 +14,23 @@
         <title>Grover</title>
     </head>
     <body>
+        <input
+            type="checkbox"
+            id="menu-checkbox"
+            class="ip-menu-checkbox"
+            hidden
+        />
         <header class="header-grover">
             <div class="container flex-align-center">
-                <div class="logo">
-                    <a href="#!" class="link-logo"
-                        ><img src="./assets/images/logo.svg" alt="grover"
-                    /></a>
-                </div>
+                <a href="#!" class="link-logo">
+                    <div class="logo">
+                        <img src="./assets/images/logo.svg" alt="grover" /></div
+                ></a>
+
+                <label for="menu-checkbox" class="lbl-menu-checkbox"
+                    ><span class="menu-ic"
+                        ><i class="fa-solid fa-bars"></i></span
+                ></label>
                 <nav class="nav-grover flex-align-center">
                     <ul class="list-item flex-align-center">
                         <li class="item">
@@ -55,7 +65,9 @@
             <div class="container">
                 <div class="sub-heading flex-align-center">
                     <h3>More than Faster</h3>
-                    <img src="./assets/images/strawberry.svg" alt="" />
+                    <div class="sub-heading-img">
+                        <img src="./assets/images/strawberry.svg" alt="" />
+                    </div>
                 </div>
                 <div class="hero-row">
                     <div class="hero-info">
@@ -85,71 +97,85 @@
         </section>
         <section class="service-grover">
             <div class="container">
-                <div class="service-header">
-                    <h5 class="sub-heading">What we Serve</h5>
-                    <h2 class="section-heading">
-                        fruit and vegetable delivered to your home
-                    </h2>
-                </div>
-                <div class="service-row">
-                    <ul class="list-item">
-                        <li class="item">
-                            <div class="item-bgr"></div>
-                            <div class="item-inner">
-                                <div class="item-image">
-                                    <img
-                                        class="img-item"
-                                        src="./assets/images/service-ic1.svg"
-                                        alt=""
-                                    />
+                <div class="service-inner">
+                    <div class="service-header">
+                        <h5 class="sub-heading">What we Serve</h5>
+                        <h2 class="section-heading">
+                            fruit and vegetable delivered to your home
+                        </h2>
+                    </div>
+                    <div class="service-row">
+                        <ul class="list-item">
+                            <li class="item">
+                                <div class="item-bgr"></div>
+                                <div class="item-inner">
+                                    <div class="item-image">
+                                        <img
+                                            class="img-item"
+                                            src="./assets/images/service-ic1.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <div class="item-info">
+                                        <h4 class="item-heading">
+                                            Free shipping
+                                        </h4>
+                                        <p class="item-desc">
+                                            Enjoy Order in a hand using the
+                                            fresness of groceries
+                                        </p>
+                                    </div>
                                 </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-bgr"></div>
 
-                                <h4 class="item-heading">Free shipping</h4>
-                                <p class="item-desc">
-                                    Enjoy Order in a hand using the fresness of
-                                    groceries
-                                </p>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div class="item-bgr"></div>
+                                <div class="item-inner">
+                                    <div class="item-image">
+                                        <img
+                                            class="img-item"
+                                            src="./assets/images/service-ic2.svg"
+                                            alt=""
+                                        />
+                                    </div>
 
-                            <div class="item-inner">
-                                <div class="item-image">
-                                    <img
-                                        class="img-item"
-                                        src="./assets/images/service-ic2.svg"
-                                        alt=""
-                                    />
+                                    <div class="item-info">
+                                        <h4 class="item-heading">
+                                            15 days returns
+                                        </h4>
+                                        <p class="item-desc">
+                                            Order in a handy way using the
+                                            freshness of the groceries.
+                                        </p>
+                                    </div>
                                 </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-bgr"></div>
 
-                                <h4 class="item-heading">15 days returns</h4>
-                                <p class="item-desc">
-                                    Order in a handy way using the freshness of
-                                    the groceries.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div class="item-bgr"></div>
+                                <div class="item-inner">
+                                    <div class="item-image">
+                                        <img
+                                            class="img-item"
+                                            src="./assets/images/service-ic3.svg"
+                                            alt=""
+                                        />
+                                    </div>
 
-                            <div class="item-inner">
-                                <div class="item-image">
-                                    <img
-                                        class="img-item"
-                                        src="./assets/images/service-ic3.svg"
-                                        alt=""
-                                    />
+                                    <div class="item-info">
+                                        <h4 class="item-heading">
+                                            Secure checkout
+                                        </h4>
+                                        <p class="item-desc">
+                                            If you get rotten items - return
+                                            immediately to us.
+                                        </p>
+                                    </div>
                                 </div>
-
-                                <h4 class="item-heading">Secure checkout</h4>
-                                <p class="item-desc">
-                                    If you get rotten items - return immediately
-                                    to us.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -283,13 +309,17 @@
                     </div>
                 </div>
                 <div class="footer-copyright">
-                    <ul class="list-item">
-                        <li class="item">All Rights Reserved @ BESNIK 2021</li>
-                        <li class="item">
-                            <a href="#!">Terms & Conditions</a>
-                        </li>
-                        <li class="item"><a href="#!">Privacy & Policy</a></li>
-                    </ul>
+                    <div class="list-item">
+                        <p class="item">All Rights Reserved @ BESNIK 2021</p>
+                        <div class="group-item">
+                            <p class="item">
+                                <a href="#!">Terms & Conditions</a>
+                            </p>
+                            <p class="item">
+                                <a href="#!">Privacy & Policy</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
