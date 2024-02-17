@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Style -->
+        <link rel="stylesheet" href="./assets/css/grid.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <!-- Embed fonts -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <title>Vikinger</title>
+    </head>
+    <body>
+        <section class="landing">
+            <div class="landing-decoration"></div>
+            <div class="container">
+                <div class="row">
+                    <input
+                        type="radio"
+                        name="landing__tab-switch"
+                        id="login"
+                        hidden
+                        checked
+                    />
+                    <input
+                        type="radio"
+                        name="landing__tab-switch"
+                        id="register"
+                        hidden
+                    />
+                    <div class="col-12 col-xxl-6">
+                        <div class="landing-content">
+                            <div class="logo-image">
+                                <img
+                                    src="./assets/images/svg-logo-vikinger.png"
+                                    alt="Vikinger"
+                                />
+                            </div>
+                            <h2 class="sub-title">WELCOME TO</h2>
+                            <h1 class="landing-title">VIKINGER</h1>
+                            <p class="landing-desc">
+                                The next generation social network &amp;
+                                community! Connect with your friends and play
+                                with our quests and badges gamification system!
+                            </p>
+
+                            <div class="landing__tab-switch">
+                                <label for="login" class="login">Login</label>
+                                <label for="register" class="register"
+                                    >Register</label
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End col -->
+                    <div class="col-12 col-xxl-6">
+                        <div class="landing-form">
+                            <div class="landing-form_inner form-login">
+                                <h2 class="landing-form_heading">
+                                    Account Login
+                                </h2>
+                                <div class="form-main">
+                                    <form class="form-inner">
+                                        <div class="input-item">
+                                            <input
+                                                type="email"
+                                                id="form-login_email"
+                                                placeholder=" "
+                                            />
+                                            <label for="form-login_email"
+                                                >Username or Email</label
+                                            >
+                                        </div>
+                                        <div class="input-item">
+                                            <input
+                                                type="password"
+                                                id="form-login_password"
+                                                placeholder=" "
+                                            />
+                                            <label for="form-login_password"
+                                                >Password</label
+                                            >
+                                        </div>
+                                        <div class="form-row">
+                                            <label class="lbl-check"
+                                                ><input
+                                                    type="checkbox"
+                                                    checked
+                                                    hidden
+                                                />
+                                                <span
+                                                    ><img
+                                                        src="./assets/images/svg-cross.svg"
+                                                        alt="Remember Me"
+                                                /></span>
+                                                Remember Me
+                                            </label>
+                                            <a href="#!" class="form-row__link"
+                                                >Forgot Password?</a
+                                            >
+                                        </div>
+                                        <button class="form-btn" type="submit">
+                                            Login to your Account!
+                                        </button>
+                                    </form>
+                                    <p class="form-line">
+                                        Login with your Social Account
+                                    </p>
+                                    <div class="form-social">
+                                        <a
+                                            href="#!"
+                                            class="social-link facebook"
+                                            ><i
+                                                class="fa-brands fa-square-facebook"
+                                            ></i
+                                        ></a>
+                                        <a href="#!" class="social-link twitter"
+                                            ><i class="fa-brands fa-twitter"></i
+                                        ></a>
+                                        <a href="#!" class="social-link twitch"
+                                            ><i class="fa-brands fa-twitch"></i
+                                        ></a>
+                                        <a href="#!" class="social-link youtube"
+                                            ><i class="fa-brands fa-youtube"></i
+                                        ></a>
+                                    </div>
+                                </div>
+                                <div class="rocket-img">
+                                    <img
+                                        src="./assets/images/rocket.webp"
+                                        alt="login"
+                                    />
+                                </div>
+                            </div>
+                            <div class="landing-form_inner form-register">
+                                <h2 class="landing-form_heading">
+                                    Create your Account!
+                                </h2>
+                                <div class="form-main">
+                                    <form class="form-inner">
+                                        <div class="input-item">
+                                            <input
+                                                type="email"
+                                                id="form-register_email"
+                                                placeholder=" "
+                                            />
+                                            <label for="form-register_email"
+                                                >Your Email</label
+                                            >
+                                        </div>
+                                        <div class="input-item">
+                                            <input
+                                                type="text"
+                                                id="form-register_name"
+                                                placeholder=" "
+                                            />
+                                            <label for="form-register_name"
+                                                >Username</label
+                                            >
+                                        </div>
+
+                                        <div class="input-item">
+                                            <input
+                                                type="password"
+                                                id="form-register_password"
+                                                placeholder
+                                            />
+                                            <label for="form-register_password"
+                                                >Password</label
+                                            >
+                                        </div>
+                                        <div class="input-item">
+                                            <input
+                                                type="password"
+                                                id="form-register_repassword"
+                                                placeholder
+                                            />
+                                            <label
+                                                for="form-register_repassword"
+                                                >Repeat Password</label
+                                            >
+                                        </div>
+                                        <div class="form-row">
+                                            <label class="lbl-check"
+                                                ><input
+                                                    type="checkbox"
+                                                    hidden
+                                                    checked
+                                                />
+                                                <span
+                                                    ><img
+                                                        src="./assets/images/svg-cross.svg"
+                                                        alt="Send"
+                                                /></span>
+                                                Send me news and updates via
+                                                email
+                                            </label>
+                                        </div>
+                                        <button class="form-btn" type="submit">
+                                            Register Now!
+                                        </button>
+                                    </form>
+                                    <p class="form-text">
+                                        You'll receive a confirmation email in
+                                        your inbox with a link to activate your
+                                        account. If you have any problems,
+                                        <a href="#!" class="form-text_link"
+                                            >contact us</a
+                                        >!
+                                    </p>
+                                </div>
+                                <div class="rocket-img">
+                                    <img
+                                        src="./assets/images/rocket.webp"
+                                        alt="Register"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
