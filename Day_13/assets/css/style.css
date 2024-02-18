@@ -358,6 +358,13 @@ input[id="register"]:checked ~ .col-12 .form-login {
     .sub-title {
         font-size: 2.4rem;
     }
+    .landing-form_inner {
+        padding: 40px 32px;
+    }
+    .form-line::before,
+    .form-line::after {
+        width: 50px;
+    }
 }
 @media screen and (min-width: 576px) {
     .landing-form_inner {
