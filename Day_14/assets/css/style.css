@@ -239,9 +239,12 @@ img {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
-@media screen and (max-width: 374px) {
+@media screen and (max-width: 450px) {
+    .header > .navigation .list-item a.link-item {
+        font-size: 1.8rem;
+    }
     .search input {
-        width: 170px;
+        width: 180px;
     }
 }
 @media screen and (min-width: 576px) {
