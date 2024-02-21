@@ -108,16 +108,14 @@ img {
     overflow-y: auto;
 }
 .overlay {
-    background: #cccccc90;
     position: fixed;
-    z-index: -1;
-    transition: 0.25s linear;
-    opacity: 0;
+    z-index: -3;
+    transition: 0.2s ease-in-out;
+    inset: 0;
 }
 .header input[name="ip-nav"]:checked ~ label.overlay {
-    inset: 0;
+    background: #cccccc90;
     z-index: 1;
-    opacity: 1;
 }
 .header input[name="ip-nav"]:checked ~ .navigation {
     translate: 0;
@@ -233,12 +231,14 @@ img {
     position: sticky;
     left: 62px;
     bottom: 65px;
+    width: fit-content;
+}
+.box-chat > a {
     display: flex;
     align-items: center;
     column-gap: 18px;
-    width: fit-content;
 }
-.box-chat > .text {
+.box-chat .text {
     margin-top: 11px;
     display: none;
     font-size: 1.7rem;
@@ -373,7 +373,7 @@ img {
     .mw-1200 {
         display: block;
     }
-    .box-chat > .text {
+    .box-chat .text {
         display: block;
     }
 }
