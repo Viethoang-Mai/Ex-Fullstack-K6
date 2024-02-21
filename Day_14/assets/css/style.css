@@ -95,7 +95,7 @@ img {
     opacity: 0.2;
 }
 .header > .navigation {
-    padding: 50px 20px 0;
+    padding: 50px 20px 50px;
     position: fixed;
     top: 0;
     left: 0;
@@ -105,6 +105,7 @@ img {
     z-index: 999;
     translate: -100%;
     transition: 0.3s ease-in-out;
+    overflow-y: auto;
 }
 .overlay {
     background: #cccccc90;
@@ -120,9 +121,24 @@ img {
     translate: 0;
 }
 .header > .navigation .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header > .navigation .heading h1 {
     font-size: 4rem;
     font-weight: 700;
     text-align-last: left;
+}
+.header > .navigation .heading .x-icon {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    border-radius: 999px;
+    background: #ea90a6;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 23px;
 }
 .header > .navigation .list-item .item {
     margin-top: 33px;
@@ -291,11 +307,12 @@ img {
 }
 @media screen and (min-width: 1200px) {
     .container {
-        padding: 0px 54px 0px 61px;
+        padding: 0px 51px 0px 61px;
     }
     .mw-992 {
         display: none;
     }
+
     label[for="ip-nav"] {
         display: none;
     }
@@ -317,6 +334,7 @@ img {
         background: none;
         display: flex;
         translate: none;
+        overflow: initial;
         padding: 0;
     }
     .header > .navigation .heading {
@@ -392,6 +410,9 @@ img {
     .sidebar h2.heading {
         margin: 66px 0 54px;
         font-size: 3.1rem;
+    }
+    .search {
+        column-gap: 0;
     }
     .search-ic {
         column-gap: 4px;
