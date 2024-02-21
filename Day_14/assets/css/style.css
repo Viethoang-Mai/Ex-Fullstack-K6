@@ -112,10 +112,12 @@ img {
     position: fixed;
     z-index: -1;
     transition: 0.25s linear;
+    opacity: 0;
 }
 .header input[name="ip-nav"]:checked ~ label.overlay {
     inset: 0;
     z-index: 1;
+    opacity: 1;
 }
 .header input[name="ip-nav"]:checked ~ .navigation {
     translate: 0;
