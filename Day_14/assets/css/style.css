@@ -53,9 +53,7 @@ img {
     padding: 0 25px;
 }
 /* landing */
-.landing {
-    position: relative;
-}
+
 .landing-inner {
     padding: 53px 0;
     display: grid;
@@ -233,7 +231,7 @@ img {
     display: none;
 }
 .box-chat {
-    position: absolute;
+    position: fixed;
     left: 4%;
     bottom: 6%;
     width: fit-content;
