@@ -53,6 +53,9 @@ img {
     padding: 0 25px;
 }
 /* landing */
+.landing {
+    position: relative;
+}
 .landing-inner {
     padding: 53px 0;
     display: grid;
@@ -112,10 +115,12 @@ img {
     z-index: -3;
     transition: 0.2s ease-in-out;
     inset: 0;
+    background: #cccccc90;
+    opacity: 0;
 }
 .header input[name="ip-nav"]:checked ~ label.overlay {
-    background: #cccccc90;
     z-index: 1;
+    opacity: 1;
 }
 .header input[name="ip-nav"]:checked ~ .navigation {
     translate: 0;
@@ -228,10 +233,13 @@ img {
     display: none;
 }
 .box-chat {
-    position: sticky;
-    left: 62px;
-    bottom: 65px;
+    position: absolute;
+    left: 4%;
+    bottom: 6%;
     width: fit-content;
+}
+.chat-ic {
+    overflow: hidden;
 }
 .box-chat > a {
     display: flex;
