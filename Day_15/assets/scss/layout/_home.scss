@@ -14,7 +14,6 @@ body {
 main {
     overflow: hidden;
 }
-
 .home-inner {
     margin: 0 auto;
     display: flex;
@@ -262,7 +261,7 @@ h1.heading {
     display: flex;
     margin-top: 36px;
     column-gap: 38px;
-    overflow-x: scroll;
+    overflow-x: auto;
     > .item {
         width: 650px;
         height: 305px;
@@ -803,6 +802,11 @@ label.lbl-user {
     z-index: -10;
     background: #161a439e;
     transition: 0.2s linear;
+}
+.home {
+    label {
+        cursor: pointer;
+    }
 }
 
 // Responsive
