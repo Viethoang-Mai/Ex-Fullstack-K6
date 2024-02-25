@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("../font/Poppins-Bold.ttf");
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("../font/Poppins-SemiBold.ttf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("../font/Poppins-Medium.ttf");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("../font/Poppins-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Quicksand";
+    src: url("../font/Quicksand-Bold.ttf");
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Quicksand";
+    src: url("../font/Quicksand-SemiBold.ttf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Quicksand";
+    src: url("../font/Quicksand-Medium.ttf");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Quicksand";
+    src: url("../font/Quicksand-Regular.ttf");
+    font-weight: 400;
+}
+.border-style {
+    padding: 2px;
+    border-radius: 16px;
+    background: #202554;
+    background: linear-gradient(
+        0deg,
+        rgba(32, 37, 84, 1) 50%,
+        rgba(22, 26, 67, 1) 100%
+    );
+}
+.bgr-btn {
+    background: $bgr-color;
+    border-radius: 16px;
+}
+
+img {
+    width: 24px;
+    height: 24px;
+}
