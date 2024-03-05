@@ -124,32 +124,30 @@ document.write("<h2>Bài 06</h2></br>");
 /*Bài 6: Vẽ bàn cờ vua
 Học viên sử dụng kiến thức đã học về vòng lặp, câu lệnh rẽ nhánh để vẽ bàn cờ vua*/
 for (let i = 1; i <= 8; i++) {
+    var row = `<div class="row" style="display:flex;width:fit-content; ">`;
     for (let j = 1; j <= 8; j++) {
         if ((j % 2 == 0 && i % 2 != 0) || (i % 2 == 0 && j % 2 != 0)) {
-            document.writeln(
-                `<span style=" display:inline-block; width:40px; height:40px; background:#000;"></span> `
-            );
+            row += `<span style=" display:block; width:40px; height:40px; background:#000; ;"></span> `;
         } else {
-            document.writeln(
-                `<span style=" display:inline-block; width:40px; height:40px; background:pink;"></span> `
-            );
+            row += `<span style=" display:block; width:40px; height:40px; background:pink;"></span> `;
         }
     }
-    document.write("<br/>");
+    row += `</div>`;
+    document.write(row);
 }
-document.write("<h2>Bài 07</h2></br>");
+document.write("</br><h2>Bài 07</h2></br>");
 // #Bài 7: Vẽ bảng cửu chương
 // Học viên sử dụng kiến thức đã học để vẽ bảng cửu chương từ 1 đến 10
 
 for (let i = 1; i <= 10; i++) {
+    var ex7 = `<div  style="display:inline-block; margin-right:15px">`;
     for (let j = 1; j <= 10; j++) {
-        document.write(
-            `<span style="width:100px; height: 30px;display: inline-block; border: 1px solid #000; background:orange; text-align: center ;line-height: 30px">${i} x ${j} = ${
-                i * j
-            }</span> </br>`
-        );
+        ex7 += `<span style="width:100px; height: 30px;display: inline-block; border: 1px solid #000; background:#f8ca3f; text-align: center ;line-height: 30px">${i} x ${j} = ${
+            i * j
+        }</span> </br>`;
     }
-    document.write(`</br>`);
+    ex7 += `</br></div>`;
+    document.write(ex7);
 }
 // Bài 8: Tính giá trị biểu thức không dùng vòng lặp
 // Tính giá trị biểu thức: S = 1 + 1/2 + 1/3 + 1/4 + 1/5 +…+1/N
