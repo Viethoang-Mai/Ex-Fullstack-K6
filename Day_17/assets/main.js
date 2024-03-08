@@ -19,7 +19,7 @@ console.log(`2 số đã được hoán vị thành:a = ${a}, b = ${b} `);
 Viết chương trình tính toán biểu thức sau vhm
 S = 10 + 20 + 5^10 / 2
 */
-let res = (10 + 20 + 5) ** (10 / 2);
+let res = 10 + 20 + 5 ** 10 / 2;
 console.log(`S = ${res}`);
 
 /*
