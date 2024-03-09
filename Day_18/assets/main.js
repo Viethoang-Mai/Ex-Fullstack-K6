@@ -9,7 +9,7 @@ Nếu số km > 120 km sẽ được giảm 10% trên tổng số tiền
 const price1 = 15000,
     price2 = 13500,
     price3 = 11000,
-    nkm = 100;
+    nkm = 120;
 if (nkm > 0) {
     let res = 0;
     if (nkm <= 1) {
@@ -33,27 +33,31 @@ Input: Số điện tiêu thụ hàng tháng
 Output: Hiển thị số tiền phải đóng
 */
 
-function TotalBill(n) {
+function totalBill(n) {
     if (n <= 0) {
         console.log(`Không dùng điện mà tính ???`);
-        return;
-    }
-    let total = 0;
-    function calc(kWh, price) {
-        const use = Math.min(n, kWh);
-        total += use * price;
-        n -= use;
-    }
+    } else if (typeof n === "number" && !isNaN(n)) {
+        let total = 0;
+        function calc(kWh, price) {
+            if (n === 0) {
+                return total;
+            }
+            const use = Math.min(n, kWh);
+            total += use * price;
+            n -= use;
+            // console.log(n);
+        }
 
-    calc(50, 1678); // 50kWh đầu tiên
-    calc(50, 1734); // Từ kWh 51 - 100
-    calc(100, 2014); // Từ kWh 101 - 200
-    calc(100, 2536); // Từ kWh 201 - 300
-    calc(100, 2834); // Từ kWh 301 - 400
-    calc(Infinity, 2927); // Từ kWh 401 trở đi
-    return total;
+        calc(50, 1678); // 50kWh đầu tiên
+        calc(50, 1734); // Từ kWh 51 - 100
+        calc(100, 2014); // Từ kWh 101 - 200
+        calc(100, 2536); // Từ kWh 201 - 300
+        calc(100, 2834); // Từ kWh 301 - 400
+        calc(Infinity, 2927); // Từ kWh 401 trở đi
+        console.log(`Số tiền điện tháng này là: ${total}đ`);
+    }
 }
-console.log(`Số tiền điện tháng này là: ${TotalBill(51)}đ`);
+totalBill(51);
 
 /*
     Bài 3: Tính giá trị biểu thức
