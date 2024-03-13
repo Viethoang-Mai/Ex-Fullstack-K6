@@ -6,31 +6,26 @@ Ví dụ: Gán n = 10 sẽ hiển thị danh sách 10 số fibonaci
 Yêu cầu: Không dùng vòng lặp
 */
 var output = "Dãy Fibonacci: ";
-var f1 = 0,
-    f2 = 1,
-    fn;
+
 function fibonacci(n) {
-    output += `${f1} ${f2} `;
-    for (var i = 1; i <= n - 2; i++) {
-        fn = f1 + f2;
-        f1 = f2;
-        f2 = fn;
-        output += `${fn} `;
+    if (n < 2) {
+        return n;
     }
+    return fibonacci(n - 1) + fibonacci(n - 2);
 }
 function listFibonacci(n) {
+    var output = `Dãy n = ${n} số Fibonacci: `;
+    var cnt = 0;
     if (typeof n === "number" && !isNaN(n) && n > 0 && n % 1 === 0) {
-        if (n === 1) {
-            output += `${f1}`;
-        } else if (n === 2) {
-            output += `${f1} ${f2}`;
-        } else {
-            fibonacci(n);
+        while (cnt < n) {
+            fibonacci(cnt);
+            output += `${fibonacci(cnt)} `;
+            cnt++;
         }
         console.log(output);
     } else console.log("Nhập lại số");
 }
-listFibonacci(20);
+listFibonacci(21);
 /*
     Bài 2: Đảo ngược số
 Viết hàm đảo ngược số nguyên với tham số là số cần đảo ngược
