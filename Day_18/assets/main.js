@@ -57,7 +57,7 @@ function totalBill(n) {
         console.log(`Số tiền điện tháng này là: ${total}đ`);
     }
 }
-totalBill(51);
+totalBill(500);
 
 /*
     Bài 3: Tính giá trị biểu thức
@@ -87,7 +87,9 @@ const isPrime = function (isP) {
             return 0;
         } else {
             for (let i = 2; i <= Math.sqrt(isP); i++) {
-                if (isP % i == 0) return 0;
+                if (isP % i === 0) {
+                    return 0;
+                }
             }
             return 1;
         }
@@ -112,7 +114,7 @@ Vẽ tam giác số sau với N dòng
 11 12 13 14 15
 */
 document.write("</br><h2>Bài 05</h2>");
-const Triangle = function (n) {
+const triangle = function (n) {
     var number = 1;
     for (let i = 1; i <= n; i++) {
         for (let j = 1; j <= i; j++) {
@@ -123,7 +125,7 @@ const Triangle = function (n) {
         document.write("</br>");
     }
 };
-Triangle(6);
+triangle(6);
 document.write("<h2>Bài 06</h2></br>");
 /*Bài 6: Vẽ bàn cờ vua
 Học viên sử dụng kiến thức đã học về vòng lặp, câu lệnh rẽ nhánh để vẽ bàn cờ vua*/
@@ -155,16 +157,16 @@ for (let i = 1; i <= 10; i++) {
 }
 // Bài 8: Tính giá trị biểu thức không dùng vòng lặp
 // Tính giá trị biểu thức: S = 1 + 1/2 + 1/3 + 1/4 + 1/5 +…+1/N
-const Res = function (n) {
+const res = function (n) {
     if (typeof n === "number" && !isNaN(n) && n > 0) {
         if (n === 1) {
             return 1;
         } else {
-            return Res(n - 1) + 1 / n;
+            return res(n - 1) + 1 / n;
         }
     } else {
         return 0;
     }
 };
-const result = Res(3);
+const result = res(3);
 console.log(`${result ? `S = ${result}` : `Nhập lại n!`}`);
