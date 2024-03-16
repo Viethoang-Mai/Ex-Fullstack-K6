@@ -47,6 +47,7 @@ function reverse(n) {
     } else console.log("Nhập lại số");
 }
 reverse(-989888);
+
 /*
     Bài 3: Viết hàm chuyển số thành chữ 
 Ví dụ: Số 4298 sẽ chuyển thành: Bốn ngàn hai trăm chín tám

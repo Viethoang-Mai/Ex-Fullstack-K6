@@ -1,4 +1,4 @@
-var paragraph = `Giờ mới biết làm gì có ai yêu mãi một người em ơi`;
+var paragraph = `Giờ mới biết làm gì có ai yêu mãi một người em ơi.`;
 paragraph = paragraph.replaceAll(" ", `</span> <span>`);
 paragraph = `<span>${paragraph}</span>`;
 var i = 0;
@@ -15,4 +15,3 @@ setInterval(function () {
         i = 0;
     }
 }, 50);
-document.write(paragraph);
