@@ -152,12 +152,13 @@ if (checkInteger(numbers)) {
         return arr;
     };
 
-    numbers = bubbleSort(numbers);
+    bubbleSort(numbers);
     // console.log(numbers);
 
     //Bước 2: Chèn thêm 1 số vào bất kỳ vị trí nào trong mảng mà không làm thay đổi thứ tự sắp xếp của mảng
 
     function insertElement(arr, addElement) {
+        //Cách 1
         let indexElement = -1;
         // Tìm index phù hợp của element
         for (let i = 0; i < arr.length; i++) {
@@ -178,6 +179,13 @@ if (checkInteger(numbers)) {
 
         arr[indexElement] = addElement;
         return arr;
+
+        //Cách 2
+        /*
+         arr[arr.length] = addElement;
+         bubbleSort(arr)
+         return arr;
+         */
     }
     console.log(insertElement(numbers, element));
 } else {
