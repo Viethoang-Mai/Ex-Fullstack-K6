@@ -112,12 +112,23 @@ const render = function (arr) {
     if (arr.length && Array.isArray(arr)) {
         document.write(`<div class="container">`);
         arr.forEach(function (value, index) {
-            var display = `<div class="image"><img src="${value[0]}" alt="image"></div> <div class="info"> <h2 class="title">${value[1]}</h2> <p class="desc">${value[2]}</p></div>`;
+            var display = `<div class="image">
+                <img src="${value[0]}" alt="image">
+            </div> 
+            <div class="info"> 
+                <h2 class="title">${value[1]}</h2>
+                <p class="desc">${value[2]}</p>
+            </div>`;
             if (index % 2 === 0) {
-                document.write(`<div class="content"> ${display}</div>`);
+                document.write(`
+                <div class="content"> 
+                    ${display}
+                </div>`);
             } else {
                 document.write(
-                    `<div class="content" style="flex-direction:row-reverse"> ${display}</div>`
+                    `<div class="content" style="flex-direction:row-reverse">
+                         ${display}
+                     </div>`
                 );
             }
         });
