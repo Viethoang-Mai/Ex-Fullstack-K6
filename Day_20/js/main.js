@@ -137,7 +137,7 @@ filterCoincidence(arr03);
  */
 var numbers = [5, 1, 9, 8, 10];
 var element = 4;
-if (checkInteger(numbers)) {
+if (checkInteger(numbers) && element % 1 === 0) {
     //Bước 1: Sắp xếp mảng theo thứ tự tăng dần
     const bubbleSort = function (arr) {
         for (var i = 0; i < arr.length - 1; i++) {
