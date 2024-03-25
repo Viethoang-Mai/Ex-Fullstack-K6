@@ -112,7 +112,8 @@ const render = function (arr) {
     if (arr.length && Array.isArray(arr)) {
         document.write(`<div class="container">`);
         arr.forEach(function (value, index) {
-            var display = `<div class="image">
+            var display = `
+            <div class="image">
                 <img src="${value[0]}" alt="image">
             </div> 
             <div class="info"> 
