@@ -14,6 +14,7 @@ const checkArr = function (arr) {
 };
 
 /*
+Bài 1:
  Cho một số nguyên n, trả về số nguyên tố đối xứng nhỏ nhất lớn hơn hoặc bằng n.
 
 Lưu ý rằng 1 không phải là số nguyên tố.
@@ -73,9 +74,8 @@ const getMedian = function (arr1, arr2) {
             const index1 = getArr.length / 2;
             const index2 = getArr.length / 2 - 1;
             return (getArr[index1] + getArr[index2]) / 2;
-        } else {
-            return getArr[Math.floor(getArr.length / 2)];
         }
+        return getArr[Math.floor(getArr.length / 2)];
     }
     return 0;
 };
@@ -91,16 +91,17 @@ console.log(
 Bài 3
 Cho một mảng số nguyên chưa được sắp xếp nums. Hãy trả về số nguyên dương nhỏ nhất không có trong nums.
 */
-const nums = [0, -1, 2, 2, 3];
+const nums = [0, 1, 2, 3, 2, -1];
 
 const getMinInt = function (arr) {
     if (checkArr(arr)) {
         arr.sort(function (a, b) {
             return a - b;
         });
-        var getArrPositive = arr.filter(function (value) {
-            return value > 0;
-        });
+        // loại bỏ giá trị âm và lọc trùng
+        var getArrPositive = arr.reduce(function (pre, cur) {
+            return cur > 0 && !pre.includes(cur) && pre.push(cur), pre;
+        }, []);
         // console.log(getArrPositive);
         var tmp = 1;
         for (let value of getArrPositive) {
