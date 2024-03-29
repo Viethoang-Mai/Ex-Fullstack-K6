@@ -105,8 +105,8 @@ const createCustomers = function (arr) {
     return `Nhap lai du lieu`;
 };
 const customers = [
-    { name: "Nguyễn Văn A", age: "25", address: "Ha Noi", abc: "a" },
-    { name: "Nguyễn Văn B", age: 2, address: "Hai Phong" },
+    { name: "Nguyễn Văn A", age: "13", address: "Ha Noi", abc: "a" },
+    { name: "Nguyễn Văn B", age: 11, address: "Hai Phong" },
     { name: "Nguyễn Văn C", age: 12, address: "TP.HCM" },
     { name: "Mai Việt Hoàng", age: 25, address: "Thanh Hoa" },
 ];
