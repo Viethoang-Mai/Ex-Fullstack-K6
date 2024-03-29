@@ -115,7 +115,7 @@ console.log(result);
 /**
  Bài 3
  */
-function customer(name, password, email) {
+function customerEx03(name, password, email) {
     return {
         name: name,
         password: password,
@@ -130,7 +130,7 @@ const register = function (name, password, email) {
         console.log(`Thieu thong tin`);
         return;
     } else {
-        var user = customer(name, password, email);
+        var user = customerEx03(name, password, email);
         user.role = "user";
         if (check.includes(user.name) || check.includes(user.email)) {
             console.log(`Ten hoac email da ton tai`);
