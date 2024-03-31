@@ -35,17 +35,14 @@ var errors = {
 
 const getError = function (field) {
     if (!field.includes(".")) {
-        if (Object.keys(errors).includes(field)) {
+        if (errors[field]) {
             console.log(errors[field]["required"]);
         } else {
             console.log(`Khong tim thay loi`);
         }
     } else {
         field = field.split(".");
-        if (
-            Object.keys(errors).includes(field[0]) &&
-            Object.keys(errors[field[0]]).includes(field[1])
-        ) {
+        if (errors[field[0]] && errors[field[0]][field[1]]) {
             console.log(errors[field[0]][field[1]]);
         } else {
             console.log(`Khong tim thay loi`);
@@ -70,8 +67,8 @@ function customer(name, age, address) {
     };
 }
 // console.log(customer("mai", 25, "abg"));
-var check = true;
 const createCustomers = function (arr) {
+    var check = true;
     var newArr = [];
 
     arr.forEach(function (value) {
@@ -136,7 +133,7 @@ const register = function (name, password, email) {
             console.log(`Ten hoac email da ton tai`);
             return;
         } else {
-            var user = data.push(user);
+            data.push(user);
         }
         check.push(name, email);
     }
