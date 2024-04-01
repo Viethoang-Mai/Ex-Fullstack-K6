@@ -157,16 +157,3 @@ console.log(dataLogin);
 
 // console.log(dataRegister);
 // console.log(customer("Nguyen Van A", "123456", "nguyenvana@email.com"));
-
-function Calculator(a, b) {
-    a = +a;
-    b = +b;
-    this.add = a + b;
-    this.sub = a - b;
-    this.mul = a * b;
-    if (b === 0) {
-        this.div = `Nhap lại b khac 0`;
-    } else this.chia = a / b;
-}
-var calculator = new Calculator("6", "0");
-console.log(calculator.constructor.name);
