@@ -47,7 +47,7 @@ Object.prototype.getCurrency = function (title) {
     if (!+this) {
         return "Dữ liệu không hợp lệ";
     }
-    return Number(this).toLocaleString().replaceAll(".", ",") + " " + title;
+    return Number(this).toLocaleString() + " " + title;
 };
 var price = "12000000";
 console.log(price.getCurrency("đ")); //Hiển thị: 12,000,000 đ
