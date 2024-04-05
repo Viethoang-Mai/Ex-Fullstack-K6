@@ -65,7 +65,7 @@ var categories = [
                         children: [
                             {
                                 id: 13,
-                                name: "Chuyên mục 2.2.2.1.1",
+                                name: "Chuyên mục 2.2.1.1",
                             },
                         ],
                     },
