@@ -12,8 +12,8 @@ Array.prototype.push2 = function (item) {
     return (this[this.length] = item), this.length;
 };
 
-var arrEx03 = [2, 3, 4];
-var newArrEx03 = [0, 1];
+const arrEx03 = [2, 3, 4];
+const newArrEx03 = [0, 1];
 const resultEx03 = newArrEx03.push2(arrEx03);
 console.log(resultEx03);
 console.log(newArrEx03);
@@ -31,7 +31,7 @@ Array.prototype.filter2 = function (cb) {
 
     return res;
 };
-var arrEx04 = [0, 1, 2, 3, 4, 5];
+const arrEx04 = [0, 1, 2, 3, 4, 5];
 const resultEx04 = arrEx04.filter2(function (value, index) {
     return value >= 2 && index > 2;
 });
@@ -107,8 +107,12 @@ var categories = [
 
 function toRender(arr, childLevel = 0) {
     // console.log(childLevel);
+    if (!arr.length || !Array.isArray(arr)) {
+        return false;
+    }
+
     var html = ``;
-    arr.map(function (value) {
+    arr.forEach(function (value) {
         const option = `<option value="${value.id}">${
             childLevel > 0 ? "--|".repeat(childLevel) + value.name : value.name
         }</option>`;
@@ -119,7 +123,11 @@ function toRender(arr, childLevel = 0) {
     });
     return html;
 }
-const result = `<select> <option value="0">Chọn chuyên mục</option> ${toRender(
-    categories
-)}</select>`;
-document.write(result);
+if (!toRender(categories)) {
+    console.log(`Kiểm tra dữ liệu đầu vào`);
+} else {
+    const result = `<select> <option value="0">Chọn chuyên mục</option> ${toRender(
+        categories
+    )}</select>`;
+    document.write(result);
+}
