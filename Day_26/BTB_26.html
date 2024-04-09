@@ -91,7 +91,6 @@
                                     Đăng ký
                                 </button>
                             </div>
-                            <div class="inform"></div>
                             <!-- Form login -->
                             <div class="form-login">
                                 <p class="text">với các tài khoản xã hội</p>
@@ -112,6 +111,8 @@
                                 <div class="line">
                                     <span class="line-text">hoặc</span>
                                 </div>
+                                <div class="inform inform-login"></div>
+                                <!-- main form -->
                                 <form action="" class="form-main login">
                                     <div class="group-item">
                                         <label for="email" class="lbl-email"
@@ -119,14 +120,15 @@
                                         >
                                         <div class="gr-input">
                                             <input
-                                                required
                                                 type="email"
                                                 class="ip-email"
                                                 placeholder="Email"
                                                 id="email"
                                             />
                                         </div>
-                                        <div class="ip-error_email"></div>
+                                        <div
+                                            class="error-text ip-error_email"
+                                        ></div>
                                     </div>
                                     <div class="group-item">
                                         <label
@@ -136,7 +138,6 @@
                                         >
                                         <div class="gr-input">
                                             <input
-                                                required
                                                 type="password"
                                                 class="ip-password"
                                                 placeholder="Mật khẩu"
@@ -148,7 +149,7 @@
                                                 ></i
                                             ></a>
                                             <div
-                                                class="ip-error_password"
+                                                class="error-text ip-error_password"
                                             ></div>
                                         </div>
                                     </div>
@@ -168,6 +169,7 @@
                                     Hoàn thành đăng ký, và bắt đầu trải nghiệm
                                     ngay!
                                 </p>
+                                <div class="inform inform-register"></div>
 
                                 <form action="" class="form-main register">
                                     <div class="group-item">
@@ -176,13 +178,14 @@
                                         >
                                         <div class="gr-input">
                                             <input
-                                                required
                                                 type="text"
                                                 class="ip-name"
                                                 placeholder="Họ và tên"
                                                 id="name"
                                             />
-                                            <div class="ip-error_name"></div>
+                                            <div
+                                                class="error-text ip-error_name"
+                                            ></div>
                                         </div>
                                     </div>
                                     <div class="group-item">
@@ -193,13 +196,14 @@
                                         >
                                         <div class="gr-input">
                                             <input
-                                                required
                                                 type="email"
                                                 class="ip-email"
                                                 placeholder="Email"
                                                 id="emailRegister"
                                             />
-                                            <div class="ip-error_email"></div>
+                                            <div
+                                                class="error-text ip-error_email"
+                                            ></div>
                                         </div>
                                     </div>
                                     <div class="group-item">
@@ -210,7 +214,6 @@
                                         >
                                         <div class="gr-input">
                                             <input
-                                                required
                                                 type="password"
                                                 class="ip-password"
                                                 placeholder="Mật khẩu"
@@ -222,7 +225,9 @@
                                                 ></i
                                             ></a>
                                         </div>
-                                        <div class="ip-error_password"></div>
+                                        <div
+                                            class="error-text ip-error_password"
+                                        ></div>
                                     </div>
                                     <div class="form-link term">
                                         <p class="desc">

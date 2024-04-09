@@ -14,6 +14,8 @@ const formLoginArea = $(".form-login");
 const formRegisterArea = $(".form-register");
 const inputElRegister = document.querySelectorAll(".form-register input");
 const inputElLogin = document.querySelectorAll(".form-login input");
+const textErrLogin = document.querySelectorAll(".form-login .error-text");
+const textErrRegis = document.querySelectorAll(".form-register .error-text");
 const eyePwLogin = $(".form-login .eye");
 const eyePwRegister = $(".form-register .eye");
 const emailErrLogin = $(".ip-error_email");
@@ -27,7 +29,8 @@ const emailRegister = $(".form-register .ip-email");
 const passwordLogin = $(".ip-password");
 const fullName = $(".ip-name");
 
-const result = $();
+const resultLogin = $(".inform-login");
+const resultRegister = $(".inform-register");
 // console.log(name);
 
 function addOpen() {
@@ -58,7 +61,14 @@ btnSwLogin.addEventListener("click", function () {
     formRegisterArea.style.display = "none";
     inputElRegister.forEach(function (item) {
         item.value = "";
+        item.classList.remove("ip-error");
     });
+    textErrRegis.forEach(function (item) {
+        item.classList.remove("ip-error_text");
+    });
+    passwordErrRegister.textContent = "";
+    emailErrRegister.textContent = "";
+    fullName.textContent = "";
 });
 btnSwRegister.addEventListener("click", function () {
     btnSwRegister.classList.add("sw-btn-active");
@@ -67,7 +77,13 @@ btnSwRegister.addEventListener("click", function () {
     formRegisterArea.style.display = "block";
     inputElLogin.forEach(function (item) {
         item.value = "";
+        item.classList.remove("ip-error");
     });
+    textErrLogin.forEach(function (item) {
+        item.classList.remove("ip-error_text");
+    });
+    passwordErrLogin.textContent = "";
+    emailErrLogin.textContent = "";
 });
 
 eyePwLogin.addEventListener("click", function () {
@@ -192,8 +208,8 @@ if (fullName) {
             fullName.classList.add("ip-error");
         }
         {
-            fullName.classList.remove("ip-error");
             fullNameErr.textContent = "";
+            fullName.classList.remove("ip-error");
 
             fullNameErr.classList.remove("ip-error_text");
         }
@@ -202,7 +218,24 @@ if (fullName) {
 
 formLoginArea.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (
+        emailPattern.test(emailLogin.value) &&
+        passwordPattern.test(passwordLogin.value)
+    ) {
+        resultLogin.innerText = "Account not existed.";
+    } else {
+        checkLogin();
+    }
 });
 formRegisterArea.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (
+        emailPattern.test(emailRegister.value) &&
+        passwordPattern.test(passwordRegister.value) &&
+        fullName
+    ) {
+        resultRegister.innerText = "Account existed.";
+    } else {
+        checkRegister();
+    }
 });
