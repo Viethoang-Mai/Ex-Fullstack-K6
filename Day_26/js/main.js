@@ -1,40 +1,46 @@
 function $(tag) {
     return document.querySelector(tag);
 }
-
+// Loginform
 const linkLogin = $(".link-login");
+const btnSwLogin = $(".login");
+const formLoginArea = $(".form-login");
+const inputElLogin = document.querySelectorAll(".form-login input");
+const textErrLogin = document.querySelectorAll(".form-login .error-text");
+const eyePwLogin = $(".form-login .eye");
+const emailLogin = $(".ip-email");
+const emailErrLogin = $(".ip-error_email");
+const passwordLogin = $(".ip-password");
+const resultLogin = $(".inform-login");
+const passwordErrLogin = $(".ip-error_password");
+
+//
 const headerForm = $(".header-form");
 const formArea = $(".form-area");
 const overlay = $(".overlay");
 const btnCloseForm = $(".close-btn_form");
 const btnSwitch = $(".btn-sw");
-const btnSwLogin = $(".login");
 const btnSwRegister = $(".register");
-const formLoginArea = $(".form-login");
+
+// Register-form
 const formRegisterArea = $(".form-register");
 const inputElRegister = document.querySelectorAll(".form-register input");
-const inputElLogin = document.querySelectorAll(".form-login input");
-const textErrLogin = document.querySelectorAll(".form-login .error-text");
 const textErrRegis = document.querySelectorAll(".form-register .error-text");
-const eyePwLogin = $(".form-login .eye");
 const eyePwRegister = $(".form-register .eye");
-const emailErrLogin = $(".ip-error_email");
-const passwordErrLogin = $(".ip-error_password");
 const emailErrRegister = $(".form-register .ip-error_email");
 const passwordErrRegister = $(".form-register .ip-error_password");
 const fullNameErr = $(".ip-error_name");
-const emailLogin = $(".ip-email");
 const passwordRegister = $(".form-register .ip-password");
 const emailRegister = $(".form-register .ip-email");
-const passwordLogin = $(".ip-password");
 const fullName = $(".ip-name");
 
-const resultLogin = $(".inform-login");
 const resultRegister = $(".inform-register");
 // console.log(name);
 
 function addOpen() {
     headerForm.classList.add("open");
+    formLoginArea.style.display = "block";
+    btnSwRegister.classList.remove("sw-btn-active");
     btnSwLogin.classList.add("sw-btn-active");
     formRegisterArea.style.display = "none";
 }
