@@ -110,7 +110,6 @@ function toRender(arr, childLevel = 0) {
     if (!arr.length || !Array.isArray(arr)) {
         return false;
     }
-
     var html = ``;
     arr.forEach(function (value) {
         const option = `<option value="${value.id}">${

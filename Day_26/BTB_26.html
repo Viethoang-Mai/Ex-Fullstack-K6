@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./assets/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        />
+        <title>Exercise-D26</title>
+    </head>
+    <body>
+        <div class="container">
+            <section class="header">
+                <div class="header-inner">
+                    <!-- Logo -->
+                    <div class="group-logo">
+                        <h1 class="header-logo">
+                            <a href="#!"
+                                ><img
+                                    src="./assets/img/logo-DT.svg"
+                                    alt="Dân trí"
+                            /></a>
+                        </h1>
+                        <div class="weather-header">
+                            <div class="time">
+                                <span class="place">Hà Nội</span>
+                                <span class="day">Thứ 2, 08/04/2024</span>
+                            </div>
+                            <span class="degrees">
+                                <img
+                                    src="./assets/img/cloudy.svg"
+                                    alt="cloudy"
+                                />23°C</span
+                            >
+                        </div>
+                    </div>
+                    <!-- Nav -->
+                    <div class="header-nav">
+                        <a href="#!" class="link-nav"
+                            ><img
+                                src="./assets/img/dansinh-logo.svg"
+                                alt="Dân Sinh"
+                            />Dân sinh</a
+                        >
+                        <a href="#!" class="link-nav"
+                            ><img
+                                src="./assets/img/fica-logo.jpg"
+                                alt="Fica"
+                            />Fica</a
+                        >
+                        <a href="#!" class="link-nav"
+                            ><img
+                                src="./assets/img/DT-News-logo.png"
+                                alt="DTiNews"
+                            />DTiNews</a
+                        >
+                    </div>
+                    <!-- Cta -->
+                    <div class="header-action">
+                        <div class="account">
+                            <a href="#!" class="user-link"
+                                ><img src="./assets/img/user.svg" alt="user"
+                            /></a>
+                            <a href="#!" class="link-login">Đăng nhập</a>
+                        </div>
+                        <a href="#!" class="search-link"
+                            ><img src="./assets/img/search-ic.svg" alt="search"
+                        /></a>
+                    </div>
+
+                    <!-- Form -->
+                    <div class="header-form">
+                        <div class="overlay"></div>
+                        <div class="form-area">
+                            <span class="close-btn_form"
+                                ><img src="./assets/img/X-icon.svg" alt=""
+                            /></span>
+                            <div class="form-logo">
+                                <img
+                                    src="./assets/img/logo-DT.svg"
+                                    alt="Dân Trí"
+                                />
+                            </div>
+                            <div class="switch-btn">
+                                <button class="btn-sw login" type="button">
+                                    Đăng nhập
+                                </button>
+                                <button class="btn-sw register" type="button">
+                                    Đăng ký
+                                </button>
+                            </div>
+                            <div class="inform"></div>
+                            <!-- Form login -->
+                            <div class="form-login">
+                                <p class="text">với các tài khoản xã hội</p>
+                                <div class="connect">
+                                    <a href="#!" class="link-fb"
+                                        ><img
+                                            src="./assets/img/gg-icon.svg"
+                                            alt="Google"
+                                        />Google</a
+                                    >
+                                    <a href="#!" class="link-fb"
+                                        ><img
+                                            src="./assets/img/fb-ic.svg"
+                                            alt="Facebook"
+                                        />Facebook</a
+                                    >
+                                </div>
+                                <div class="line">
+                                    <span class="line-text">hoặc</span>
+                                </div>
+                                <form action="" class="form-main login">
+                                    <div class="group-item">
+                                        <label for="email" class="lbl-email"
+                                            >Email</label
+                                        >
+                                        <div class="gr-input">
+                                            <input
+                                                required
+                                                type="email"
+                                                class="ip-email"
+                                                placeholder="Email"
+                                                id="email"
+                                            />
+                                        </div>
+                                        <div class="ip-error_email"></div>
+                                    </div>
+                                    <div class="group-item">
+                                        <label
+                                            for="password"
+                                            class="lbl-password"
+                                            >Mật khẩu</label
+                                        >
+                                        <div class="gr-input">
+                                            <input
+                                                required
+                                                type="password"
+                                                class="ip-password"
+                                                placeholder="Mật khẩu"
+                                                id="password"
+                                            />
+                                            <a href="#!" class="eye"
+                                                ><i
+                                                    class="fa-regular fa-eye"
+                                                ></i
+                                            ></a>
+                                            <div
+                                                class="ip-error_password"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-link">
+                                        <button type="button">
+                                            Quên mật khẩu?
+                                        </button>
+                                    </div>
+                                    <button type="submit" class="main-btn_form">
+                                        Đăng nhập
+                                    </button>
+                                </form>
+                            </div>
+                            <!-- Form register -->
+                            <div class="form-register">
+                                <p class="text">
+                                    Hoàn thành đăng ký, và bắt đầu trải nghiệm
+                                    ngay!
+                                </p>
+
+                                <form action="" class="form-main register">
+                                    <div class="group-item">
+                                        <label for="name" class="lbl-name"
+                                            >Họ và tên</label
+                                        >
+                                        <div class="gr-input">
+                                            <input
+                                                required
+                                                type="text"
+                                                class="ip-name"
+                                                placeholder="Họ và tên"
+                                                id="name"
+                                            />
+                                            <div class="ip-error_name"></div>
+                                        </div>
+                                    </div>
+                                    <div class="group-item">
+                                        <label
+                                            for="emailRegister"
+                                            class="lbl-email"
+                                            >Email</label
+                                        >
+                                        <div class="gr-input">
+                                            <input
+                                                required
+                                                type="email"
+                                                class="ip-email"
+                                                placeholder="Email"
+                                                id="emailRegister"
+                                            />
+                                            <div class="ip-error_email"></div>
+                                        </div>
+                                    </div>
+                                    <div class="group-item">
+                                        <label
+                                            for="passwordRegister"
+                                            class="lbl-password"
+                                            >Mật khẩu</label
+                                        >
+                                        <div class="gr-input">
+                                            <input
+                                                required
+                                                type="password"
+                                                class="ip-password"
+                                                placeholder="Mật khẩu"
+                                                id="passwordRegister"
+                                            />
+                                            <a href="#!" class="eye"
+                                                ><i
+                                                    class="fa-regular fa-eye"
+                                                ></i
+                                            ></a>
+                                        </div>
+                                        <div class="ip-error_password"></div>
+                                    </div>
+                                    <div class="form-link term">
+                                        <p class="desc">
+                                            Bằng cách đăng ký tài khoản, bạn
+                                            cũng đồng thời chấp nhận mọi
+                                            <a href="#!"
+                                                >điều kiện về qui định và chính
+                                                sách của Dân trí</a
+                                            >
+                                        </p>
+                                    </div>
+                                    <button type="submit" class="main-btn_form">
+                                        Đăng ký
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script src="./js/main.js"></script>
+    </body>
+</html>
