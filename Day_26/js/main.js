@@ -46,6 +46,8 @@ function addOpen() {
 }
 function removeOpen() {
     headerForm.classList.remove("open");
+    reloadLogin();
+    reloadRegister();
 }
 function eyePassword(item, area) {
     if (item.querySelector("i").classList.contains("fa-eye")) {
@@ -56,15 +58,21 @@ function eyePassword(item, area) {
         area.querySelector(".ip-password").type = "password";
     }
 }
-linkLogin.addEventListener("click", addOpen);
-overlay.addEventListener("click", removeOpen);
-btnCloseForm.addEventListener("click", removeOpen);
+function reloadLogin() {
+    inputElLogin.forEach(function (item) {
+        item.value = "";
+        item.classList.remove("ip-error");
+    });
+    textErrLogin.forEach(function (item) {
+        item.classList.remove("ip-error_text");
+    });
+    passwordErrLogin.textContent = "";
+    emailErrLogin.textContent = "";
+    resultRegister.innerText = "";
+    resultLogin.innerText = "";
+}
 
-btnSwLogin.addEventListener("click", function () {
-    btnSwLogin.classList.add("sw-btn-active");
-    btnSwRegister.classList.remove("sw-btn-active");
-    formLoginArea.style.display = "block";
-    formRegisterArea.style.display = "none";
+function reloadRegister() {
     inputElRegister.forEach(function (item) {
         item.value = "";
         item.classList.remove("ip-error");
@@ -75,21 +83,24 @@ btnSwLogin.addEventListener("click", function () {
     passwordErrRegister.textContent = "";
     emailErrRegister.textContent = "";
     fullName.textContent = "";
+}
+linkLogin.addEventListener("click", addOpen);
+overlay.addEventListener("click", removeOpen);
+btnCloseForm.addEventListener("click", removeOpen);
+
+btnSwLogin.addEventListener("click", function () {
+    btnSwLogin.classList.add("sw-btn-active");
+    btnSwRegister.classList.remove("sw-btn-active");
+    formLoginArea.style.display = "block";
+    formRegisterArea.style.display = "none";
+    reloadRegister();
 });
 btnSwRegister.addEventListener("click", function () {
     btnSwRegister.classList.add("sw-btn-active");
     btnSwLogin.classList.remove("sw-btn-active");
     formLoginArea.style.display = "none";
     formRegisterArea.style.display = "block";
-    inputElLogin.forEach(function (item) {
-        item.value = "";
-        item.classList.remove("ip-error");
-    });
-    textErrLogin.forEach(function (item) {
-        item.classList.remove("ip-error_text");
-    });
-    passwordErrLogin.textContent = "";
-    emailErrLogin.textContent = "";
+    reloadLogin();
 });
 
 eyePwLogin.addEventListener("click", function () {
