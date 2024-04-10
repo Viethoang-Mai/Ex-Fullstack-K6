@@ -70,6 +70,9 @@ function reloadLogin() {
     emailErrLogin.textContent = "";
     resultRegister.innerText = "";
     resultLogin.innerText = "";
+
+    eyePwLogin.querySelector("i").classList.replace("fa-eye-slash", "fa-eye");
+    formLoginArea.querySelector(".ip-password").type = "password";
 }
 
 function reloadRegister() {
@@ -82,7 +85,11 @@ function reloadRegister() {
     });
     passwordErrRegister.textContent = "";
     emailErrRegister.textContent = "";
-    fullName.textContent = "";
+    fullNameErr.textContent = "";
+    eyePwRegister
+        .querySelector("i")
+        .classList.replace("fa-eye-slash", "fa-eye");
+    formRegisterArea.querySelector(".ip-password").type = "password";
 }
 linkLogin.addEventListener("click", addOpen);
 overlay.addEventListener("click", removeOpen);
@@ -227,7 +234,6 @@ if (fullName) {
         {
             fullNameErr.textContent = "";
             fullName.classList.remove("ip-error");
-
             fullNameErr.classList.remove("ip-error_text");
         }
     });
