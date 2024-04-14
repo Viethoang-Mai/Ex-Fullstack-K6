@@ -25,6 +25,7 @@ function addTask(e) {
                         <input
                             type="text"
                             class="todo-input"
+                            placeholder="Update task"
                         />
                         <button type="submit" class="todo-btn">Add Task</button>
                 </form>
