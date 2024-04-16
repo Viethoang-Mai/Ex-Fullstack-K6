@@ -1,0 +1,58 @@
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+.carousel .carousel-inner {
+    display: flex;
+    transition: translate 0.35s linear;
+}
+.carousel .carousel-inner > * {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.carousel .carousel-nav span {
+    position: absolute;
+    top: 50%;
+    width: 35px;
+    translate: 0 -50%;
+    height: 35px;
+    display: block;
+    background-color: #ffffffb1;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #000;
+}
+.carousel .carousel-nav span.prev {
+    left: 5px;
+}
+.carousel .carousel-nav span.next {
+    right: 5px;
+}
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    left: 50%;
+    translate: -50% 0;
+    column-gap: 10px;
+}
+.carousel-dots span:hover,
+.carousel-dots span.active {
+    background: goldenrod;
+}
+.carousel-dots span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #fff;
+    cursor: pointer;
+}
