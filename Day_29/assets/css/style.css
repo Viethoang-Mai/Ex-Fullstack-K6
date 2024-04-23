@@ -9,6 +9,8 @@
 .player-action {
     margin-bottom: 20px;
     text-align: center;
+}
+.player-action > i {
     cursor: pointer;
 }
 .player-timer {
@@ -30,6 +32,7 @@
     left: 0;
     top: 0;
     bottom: 0;
+    max-width: 100%;
 }
 .progress > span {
     position: absolute;

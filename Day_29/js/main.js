@@ -3,19 +3,20 @@ window.addEventListener("load", function () {
         return document.querySelector(tagname);
     }
     var player = $(".player");
-    var playerAction = player.querySelector(".player-action");
+    var playerAction = player.querySelector(".player-action ");
     var progressBar = player.querySelector(".progress-bar");
     var progress = progressBar.querySelector(".progress");
     var progressSpan = progress.children[0];
     var hoverTimer = progressBar.querySelector(".hover-timer");
     var progressBarWidth = progressBar.clientWidth;
     var check = true;
+    var rate = 0;
 
     progressBar.addEventListener("mousedown", function (e) {
         if (e.which === 1) {
             check = false;
             dragSpace = e.offsetX;
-            var rate = (dragSpace * 100) / progressBarWidth;
+            rate = (dragSpace * 100) / progressBarWidth;
             progress.style.width = `${rate}%`;
             initialClientX = e.clientX;
             currentSpace = dragSpace;
@@ -31,20 +32,26 @@ window.addEventListener("load", function () {
     var dragSpace = 0;
 
     function handleDrag(e) {
+        check = false;
         var clientX = e.clientX;
         dragSpace = clientX - initialClientX + currentSpace;
         var checkDragSpace = dragSpace < 0 ? 0 : dragSpace;
         currentTimeEl.innerText = getTime(
             audio.duration * (checkDragSpace / progressBarWidth)
         );
-        var rate = (dragSpace * 100) / progressBarWidth;
+        rate = (dragSpace * 100) / progressBarWidth;
+
         if (rate > 100) {
             rate = 100;
+            dragSpace = 0;
+            currentTimeEl.innerText = getTime(audio.duration);
         }
+
         if (rate < 0) {
             rate = 0;
         }
         progress.style.width = `${rate}%`;
+        console.log(rate);
     }
     progressSpan.addEventListener("mousedown", function (e) {
         e.stopPropagation();
@@ -55,13 +62,24 @@ window.addEventListener("load", function () {
         }
     });
     document.addEventListener("mouseup", function (e) {
-        console.log(check);
+        e.stopPropagation();
         if (!check) {
             document.removeEventListener("mousemove", handleDrag);
             currentSpace = dragSpace;
             audio.currentTime =
                 audio.duration * (currentSpace / progressBarWidth);
             check = true;
+            console.log(rate);
+            if (rate == 100) {
+                dragSpace = 0;
+                audio.pause();
+                audio.currentTime = 0;
+                currentTimeEl.innerText = getTime(audio.currentTime);
+                playerAction.children[0].classList.replace(
+                    "fa-pause",
+                    "fa-play"
+                );
+            }
         }
     });
     playerAction.addEventListener("mouseup", function (e) {
@@ -79,22 +97,28 @@ window.addEventListener("load", function () {
     }
 
     durationEl.innerText = getTime(audio.duration);
-    playerAction.addEventListener("click", function (e) {
+    playerAction.children[0].addEventListener("click", function (e) {
         if (audio.paused) {
             audio.play();
             playerAction.children[0].classList.replace("fa-play", "fa-pause");
-            console.log(audio.currentTime);
         } else {
             audio.pause();
+
             playerAction.children[0].classList.replace("fa-pause", "fa-play");
         }
     });
     audio.addEventListener("timeupdate", function () {
         if (check) {
             currentTimeEl.innerText = getTime(audio.currentTime);
+            rate = (audio.currentTime * 100) / audio.duration;
+            progress.style.width = `${rate}%`;
         }
-        var rate = (dragSpace * 100) / progressBarWidth;
-        progress.style.width = `${rate}%`;
+    });
+    audio.addEventListener("ended", function () {
+        dragSpace = 0;
+        audio.currentTime = 0;
+        currentTimeEl.innerText = getTime(audio.currentTime);
+        playerAction.children[0].classList.replace("fa-pause", "fa-play");
     });
     progressBar.addEventListener("mouseover", function (e) {
         hoverTimer.style.display = "block";
