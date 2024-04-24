@@ -2,6 +2,7 @@ window.addEventListener("load", function () {
     function $(tagname) {
         return document.querySelector(tagname);
     }
+
     var player = $(".player");
     var playerAction = player.querySelector(".player-action ");
     var progressBar = player.querySelector(".progress-bar");
@@ -40,7 +41,6 @@ window.addEventListener("load", function () {
             audio.duration * (checkDragSpace / progressBarWidth)
         );
         rate = (dragSpace * 100) / progressBarWidth;
-
         if (rate > 100) {
             rate = 100;
             dragSpace = 0;
@@ -51,16 +51,18 @@ window.addEventListener("load", function () {
             rate = 0;
         }
         progress.style.width = `${rate}%`;
-        console.log(rate);
     }
+
     progressSpan.addEventListener("mousedown", function (e) {
         e.stopPropagation();
-        check = false;
+
         if (e.which === 1) {
+            check = false;
             initialClientX = e.clientX;
             document.addEventListener("mousemove", handleDrag);
         }
     });
+
     document.addEventListener("mouseup", function (e) {
         e.stopPropagation();
         if (!check) {
@@ -69,8 +71,7 @@ window.addEventListener("load", function () {
             audio.currentTime =
                 audio.duration * (currentSpace / progressBarWidth);
             check = true;
-            console.log(rate);
-            if (rate == 100) {
+            if (rate === 100) {
                 dragSpace = 0;
                 audio.pause();
                 audio.currentTime = 0;
@@ -82,12 +83,15 @@ window.addEventListener("load", function () {
             }
         }
     });
+
     playerAction.addEventListener("mouseup", function (e) {
         e.stopPropagation();
     });
+
     var audio = $("audio");
     var durationEl = progressBar.nextElementSibling;
     var currentTimeEl = progressBar.previousElementSibling;
+
     function getTime(seconds) {
         var mins = Math.floor(seconds / 60);
         seconds = Math.floor(seconds - mins * 60);
@@ -107,6 +111,7 @@ window.addEventListener("load", function () {
             playerAction.children[0].classList.replace("fa-pause", "fa-play");
         }
     });
+
     audio.addEventListener("timeupdate", function () {
         if (check) {
             currentTimeEl.innerText = getTime(audio.currentTime);
@@ -114,12 +119,14 @@ window.addEventListener("load", function () {
             progress.style.width = `${rate}%`;
         }
     });
+
     audio.addEventListener("ended", function () {
         dragSpace = 0;
         audio.currentTime = 0;
         currentTimeEl.innerText = getTime(audio.currentTime);
         playerAction.children[0].classList.replace("fa-pause", "fa-play");
     });
+
     progressBar.addEventListener("mouseover", function (e) {
         hoverTimer.style.display = "block";
         progressBar.addEventListener("mousemove", function (e) {
@@ -129,9 +136,11 @@ window.addEventListener("load", function () {
             hoverTimer.innerText = getTime(timeNow);
         });
     });
+
     progressBar.addEventListener("mouseout", function (e) {
         hoverTimer.style.display = "none";
     });
+
     progressSpan.addEventListener("mouseover", function (e) {
         {
             e.stopPropagation();
