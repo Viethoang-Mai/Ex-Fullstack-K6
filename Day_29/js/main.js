@@ -16,8 +16,10 @@ window.addEventListener("load", function () {
     progressBar.addEventListener("mousedown", function (e) {
         if (e.which === 1) {
             check = false;
-            dragSpace = e.offsetX;
+            dragSpace = e.offsetX < 0 ? 0 : e.offsetX;
+
             rate = (dragSpace * 100) / progressBarWidth;
+
             progress.style.width = `${rate}%`;
             initialClientX = e.clientX;
             currentSpace = dragSpace;
@@ -131,19 +133,19 @@ window.addEventListener("load", function () {
         hoverTimer.style.display = "block";
         progressBar.addEventListener("mousemove", function (e) {
             var offsetX = e.offsetX;
+            offsetX = offsetX < 0 ? 0 : offsetX;
             var timeNow = audio.duration * (offsetX / progressBarWidth);
             hoverTimer.style.left = `${offsetX}px`;
             hoverTimer.innerText = getTime(timeNow);
+        });
+        progressSpan.addEventListener("mouseover", function (e) {
+            {
+                e.stopPropagation();
+            }
         });
     });
 
     progressBar.addEventListener("mouseout", function (e) {
         hoverTimer.style.display = "none";
-    });
-
-    progressSpan.addEventListener("mouseover", function (e) {
-        {
-            e.stopPropagation();
-        }
     });
 });
