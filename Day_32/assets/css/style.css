@@ -1,0 +1,23 @@
+* {
+    user-select: none;
+}
+
+.list {
+    margin: 20px;
+    width: 35%;
+    padding: 16px;
+    background: #007bff;
+}
+.list-item {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    margin-bottom: 1px;
+    background: #8bb3f4;
+    padding: 10px;
+}
+.list-item.module {
+    background: #ff6f00;
+}
+.dragging {
+    opacity: 0.6;
+}
