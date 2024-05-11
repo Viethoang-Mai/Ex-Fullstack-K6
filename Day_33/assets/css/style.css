@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.32;
+}
+.container {
+    width: 900px;
+    max-width: calc(100vw - 50px);
+    margin: 50px auto;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+}
+.editor-feature {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 50px;
+    border-top: 2px solid #ccc;
+}
+.editor-export {
+    display: flex;
+    column-gap: 20px;
+}
+.editor-export .btn-file,
+.btn-dark {
+    color: #fff;
+    padding: 5px;
+    font-size: 1.5rem;
+    background: #0d6efd;
+    border-radius: 5px;
+}
+
+.editor-export .filename {
+    border: 1px solid #000;
+    padding: 0 10px;
+}
+.editor-custom {
+    display: flex;
+    column-gap: 5px;
+}
+.editor-custom .btn-dark,
+.btn-color {
+    height: 100%;
+    width: 50px;
+    background: #000;
+}
+.btn-color {
+    background: transparent;
+    border: 2px solid #ccc;
+    padding: 0;
+}
+
+.editor-content {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    min-height: 300px;
+    padding: 20px;
+    outline: 0;
+}
+.dropdown {
+    position: relative;
+}
+.drop-menu {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    translate: 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    row-gap: 5px;
+    border-radius: 5px;
+    display: none;
+}
+.drop-menu.drop-display {
+    display: flex;
+}
+.drop-menu > button {
+    text-align: left;
+    width: 160px;
+    cursor: pointer;
+}
+
+.editor-counter {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 20px;
+}
+
+.drop-menu > button:hover {
+    background: #ccc;
+}

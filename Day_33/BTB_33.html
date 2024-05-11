@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        />
+        <title>Exercise-D33</title>
+    </head>
+    <body>
+        <div class="container">
+            <section class="editor">
+                <div class="editor-header">
+                    <h1>Doc Editor</h1>
+                </div>
+                <!-- End editor header -->
+                <div class="editor-feature">
+                    <div class="editor-export">
+                        <div class="dropdown">
+                            <div class="btn-file">
+                                <button>
+                                    File <i class="fa-solid fa-sort-down"></i>
+                                </button>
+                            </div>
+                            <div class="drop-menu">
+                                <button class="new-btn">New</button>
+                                <button class="txt-btn">Save as TXT</button>
+                                <button class="pdf-btn">Save as PDF</button>
+                            </div>
+                            <!-- End drop menu -->
+                        </div>
+                        <input type="text" class="filename" value="untitled" />
+                    </div>
+                    <!-- End editor export -->
+                    <div class="editor-custom">
+                        <button class="btn-bold btn-dark"><b>b</b></button>
+                        <button class="btn-underline btn-dark"><u>u</u></button>
+                        <button class="btn-italic btn-dark"><i>i</i></button>
+                        <input type="color" class="btn-color" />
+                    </div>
+                    <!-- End editor custom -->
+                </div>
+                <!-- End editor feature -->
+                <div class="editor-content" contenteditable="true"></div>
+                <!-- End editor content -->
+                <div class="editor-counter">
+                    <span class="char">Số ký tự: <span>0</span></span>
+                    <span class="word">Số từ: <span>0</span></span>
+                </div>
+            </section>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
+</html>
