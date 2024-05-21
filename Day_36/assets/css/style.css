@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.32;
+}
+.voice-search {
+    width: 70%;
+    max-width: calc(100vw - 50px);
+    font-weight: 500;
+    font-size: 2.8rem;
+    margin: 50px auto;
+    text-align: center;
+}
+.micro {
+    position: relative;
+    cursor: pointer;
+    font-weight: 400;
+    margin: 18px auto;
+    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: rgb(13, 13, 13);
+    border: 1px dotted #a4a2a2;
+}
+.click::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 45px;
+    height: 45px;
+    background: rgb(232, 12, 12);
+    border: 1px dotted #ccc;
+    z-index: -1;
+    border-radius: 999px;
+    animation-name: micro;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+.micro.click {
+    border: 1px dotted transparent;
+}
+
+@keyframes micro {
+    from {
+        padding: 1px;
+    }
+    to {
+        padding: 5px;
+    }
+}
+
+.begin {
+    font-size: 1.7rem;
+    font-weight: 400;
+}
