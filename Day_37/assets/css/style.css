@@ -1,0 +1,6 @@
+* {
+    user-select: none;
+}
+.close {
+    display: none;
+}
