@@ -9,12 +9,13 @@ const getTask = async () => {
     const data = await response.json();
     render(data);
 };
+const check = (value) => value.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const renderTask = (name, id) => {
     return `<div
     class="mt-2.5 flex w-full items-center justify-between bg-white p-4 rounded-lg border border-gray-200 shadow " data-id=${id}
     >
     <span class="font-normal text-gray-700"
-        >${name}</span
+        >${check(name)}</span
     >
     <div class="flex gap-2 " data-id=${id}>
         <button
