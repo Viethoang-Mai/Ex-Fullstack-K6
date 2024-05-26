@@ -270,7 +270,7 @@ formEl.addEventListener("submit", (e) => {
     e.preventDefault();
     const inputEl = formEl.querySelector("input");
 
-    if (inputEl.value) {
+    if (inputEl.value.trim()) {
         if (formEl.dataset.id) {
             const id = formEl.dataset.id;
             editTask({ name: inputEl.value }, id);
@@ -282,6 +282,8 @@ formEl.addEventListener("submit", (e) => {
         }
 
         formEl.innerHTML = ``;
+    } else {
+        alert("Không được để trống!");
     }
 });
 
