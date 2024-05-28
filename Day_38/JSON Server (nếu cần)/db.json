@@ -1,0 +1,214 @@
+{
+    "menu": [
+        {
+            "name": "Za'atar Sheet-Pan Chicken",
+            "price": "$120",
+            "id": 1,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Za'atarSheet-PanChicken.jpeg"
+        },
+        {
+            "name": "Crispy Sheet-Pan Black Bean Tacos",
+            "price": "$110",
+            "id": 2,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/CrispySheet-PanBlackBeanTacos.jpg"
+        },
+        {
+            "name": "Sheet-Pan Tikka Masala",
+            "price": "$80",
+            "id": 3,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanTikkaMasala.jpg"
+        },
+        {
+            "name": "Baked Salmon",
+            "price": "$96",
+            "id": 4,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/BakedSalmon.jpg"
+        },
+        {
+            "name": "Sheet Pan Bibimbap",
+            "price": "$69",
+            "id": 5,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/SheetPanBibimbap.jpg"
+        },
+        {
+            "name": "Sheet-Pan Garlicky Shrimp & Veggies",
+            "price": "$120",
+            "id": 6,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanShrimp&Veggies.jpg"
+        },
+        {
+            "name": "Stuffed Banana Peppers",
+            "price": "$120",
+            "id": 7,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/StuffedBananaPeppers.jpg"
+        },
+        {
+            "name": "Sheet-Pan Italian Subs",
+            "price": "$120",
+            "id": 8,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanItalianSubs.jpg"
+        },
+        {
+            "name": "Sheet-Pan Burrata Caprese Gnocchi",
+            "price": "$120",
+            "id": 9,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanBurrataCapreseGnocchi.jpg"
+        },
+        {
+            "name": "Sheet-Pan Easter Dinner",
+            "price": "$120",
+            "id": 10,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanEaster.jpeg"
+        },
+        {
+            "name": "Za'atar Sheet-Pan Chicken",
+            "price": "$120",
+            "id": 11,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Za'atarSheet-PanChicken.jpeg"
+        },
+        {
+            "name": "Crispy Sheet-Pan Black Bean Tacos",
+            "price": "$110",
+            "id": 12,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/CrispySheet-PanBlackBeanTacos.jpg"
+        },
+        {
+            "name": "Sheet-Pan Tikka Masala",
+            "price": "$80",
+            "id": 13,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanTikkaMasala.jpg"
+        },
+        {
+            "name": "Baked Salmon",
+            "price": "$96",
+            "id": 14,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/BakedSalmon.jpg"
+        },
+        {
+            "name": "Sheet Pan Bibimbap",
+            "price": "$69",
+            "id": 15,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/SheetPanBibimbap.jpg"
+        },
+        {
+            "name": "Sheet-Pan Garlicky Shrimp & Veggies",
+            "price": "$120",
+            "id": 16,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanShrimp&Veggies.jpg"
+        },
+        {
+            "name": "Stuffed Banana Peppers",
+            "price": "$120",
+            "id": 17,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/StuffedBananaPeppers.jpg"
+        },
+        {
+            "name": "Sheet-Pan Italian Subs",
+            "price": "$120",
+            "id": 18,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanItalianSubs.jpg"
+        },
+        {
+            "name": "Sheet-Pan Burrata Caprese Gnocchi",
+            "price": "$120",
+            "id": 19,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanBurrataCapreseGnocchi.jpg"
+        },
+        {
+            "name": "Sheet-Pan Easter Dinner",
+            "price": "$120",
+            "id": 20,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanEaster.jpeg"
+        },
+        {
+            "name": "Za'atar Sheet-Pan Chicken",
+            "price": "$120",
+            "id": 21,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Za'atarSheet-PanChicken.jpeg"
+        },
+        {
+            "name": "Crispy Sheet-Pan Black Bean Tacos",
+            "price": "$110",
+            "id": 22,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/CrispySheet-PanBlackBeanTacos.jpg"
+        },
+        {
+            "name": "Sheet-Pan Tikka Masala",
+            "price": "$80",
+            "id": 23,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanTikkaMasala.jpg"
+        },
+        {
+            "name": "Baked Salmon",
+            "price": "$96",
+            "id": 24,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/BakedSalmon.jpg"
+        },
+        {
+            "name": "Sheet Pan Bibimbap",
+            "price": "$69",
+            "id": 25,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/SheetPanBibimbap.jpg"
+        },
+        {
+            "name": "Sheet-Pan Garlicky Shrimp & Veggies",
+            "price": "$120",
+            "id": 26,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanShrimp&Veggies.jpg"
+        },
+        {
+            "name": "Stuffed Banana Peppers",
+            "price": "$120",
+            "id": 27,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/StuffedBananaPeppers.jpg"
+        },
+        {
+            "name": "Sheet-Pan Italian Subs",
+            "price": "$120",
+            "id": 28,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanItalianSubs.jpg"
+        },
+        {
+            "name": "Sheet-Pan Burrata Caprese Gnocchi",
+            "price": "$120",
+            "id": 29,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanBurrataCapreseGnocchi.jpg"
+        },
+        {
+            "name": "Sheet-Pan Easter Dinner",
+            "price": "$120",
+            "id": 30,
+            "description": "Lorem ipsum dolor sit amet, elit.",
+            "img": "./assets/img/Sheet-PanEaster.jpeg"
+        }
+    ]
+}
