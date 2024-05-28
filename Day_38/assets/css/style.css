@@ -13,7 +13,38 @@ body {
     width: 992px;
     max-width: calc(100vw - 50px);
     height: fit-content;
-    min-height: 690px;
+}
+.over-loading {
+    background: #dddddd60;
+    display: none;
+}
+.loader {
+    display: block;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid #0000;
+    border-right-color: #ffa50097;
+    position: absolute;
+    animation: l24 1s infinite linear;
+}
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: inherit;
+    animation: inherit;
+    animation-duration: 2s;
+}
+.loader:after {
+    animation-duration: 4s;
+}
+@keyframes l24 {
+    100% {
+        transform: rotate(1turn);
+    }
 }
 
 .menu-header::-webkit-scrollbar {
@@ -49,6 +80,7 @@ body {
 }
 .meals-inner {
     max-height: 400px;
+    min-height: 380px;
 }
 .item {
     height: 120px;
@@ -56,8 +88,4 @@ body {
     padding-left: 10px;
     display: flex;
     justify-content: space-between;
-}
-
-.close {
-    display: none;
 }

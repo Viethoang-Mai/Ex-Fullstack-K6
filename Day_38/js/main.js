@@ -1,9 +1,9 @@
 import { config } from "./config.js";
 const { SERVER_API } = config;
 let isScroll = false;
-// import { debounce } from "./debounce.js";
 import { httpClient } from "./client.js";
 const mainContent = document.querySelector(".meals-inner");
+const overLoading = document.querySelector(".over-loading");
 const query = {
     _limit: 6,
     _page: 1,
@@ -23,6 +23,7 @@ const render = (data) => {
 const getData = async () => {
     if (isScroll) return;
     isScroll = true;
+    overLoading.style.display = "flex";
     try {
         const keyword = new URLSearchParams(query).toString();
         const { response, data } = await httpClient.get(
@@ -37,11 +38,15 @@ const getData = async () => {
         console.log(error);
     } finally {
         isScroll = false;
+        overLoading.style.display = "none";
     }
 };
 const handleScroll = () => {
     const { scrollTop, scrollHeight, clientHeight } = mainContent;
-    if (scrollTop + clientHeight >= scrollHeight - 10) {
+    if (
+        scrollTop + clientHeight >= scrollHeight - 10 &&
+        mainContent.children.length < 31
+    ) {
         getData();
     }
 };
