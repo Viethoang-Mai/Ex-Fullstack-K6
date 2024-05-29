@@ -1,6 +1,7 @@
 import { config } from "./config.js";
 const { SERVER_API } = config;
 let isScroll = false;
+let limitItems;
 import { httpClient } from "./client.js";
 const mainContent = document.querySelector(".meals-inner");
 const overLoading = document.querySelector(".over-loading");
@@ -8,6 +9,7 @@ const query = {
     _limit: 6,
     _page: 1,
 };
+
 const render = (data) => {
     data.forEach(({ name, price, description, img }) => {
         const item = document.createElement("div");
@@ -22,6 +24,7 @@ const render = (data) => {
 };
 const getData = async () => {
     if (isScroll) return;
+    limitItems = mainContent.children.length;
     isScroll = true;
     overLoading.style.display = "flex";
     try {
@@ -45,7 +48,7 @@ const handleScroll = () => {
     const { scrollTop, scrollHeight, clientHeight } = mainContent;
     if (
         scrollTop + clientHeight >= scrollHeight - 10 &&
-        mainContent.children.length < 31
+        limitItems < mainContent.children.length
     ) {
         getData();
     }
