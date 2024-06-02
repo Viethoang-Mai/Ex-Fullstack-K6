@@ -14,6 +14,7 @@ let correct = 0;
 let incorrect = 0;
 let streak = 0;
 let checkStreak;
+let maxStreak = 0;
 const home = `<div class="rules pr-5">
 <p>
     <i class="fa-regular fa-circle-dot"></i> Có tổng cộng 10
@@ -83,7 +84,7 @@ const render = (data) => {
                     <i class="fa-regular fa-circle-dot"></i> Số câu trả lời sai: ${incorrect}
                 </p>
                 <p>
-                    <i class="fa-regular fa-circle-dot"></i> Số câu trả lời đúng liên tiếp: ${streak}
+                    <i class="fa-regular fa-circle-dot"></i> Số câu trả lời đúng liên tiếp: ${maxStreak}
                 </p>      
                 </div>
                 <button
@@ -138,6 +139,7 @@ quizEl.addEventListener("click", (e) => {
         correct = 0;
         incorrect = 0;
         streak = 0;
+        maxStreak = 0;
         getQuestions();
     }
 });
@@ -185,7 +187,7 @@ const handleClickAnswer = async (questionsId, currentScore) => {
                 document.querySelector(
                     ".notification"
                 ).innerHTML = `<span><i class="fa-solid fa-circle-check "></i> Đáp án đúng</span> `;
-                score += currentScore;
+                score += +currentScore;
                 correct++;
                 checkStreak = true;
             } else {
@@ -206,6 +208,8 @@ const handleClickAnswer = async (questionsId, currentScore) => {
                 checkStreak = false;
             }
             checkStreak ? streak++ : (streak = 0);
+            if (streak >= maxStreak) maxStreak = streak;
+
             nextQuestion();
         }
     }
