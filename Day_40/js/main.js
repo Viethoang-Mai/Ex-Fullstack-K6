@@ -6,7 +6,7 @@ httpClient.baseUrl = SERVER_API;
 const root = document.querySelector("#root");
 const feed = root.querySelector(".news-feed");
 const feature = root.querySelector(".feature");
-// feature.innerHTML = `<div><button class="to-login-btn">Login</button></div>`;
+feature.innerHTML = `<div><button class="to-login-btn">Login</button></div>`;
 let isToLogin;
 const userAction = (data) => {
     const html = `
@@ -46,6 +46,7 @@ const userAction = (data) => {
 </div>
 
 `;
+
     feature.innerHTML = html;
     getBlogs();
 };
@@ -141,8 +142,9 @@ const render = () => {
         return;
     }
     if (isToLogin) {
-        root.innerHTML = toLogin;
+        feature.innerHTML = toLogin;
         handleLogin();
+        feed.innerHTML = "";
         return;
     }
     getBlogs();
@@ -188,8 +190,7 @@ const loginUser = async ({ email, password }) => {
         throw new Error("Đăng nhập thất bại");
     }
     setTokenStorage(tokens.data);
-
-    getProfile();
+    render();
 };
 
 const getProfile = async () => {
