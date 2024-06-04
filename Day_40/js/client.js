@@ -67,7 +67,6 @@ export const httpClient = {
                 throw new Error("Refresh Token không hợp lệ");
             }
             const dataObj = response.json();
-            // console.log(dataObj);
             const tokens = dataObj.data.token;
             console.log(tokens);
             return tokens;
