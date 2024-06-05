@@ -41,7 +41,7 @@ const userAction = (data) => {
             </div>
 
                 <div>
-                    <button type="submit" class=" sign-in flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mb-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tải lên</button>
+                    <button type="submit" class=" post flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mb-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tải lên</button>
                     </div>
                     </form>   
         </div>
@@ -72,21 +72,21 @@ const toLogin = `
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
                 <form class="space-y-6 form-login" >
                 <div>
-                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+                    <label for="email-login" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                     <div class="mt-2">
-                    <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
+                    <input id="email-login" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
                     </div>
                 </div>
 
                 <div>
                     <div class="flex items-center justify-between">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                    <label for="password-login" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                     <div class="text-sm">
                         <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
                     </div>
                     </div>
                     <div class="mt-2 ">
-                        <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  px-3">
+                        <input id="password-login" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  px-3">
                     </div>
                 </div>
 
@@ -138,7 +138,7 @@ const toRegister = `
                 </div>
 
                     <div>
-                        <button type="submit" class=" sign-in flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mb-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
+                        <button type="submit" class=" sign-up flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mb-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
                         </div>
                         </form>
                         <button type="button" class=" to-login-btn  font-semibold text-indigo-600 hover:text-indigo-500 ">Sign in</button>
@@ -250,6 +250,9 @@ const handleLogin = () => {
 };
 const loginUser = async ({ email, password }) => {
     try {
+        const loginBtn = document.querySelector(".sign-in");
+        loginBtn.innerText = "Sign in...";
+        loginBtn.disabled = true;
         const { response, data: tokens } = await httpClient.post(
             `/auth/login`,
             {
@@ -260,6 +263,8 @@ const loginUser = async ({ email, password }) => {
         if (!response.ok) {
             throw new Error("Đăng nhập thất bại");
         }
+        loginBtn.innerText = "Sign in";
+        loginBtn.disabled = false;
         setTokenStorage(tokens.data);
         alert("Đăng nhập thành công");
         render();
@@ -297,6 +302,9 @@ const handleSignUp = () => {
     });
 };
 const signUpUser = async ({ name, email, password }) => {
+    const signupBtn = document.querySelector(".sign-up");
+    signupBtn.innerText = "Sign up...";
+    signupBtn.disabled = true;
     const { response, data: dataObj } = await httpClient.post(
         `/auth/register`,
         {
@@ -308,6 +316,8 @@ const signUpUser = async ({ name, email, password }) => {
     if (!response.ok) {
         throw new Error("Đăng ký thất bại");
     }
+    signupBtn.innerText = "Sign up";
+    signupBtn.disabled = false;
     alert("Đăng ký thành công!!");
     isToLogin = true;
     isSignUp = false;
@@ -315,17 +325,25 @@ const signUpUser = async ({ name, email, password }) => {
     handleLogin();
 };
 const logout = async () => {
-    const { accessToken } = getTokenStorage();
-    httpClient.token = accessToken;
+    try {
+        const { accessToken } = getTokenStorage();
+        httpClient.token = accessToken;
 
-    const response = await fetch(`${SERVER_API}/auth/logout`, {
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    });
-    localStorage.removeItem("login_token");
-    render();
+        const response = await fetch(`${SERVER_API}/auth/logout`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            throw new Error("Không thể đăng xuất");
+        }
+        alert("Đăng xuất thành công");
+        localStorage.removeItem("login_token");
+        render();
+    } catch (error) {
+        console.log(error);
+    }
 };
 const handleLogout = () => {
     const logoutBtn = document.querySelector(".logout");
@@ -343,6 +361,9 @@ const handlePost = () => {
 };
 const postBlog = async ({ title, content }) => {
     try {
+        const postBtn = document.querySelector(".post");
+        postBtn.innerText = "Đang tải lên...";
+        postBtn.disabled = true;
         const { accessToken } = getTokenStorage();
         httpClient.token = accessToken;
         const { response, data } = await httpClient.post(`/blogs`, {
@@ -352,8 +373,10 @@ const postBlog = async ({ title, content }) => {
         if (!response.ok) {
             throw new Error("Đăng bài không thành công");
         }
-        render();
+        postBtn.innerText = "Tải lên";
+        postBtn.disabled = false;
         alert("Đã tải lên bài viết");
+        render();
     } catch (error) {
         console.log(error);
     }
