@@ -53,7 +53,6 @@ export const httpClient = {
         try {
             const { refreshToken } = getTokenStorage();
             console.log(refreshToken);
-
             const response = await fetch(`${this.baseUrl}/auth/refresh-token`, {
                 method: "POST",
                 headers: {
@@ -66,8 +65,8 @@ export const httpClient = {
             if (!response.ok) {
                 throw new Error("Refresh Token không hợp lệ");
             }
-            const dataObj = response.json();
-            const tokens = dataObj.data.token;
+            const dataObj = await response.json();
+            const tokens = dataObj["data"].token;
             console.log(tokens);
             return tokens;
         } catch (e) {

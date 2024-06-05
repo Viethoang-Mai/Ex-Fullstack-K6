@@ -156,9 +156,7 @@ const getBlogs = async () => {
             throw new Error("Khong lay duoc blog");
         }
         news(data.data);
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error) {}
 };
 
 const news = (data) => {
@@ -267,11 +265,7 @@ const getProfile = async () => {
             const data = dataObj["data"];
             userAction(data);
         }
-    } catch (error) {
-        localStorage.removeItem("login_token");
-        isToLogin = false;
-        render();
-    }
+    } catch (error) {}
 };
 const handleSignUp = () => {
     const formSignUp = document.querySelector(".form-sign-up");
@@ -282,7 +276,6 @@ const handleSignUp = () => {
     });
 };
 const signUpUser = async ({ name, email, password }) => {
-    console.log(name, email, password);
     const { response, data: dataObj } = await httpClient.post(
         `/auth/register`,
         {
@@ -324,7 +317,6 @@ const handlePost = () => {
     formPost.addEventListener("submit", (e) => {
         e.preventDefault();
         const data = Object.fromEntries([...new FormData(e.target)]);
-        console.log(data);
         postBlog(data);
     });
 };
