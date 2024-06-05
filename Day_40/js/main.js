@@ -12,7 +12,11 @@ let isSignUp;
 const userAction = (data) => {
     const html = `
 <div>
-    <div class="row"><p class="user">${data.name}</p> <button class="logout">Logout</button></div>
+    <div class="row flex items-center justify-between my-5"><p class="user flex items-end gap-x-2"><span class="block w-8 h-8 rounded-full flex justify-center items-center  bg-sky-400 text-white">${getAvtName(
+        data
+    )}</span>${
+        data.name
+    }</p> <button class="logout text-xl font-semibold">Logout</button></div>
     <div class="">
     
     <div class="form-el flex min-h-full flex-col justify-center px-2 py-2 ">        
@@ -32,7 +36,7 @@ const userAction = (data) => {
                 
                 </div>
                 <div class="mt-2 ">
-                    <textarea name="content" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6  px-3"></textarea>
+                    <textarea name="content" class="h-32 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6  px-3"></textarea>
                 </div>
             </div>
 
@@ -162,7 +166,7 @@ const getBlogs = async () => {
 const news = (data) => {
     const html = `${data
         .map(
-            ({ userId: { name }, title, timeUp, content }) =>
+            ({ userId: { name }, title, timeUp, content, userId }) =>
                 `<div class="blog-item mb-2">
                     <div class="cover-img">
                         <img src="./assets/img/cover-img.jpg" alt="blog">
@@ -172,7 +176,9 @@ const news = (data) => {
                         <p>${content}</p>
                     </div>
                     <div class="blog-info">
-                    <p>${name}</p>  
+                    <p class="user flex items-end gap-x-2"><span class="block w-8 h-8 rounded-full flex justify-center items-center  bg-sky-400 text-white">${getAvtName(
+                        userId
+                    )}</span>${name}</p> 
                     <span> ${handleDate(timeUp)}</span>   
                     </div>
                     <button class"more-btn">Read More</button>
@@ -239,15 +245,23 @@ const handleLogin = () => {
     });
 };
 const loginUser = async ({ email, password }) => {
-    const { response, data: tokens } = await httpClient.post(`/auth/login`, {
-        email,
-        password,
-    });
-    if (!response.ok) {
-        throw new Error("Đăng nhập thất bại");
+    try {
+        const { response, data: tokens } = await httpClient.post(
+            `/auth/login`,
+            {
+                email,
+                password,
+            }
+        );
+        if (!response.ok) {
+            throw new Error("Đăng nhập thất bại");
+        }
+        setTokenStorage(tokens.data);
+        alert("Đăng nhập thành công");
+        render();
+    } catch (error) {
+        console.log(error);
     }
-    setTokenStorage(tokens.data);
-    render();
 };
 
 const getProfile = async () => {
@@ -265,7 +279,10 @@ const getProfile = async () => {
             const data = dataObj["data"];
             userAction(data);
         }
-    } catch (error) {}
+    } catch (error) {
+        localStorage.removeItem("login_token");
+        render();
+    }
 };
 const handleSignUp = () => {
     const formSignUp = document.querySelector(".form-sign-up");
@@ -321,16 +338,32 @@ const handlePost = () => {
     });
 };
 const postBlog = async ({ title, content }) => {
-    const { accessToken } = getTokenStorage();
-    httpClient.token = accessToken;
-    const { response, data } = await httpClient.post(`/blogs`, {
-        title: title,
-        content: content,
-    });
-    if (!response.ok) {
-        throw new Error("Đăng bài không thành công");
+    try {
+        const { accessToken } = getTokenStorage();
+        httpClient.token = accessToken;
+        const { response, data } = await httpClient.post(`/blogs`, {
+            title: title,
+            content: content,
+        });
+        if (!response.ok) {
+            throw new Error("Đăng bài không thành công");
+        }
+        render();
+        alert("Đã tải lên bài viết");
+    } catch (error) {
+        console.log(error);
     }
-    render();
+};
+
+const getAvtName = (data) => {
+    let charName;
+    if (data.name.trim().indexOf(" ")) {
+        const IndexName = data.name.trim().lastIndexOf(" ");
+        charName = data.name.trim().slice(IndexName + 1, IndexName + 2);
+    } else {
+        charName = data.name.trim().slice(0, 1);
+    }
+    return charName;
 };
 
 render();
