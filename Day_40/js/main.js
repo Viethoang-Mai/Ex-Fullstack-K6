@@ -168,20 +168,24 @@ const news = (data) => {
         .map(
             ({ userId: { name }, title, timeUp, content, userId }) =>
                 `<div class="blog-item mb-2">
-                    <div class="cover-img">
-                        <img src="./assets/img/cover-img.jpg" alt="blog">
+                    <div class="cover-img ">
+                        <img class="rounded-t-lg" src="./assets/img/cover-img.jpg" alt="blog">
                     </div>
+                    <div class="p-3 bg-gray-50 rounded-b-2"> 
                     <div class="content-blog">
-                        <h3 class"title">${title}</h3> 
-                        <p>${content}</p>
+                    <h3 class=" line-clamp-2 title my-2 font-semibold">${title}</h3> 
+                    <p class="px-2 text-md line-clamp-2 ">${content}</p>
+                </div>
+                <div class="blog-info my-2">
+                <p class="user flex items-end gap-x-2 text-xs font-semibold"><span class="block w-6 h-6 rounded-full flex justify-center items-center font-medium text-md bg-sky-400 text-white">${getAvtName(
+                    userId
+                )}</span >${name}</p> 
+                <span class="font-light text-xs italic"> ${handleDate(
+                    timeUp
+                )}</span>   
+                </div>
+                <button class=" block more-btn w-full text-right">Read More</button>
                     </div>
-                    <div class="blog-info">
-                    <p class="user flex items-end gap-x-2"><span class="block w-8 h-8 rounded-full flex justify-center items-center  bg-sky-400 text-white">${getAvtName(
-                        userId
-                    )}</span>${name}</p> 
-                    <span> ${handleDate(timeUp)}</span>   
-                    </div>
-                    <button class"more-btn">Read More</button>
                  </div>  
             `
         )
