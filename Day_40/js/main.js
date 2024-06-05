@@ -173,8 +173,8 @@ const news = (data) => {
                     </div>
                     <div class="p-3 bg-gray-50 rounded-b-2"> 
                     <div class="content-blog">
-                    <h3 class=" line-clamp-2 title my-2 font-semibold">${title}</h3> 
-                    <p class="px-2 text-md line-clamp-2 ">${content}</p>
+                    <h3 class=" line-clamp-2 title my-2 font-medium ">${title}</h3> 
+                    <p class="px-2 text-sm line-clamp-2 ">${content}</p>
                 </div>
                 <div class="blog-info my-2">
                 <p class="user flex items-end gap-x-2 text-xs font-semibold"><span class="block w-6 h-6 rounded-full flex justify-center items-center font-medium text-md bg-sky-400 text-white">${getAvtName(
@@ -205,7 +205,7 @@ const render = () => {
         feed.innerHTML = "";
         return;
     }
-    feature.innerHTML = `<div><button class="to-login-btn">Login</button></div>`;
+    feature.innerHTML = `<div><button class="to-login-btn text-xl font-semibold my-5 w-full text-right">Login</button></div>`;
     getBlogs();
 };
 
