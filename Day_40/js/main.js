@@ -2,6 +2,7 @@ import { config } from "./config.js";
 const { SERVER_API } = config;
 import { httpClient } from "./client.js";
 import { getTokenStorage, setTokenStorage } from "./storage.js";
+import { handleDatePicker } from "./datepicker.js";
 httpClient.baseUrl = SERVER_API;
 const root = document.querySelector("#root");
 const feed = root.querySelector(".news-feed");
@@ -19,28 +20,37 @@ const userAction = (data) => {
     }</p> <button class="logout text-xl font-semibold">Logout</button></div>
     <div class="">
     
-    <div class="form-el flex min-h-full flex-col justify-center px-2 py-2 ">        
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div class="form-el flex min-h-full  justify-center  px-2 py-2 ">        
+        <div class="mt-10 w-4/5">
         
             <form class="space-y-6 form-post" >
-            <div>
-                <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Tiêu đề bài viết</label>
+            <div class="flex gap-x-5">
+                <div class="grow">
+                    <div class="mb-5">
+                        <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Tiêu đề bài viết</label>
+                        <div class="mt-2">
+                        <input id="title" name="title" type="text"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
+                        </div>
+                    </div>
+        
+                    <div>
+                        <div class="flex items-center justify-between">
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Nội dung bài viết</label>
+                        </div>
+                        <div class="mt-2 ">
+                            <textarea name="content" required class="h-32 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6  px-3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div >
+                <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Chọn thời gian tải lên</label>
                 <div class="mt-2">
-                <input id="title" name="title" type="text"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
+                <input id="date" name="date" type="datetime-local"  class="ip-date block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
+                </div>
                 </div>
             </div>
-
-            <div>
-                <div class="flex items-center justify-between">
-                <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Nội dung bài viết</label>
-                
-                </div>
-                <div class="mt-2 ">
-                    <textarea name="content" class="h-32 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6  px-3"></textarea>
-                </div>
-            </div>
-
-                <div>
+            
+                <div class="">
                     <button type="submit" class=" post flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mb-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tải lên</button>
                     </div>
                     </form>   
@@ -54,6 +64,7 @@ const userAction = (data) => {
 
     feature.innerHTML = html;
     getBlogs();
+    datePicker();
     handleLogout();
     handlePost();
 };
@@ -356,16 +367,25 @@ const handlePost = () => {
     formPost.addEventListener("submit", (e) => {
         e.preventDefault();
         const data = Object.fromEntries([...new FormData(e.target)]);
+        // console.log(data);
         postBlog(data);
     });
 };
-const postBlog = async ({ title, content }) => {
+const postBlog = async ({ title, content, date }) => {
     try {
         const postBtn = document.querySelector(".post");
         postBtn.innerText = "Đang tải lên...";
         postBtn.disabled = true;
         const { accessToken } = getTokenStorage();
         httpClient.token = accessToken;
+
+        if (date) {
+            alert(
+                `Tính năng chọn ngày đăng bài chưa được phát triển, vui lòng không sử dụng tính năng này!`
+            );
+            render();
+            return;
+        }
         const { response, data } = await httpClient.post(`/blogs`, {
             title: title,
             content: content,
@@ -391,6 +411,12 @@ const getAvtName = (data) => {
         charName = data.name.trim().slice(0, 1);
     }
     return charName;
+};
+const datePicker = () => {
+    const ipDate = document.querySelector(".ip-date");
+    ipDate.addEventListener("blur", (e) => {
+        handleDatePicker(ipDate.value, ipDate);
+    });
 };
 
 render();
