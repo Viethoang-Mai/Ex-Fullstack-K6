@@ -1,4 +1,5 @@
 import { getTokenStorage, setTokenStorage } from "./storage.js";
+const overLoad = document.querySelector(".over-loading");
 
 export const httpClient = {
     token: null,
@@ -7,6 +8,7 @@ export const httpClient = {
     send: async function (path, method = "GET", body = null, headers = {}) {
         let response = null;
         try {
+            overLoad.style.display = "block";
             if (!this.baseUrl) {
                 throw new Error("Vui lòng cập nhật baseUrl");
             }
@@ -16,6 +18,7 @@ export const httpClient = {
             if (this.token) {
                 initialHeaders["Authorization"] = `Bearer ${this.token}`;
             }
+
             const options = {
                 method,
                 headers: initialHeaders,
@@ -47,6 +50,8 @@ export const httpClient = {
                 this.token = newToken.accessToken;
                 return await this.send(path, method, body, headers);
             }
+        } finally {
+            overLoad.style.display = "none";
         }
     },
     getRefreshToken: async function () {

@@ -44,8 +44,9 @@ const userAction = (data) => {
                 </div>
                 <div >
                 <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Chọn thời gian tải lên</label>
-                <div class="mt-2">
+                <div class="mt-2 relative">
                 <input id="date" name="date" type="datetime-local"  class="ip-date block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
+                <button type="button" class="reset-time hover:bg-gray-200 absolute text-sm right-0 mt-2 bg-gray-100 px-2 py-1 rounded">Reset</button>
                 </div>
                 </div>
             </div>
@@ -72,7 +73,7 @@ const userAction = (data) => {
 const toLogin = `
     <div class="flex justify-evenly items-center flex-wrap">
         <div class="max-w-xl">
-            <h3 class="text-center text-2xl font-semibold">Đăng nhập</h3>
+            <h3 class="text-center text-2xl font-semibold mb-3">Đăng nhập</h3>
             <p>
             Hãy nhập email và mật khẩu của bạn để truy cập vào nền tảng Blogger, nơi bạn có thể tạo và chia sẻ những bài viết độc đáo của mình. Nếu bạn chưa có tài khoản, hãy <button class="to-login-btn text-indigo-600 to-sign-up">đăng ký ngay</button> để tham gia cộng đồng Blogger
             <button class="back-to-home-btn w-full text-center mt-5 text-indigo-600">Về trang chủ</button>
@@ -80,7 +81,7 @@ const toLogin = `
         </div>
         <div class="form-el flex min-h-full flex-col justify-center px-2 py-2 ">        
             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 mb-3">Sign in to your account</h2>
                 <form class="space-y-6 form-login" >
                 <div>
                     <label for="email-login" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
@@ -113,17 +114,17 @@ const toLogin = `
 `;
 const toRegister = `
     <div class="flex justify-evenly items-center flex-wrap">
-        <div class="max-w-xl">
-            <h3 class="text-center text-2xl font-semibold">Đăng Ký</h3>
+        <div class="max-w-lg">
+            <h3 class="text-center text-2xl font-semibold mb-3">Đăng Ký</h3>
             <p>
 
                 Bạn muốn tham gia cộng đồng Blogger, nơi bạn có thể tạo và chia sẻ những bài viết độc đáo của mình? Hãy điền thông tin của bạn vào biểu mẫu dưới đây để tạo tài khoản miễn phí. Bạn sẽ nhận được nhiều ưu đãi, thông tin mới nhất và cơ hội giao lưu với những blogger khác khi đăng ký. Đừng bỏ lỡ cơ hội này, hãy đăng ký ngay! Nếu bạn đã có tài khoản, <button class="to-login-btn text-indigo-600">Đăng nhập ngay</button>
                 <button class="back-to-home-btn w-full text-center mt-5 text-indigo-600">Về trang chủ</button> 
             </p>
         </div>
-        <div class="form-el flex min-h-full flex-col justify-center px-2 py-2 ">        
+        <div class="form-el flex min-h-full flex-col justify-center px-2 py-2 max-w-xs"">        
             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign up to your account</h2>
+            <h2 class="mb-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign up </h2>
                 <form class="space-y-6 form-sign-up" >
                 <div>
                     <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Tên của bạn</label>
@@ -145,6 +146,7 @@ const toRegister = `
                     </div>
                     <div class="mt-2 ">
                         <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  px-3">
+                        <p class="mt-3 text-xs font-normal italic">Mật khẩu phải có ít nhất 8 ký tự bao gồm cả chữ thường và in hoa</p>
                     </div>
                 </div>
 
@@ -262,7 +264,6 @@ const handleLogin = () => {
 const loginUser = async ({ email, password }) => {
     try {
         const loginBtn = document.querySelector(".sign-in");
-        loginBtn.innerText = "Sign in...";
         loginBtn.disabled = true;
         const { response, data: tokens } = await httpClient.post(
             `/auth/login`,
@@ -274,7 +275,6 @@ const loginUser = async ({ email, password }) => {
         if (!response.ok) {
             throw new Error("Đăng nhập thất bại");
         }
-        loginBtn.innerText = "Sign in";
         loginBtn.disabled = false;
         setTokenStorage(tokens.data);
         alert("Đăng nhập thành công");
@@ -313,27 +313,27 @@ const handleSignUp = () => {
     });
 };
 const signUpUser = async ({ name, email, password }) => {
-    const signupBtn = document.querySelector(".sign-up");
-    signupBtn.innerText = "Sign up...";
-    signupBtn.disabled = true;
-    const { response, data: dataObj } = await httpClient.post(
-        `/auth/register`,
-        {
-            email,
-            password,
-            name,
+    try {
+        const { response, data: dataObj } = await httpClient.post(
+            `/auth/register`,
+            {
+                email,
+                password,
+                name,
+            }
+        );
+        if (!response.ok) {
+            throw new Error("Đăng ký thất bại");
         }
-    );
-    if (!response.ok) {
-        throw new Error("Đăng ký thất bại");
+        alert("Đăng ký thành công!!");
+        isToLogin = true;
+        isSignUp = false;
+        render();
+        handleLogin();
+    } catch (error) {
+        console.log(error);
+        alert(`Tài khoản đã tồn tại hoặc mật khẩu không hợp lệ`);
     }
-    signupBtn.innerText = "Sign up";
-    signupBtn.disabled = false;
-    alert("Đăng ký thành công!!");
-    isToLogin = true;
-    isSignUp = false;
-    render();
-    handleLogin();
 };
 const logout = async () => {
     try {
@@ -367,25 +367,20 @@ const handlePost = () => {
     formPost.addEventListener("submit", (e) => {
         e.preventDefault();
         const data = Object.fromEntries([...new FormData(e.target)]);
-        // console.log(data);
         postBlog(data);
     });
 };
 const postBlog = async ({ title, content, date }) => {
     try {
-        const postBtn = document.querySelector(".post");
-        postBtn.innerText = "Đang tải lên...";
-        postBtn.disabled = true;
         const { accessToken } = getTokenStorage();
         httpClient.token = accessToken;
 
         if (date) {
-            alert(
+            return alert(
                 `Tính năng chọn ngày đăng bài chưa được phát triển, vui lòng không sử dụng tính năng này!`
             );
-            render();
-            return;
         }
+        postBtn.disabled = true;
         const { response, data } = await httpClient.post(`/blogs`, {
             title: title,
             content: content,
@@ -393,8 +388,6 @@ const postBlog = async ({ title, content, date }) => {
         if (!response.ok) {
             throw new Error("Đăng bài không thành công");
         }
-        postBtn.innerText = "Tải lên";
-        postBtn.disabled = false;
         alert("Đã tải lên bài viết");
         render();
     } catch (error) {
@@ -414,8 +407,12 @@ const getAvtName = (data) => {
 };
 const datePicker = () => {
     const ipDate = document.querySelector(".ip-date");
-    ipDate.addEventListener("blur", (e) => {
+    ipDate.addEventListener("change", (e) => {
         handleDatePicker(ipDate.value, ipDate);
+    });
+    const resetTimeBtn = document.querySelector(".reset-time");
+    resetTimeBtn.addEventListener("click", (e) => {
+        ipDate.value = "";
     });
 };
 

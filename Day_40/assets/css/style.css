@@ -10,10 +10,47 @@ html {
 body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
+    position: relative;
 }
 
 .container-blog {
-    width: 920px;
+    width: 992px;
     max-width: calc(100vw - 50px);
     height: fit-content;
+}
+.over-loading {
+    background: #dddddd60;
+    display: none;
+    z-index: 2;
+}
+.loader {
+    display: block;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid #0000;
+    border-right-color: #ffa50097;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    animation: l24 1s infinite linear;
+}
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: inherit;
+    animation: inherit;
+    animation-duration: 2s;
+}
+.loader:after {
+    animation-duration: 4s;
+}
+@keyframes l24 {
+    100% {
+        transform: rotate(1turn);
+    }
 }
