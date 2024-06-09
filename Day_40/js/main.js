@@ -263,8 +263,6 @@ const handleLogin = () => {
 };
 const loginUser = async ({ email, password }) => {
     try {
-        const loginBtn = document.querySelector(".sign-in");
-        loginBtn.disabled = true;
         const { response, data: tokens } = await httpClient.post(
             `/auth/login`,
             {
@@ -275,12 +273,12 @@ const loginUser = async ({ email, password }) => {
         if (!response.ok) {
             throw new Error("Đăng nhập thất bại");
         }
-        loginBtn.disabled = false;
         setTokenStorage(tokens.data);
         alert("Đăng nhập thành công");
         render();
     } catch (error) {
         console.log(error);
+        alert(`Tên đăng nhập hoặc mật khẩu không đúng!`);
     }
 };
 

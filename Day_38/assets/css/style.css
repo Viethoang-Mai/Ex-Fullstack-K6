@@ -18,7 +18,7 @@ body {
     height: fit-content;
 }
 .over-loading {
-    background: #da0d0d60;
+    background: #dddddd60;
     display: none;
 }
 .loader {
