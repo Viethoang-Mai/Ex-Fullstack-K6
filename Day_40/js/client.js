@@ -57,7 +57,6 @@ export const httpClient = {
     getRefreshToken: async function () {
         try {
             const { refreshToken } = getTokenStorage();
-            console.log(refreshToken);
             const response = await fetch(`${this.baseUrl}/auth/refresh-token`, {
                 method: "POST",
                 headers: {

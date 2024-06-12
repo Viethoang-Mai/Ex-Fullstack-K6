@@ -9,7 +9,6 @@ html {
 }
 body {
     font-family: "Poppins", sans-serif;
-    height: 100vh;
     position: relative;
 }
 
@@ -48,6 +47,9 @@ body {
 }
 .loader:after {
     animation-duration: 4s;
+}
+.content-blog {
+    height: 72px;
 }
 @keyframes l24 {
     100% {

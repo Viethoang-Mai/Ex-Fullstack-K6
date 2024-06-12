@@ -3,6 +3,14 @@ const { SERVER_API } = config;
 import { httpClient } from "./client.js";
 import { getTokenStorage, setTokenStorage } from "./storage.js";
 import { handleDatePicker } from "./datepicker.js";
+import {
+    toLogin,
+    toRegister,
+    userAction,
+    getAvtName,
+    handleDate,
+    renderBlog,
+} from "./layout.js";
 httpClient.baseUrl = SERVER_API;
 const root = document.querySelector("#root");
 const feed = root.querySelector(".news-feed");
@@ -10,156 +18,7 @@ const feature = root.querySelector(".feature");
 
 let isToLogin;
 let isSignUp;
-const userAction = (data) => {
-    const html = `
-<div>
-    <div class="row flex items-center justify-between my-5"><p class="user flex items-end gap-x-2"><span class="block w-8 h-8 rounded-full flex justify-center items-center  bg-sky-400 text-white">${getAvtName(
-        data
-    )}</span>${
-        data.name
-    }</p> <button class="logout text-xl font-semibold">Logout</button></div>
-    <div class="">
-    
-    <div class="form-el flex min-h-full  justify-center  px-2 py-2 ">        
-        <div class="mt-10 w-4/5">
-        
-            <form class="space-y-6 form-post" >
-            <div class="flex gap-x-5">
-                <div class="grow">
-                    <div class="mb-5">
-                        <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Tiêu đề bài viết</label>
-                        <div class="mt-2">
-                        <input id="title" name="title" type="text"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
-                        </div>
-                    </div>
-        
-                    <div>
-                        <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Nội dung bài viết</label>
-                        </div>
-                        <div class="mt-2 ">
-                            <textarea name="content" required class="h-32 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6  px-3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div >
-                <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Chọn thời gian tải lên</label>
-                <div class="mt-2 relative">
-                <input id="date" name="date" type="datetime-local"  class="ip-date block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
-                <button type="button" class="reset-time hover:bg-gray-200 absolute text-sm right-0 mt-2 bg-gray-100 px-2 py-1 rounded">Reset</button>
-                </div>
-                </div>
-            </div>
-            
-                <div class="">
-                    <button type="submit" class=" post flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mb-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tải lên</button>
-                    </div>
-                    </form>   
-        </div>
-    </div>      
-</div>
-    </div>
-</div>
 
-`;
-
-    feature.innerHTML = html;
-    getBlogs();
-    datePicker();
-    handleLogout();
-    handlePost();
-};
-
-const toLogin = `
-    <div class="flex justify-evenly items-center flex-wrap">
-        <div class="max-w-xl">
-            <h3 class="text-center text-2xl font-semibold mb-3">Đăng nhập</h3>
-            <p>
-            Hãy nhập email và mật khẩu của bạn để truy cập vào nền tảng Blogger, nơi bạn có thể tạo và chia sẻ những bài viết độc đáo của mình. Nếu bạn chưa có tài khoản, hãy <button class="to-login-btn text-indigo-600 to-sign-up">đăng ký ngay</button> để tham gia cộng đồng Blogger
-            <button class="back-to-home-btn w-full text-center mt-5 text-indigo-600">Về trang chủ</button>
-            </p>
-        </div>
-        <div class="form-el flex min-h-full flex-col justify-center px-2 py-2 ">        
-            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 mb-3">Sign in to your account</h2>
-                <form class="space-y-6 form-login" >
-                <div>
-                    <label for="email-login" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                    <div class="mt-2">
-                    <input id="email-login" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex items-center justify-between">
-                    <label for="password-login" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                    <div class="text-sm">
-                        <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
-                    </div>
-                    </div>
-                    <div class="mt-2 ">
-                        <input id="password-login" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  px-3">
-                    </div>
-                </div>
-
-                    <div>
-                        <button type="submit" class=" sign-in flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mb-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
-                        </div>
-                        </form>
-                        <button type="button" class=" to-sign-up font-semibold text-indigo-600 hover:text-indigo-500 ">Sign up</button>
-
-            </div>
-        </div>      
-    </div>
-`;
-const toRegister = `
-    <div class="flex justify-evenly items-center flex-wrap">
-        <div class="max-w-lg">
-            <h3 class="text-center text-2xl font-semibold mb-3">Đăng Ký</h3>
-            <p>
-
-                Bạn muốn tham gia cộng đồng Blogger, nơi bạn có thể tạo và chia sẻ những bài viết độc đáo của mình? Hãy điền thông tin của bạn vào biểu mẫu dưới đây để tạo tài khoản miễn phí. Bạn sẽ nhận được nhiều ưu đãi, thông tin mới nhất và cơ hội giao lưu với những blogger khác khi đăng ký. Đừng bỏ lỡ cơ hội này, hãy đăng ký ngay! Nếu bạn đã có tài khoản, <button class="to-login-btn text-indigo-600">Đăng nhập ngay</button>
-                <button class="back-to-home-btn w-full text-center mt-5 text-indigo-600">Về trang chủ</button> 
-            </p>
-        </div>
-        <div class="form-el flex min-h-full flex-col justify-center px-2 py-2 max-w-xs"">        
-            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 class="mb-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign up </h2>
-                <form class="space-y-6 form-sign-up" >
-                <div>
-                    <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Tên của bạn</label>
-                    <div class="mt-2">
-                    <input id="name" name="name" type="text"  required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
-                    </div>
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                    <div class="mt-2">
-                    <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex items-center justify-between">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                    
-                    </div>
-                    <div class="mt-2 ">
-                        <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  px-3">
-                        <p class="mt-3 text-xs font-normal italic">Mật khẩu phải có ít nhất 8 ký tự bao gồm cả chữ thường và in hoa</p>
-                    </div>
-                </div>
-
-                    <div>
-                        <button type="submit" class=" sign-up flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mb-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
-                        </div>
-                        </form>
-                        <button type="button" class=" to-login-btn  font-semibold text-indigo-600 hover:text-indigo-500 ">Sign in</button>
-
-            </div>
-        </div>      
-    </div>
-`;
 const query = {
     _limit: 10,
     _page: 1,
@@ -175,18 +34,35 @@ const getBlogs = async () => {
         news(data.data);
     } catch (error) {}
 };
-
+const getBlog = async (id) => {
+    try {
+        console.log(123);
+        const { response, data } = await httpClient.get(`/blogs/${id}`);
+        if (!response.ok) {
+            return alert("có lỗi khi tải bài viết");
+        }
+        feature.innerHTML = renderBlog(data.data);
+        feed.innerHTML = "";
+    } catch (error) {}
+};
 const news = (data) => {
     const html = `${data
         .map(
-            ({ userId: { name }, title, timeUp, content, userId }) =>
-                `<div class="blog-item mb-2">
-                    <div class="cover-img ">
-                        <img class="rounded-t-lg" src="./assets/img/cover-img.jpg" alt="blog">
+            ({
+                userId: { name },
+                title,
+                timeUp,
+                content,
+                _id: idBlog,
+                userId,
+            }) =>
+                `<div class="blog-item ">
+                    <div class="cover-img cursor-pointer" data-id="${idBlog}">
+                        <img class="blog-img rounded-t-lg cursor-pointer"data-id="${idBlog}" src="./assets/img/cover-img.jpg" alt="blog">
                     </div>
                     <div class="p-3 bg-gray-50 rounded-b-2"> 
                     <div class="content-blog">
-                    <h3 class=" line-clamp-2 title my-2 font-medium ">${title}</h3> 
+                    <h3 class=" line-clamp-1 title my-2 font-medium ">${title}</h3> 
                     <p class="px-2 text-sm line-clamp-2 ">${content}</p>
                 </div>
                 <div class="blog-info my-2">
@@ -197,7 +73,7 @@ const news = (data) => {
                     timeUp
                 )}</span>   
                 </div>
-                <button class=" block more-btn w-full text-right">Read More</button>
+                <button class="more-btn flex ml-auto font-medium text-sm " data-id="${idBlog}">Read More</button>
                     </div>
                  </div>  
             `
@@ -210,15 +86,16 @@ const news = (data) => {
 const render = () => {
     if (getTokenStorage()) {
         getProfile();
+        console.log(1);
         return;
     }
     if (isToLogin) {
         feature.innerHTML = isSignUp ? toRegister : toLogin;
-
         feed.innerHTML = "";
+        console.log(2);
         return;
     }
-    feature.innerHTML = `<div><button class="to-login-btn text-xl font-semibold my-5 w-full text-right">Login</button></div>`;
+    feature.innerHTML = `<div><button class="to-login-btn text-xl font-semibold my-5 w-full text-right ">Login</button></div>`;
     getBlogs();
 };
 
@@ -236,23 +113,24 @@ root.addEventListener("click", (e) => {
         render();
         handleSignUp();
     }
-    if (e.target.classList.contains("back-to-home-btn")) {
+    if (
+        e.target.classList.contains("back-to-home-btn") ||
+        e.target.classList.contains("back-to-home")
+    ) {
         e.preventDefault();
         isToLogin = false;
         render();
     }
+    if (
+        e.target.classList.contains("more-btn") ||
+        e.target.classList.contains("blog-img")
+    ) {
+        e.preventDefault();
+        console.log(e.target.dataset.id);
+        getBlog(e.target.dataset.id);
+    }
 });
 
-const handleDate = (apiReturnDate) => {
-    const dateObj = new Date(apiReturnDate);
-    const year = dateObj.getFullYear();
-    const month = dateObj.getMonth() + 1; // Tháng bắt đầu từ 0
-    const day = dateObj.getDate();
-    const hours = dateObj.getHours();
-    const minutes = dateObj.getMinutes();
-    const seconds = dateObj.getSeconds();
-    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
-};
 const handleLogin = () => {
     const formLogin = document.querySelector(".form-login");
     formLogin.addEventListener("submit", (e) => {
@@ -295,7 +173,11 @@ const getProfile = async () => {
             }
             isToLogin = false;
             const data = dataObj["data"];
-            userAction(data);
+            feature.innerHTML = userAction(data);
+            getBlogs();
+            datePicker();
+            handleLogout();
+            handlePost();
         }
     } catch (error) {
         localStorage.removeItem("login_token");
@@ -378,7 +260,6 @@ const postBlog = async ({ title, content, date }) => {
                 `Tính năng chọn ngày đăng bài chưa được phát triển, vui lòng không sử dụng tính năng này!`
             );
         }
-        postBtn.disabled = true;
         const { response, data } = await httpClient.post(`/blogs`, {
             title: title,
             content: content,
@@ -393,16 +274,6 @@ const postBlog = async ({ title, content, date }) => {
     }
 };
 
-const getAvtName = (data) => {
-    let charName;
-    if (data.name.trim().indexOf(" ")) {
-        const IndexName = data.name.trim().lastIndexOf(" ");
-        charName = data.name.trim().slice(IndexName + 1, IndexName + 2);
-    } else {
-        charName = data.name.trim().slice(0, 1);
-    }
-    return charName;
-};
 const datePicker = () => {
     const ipDate = document.querySelector(".ip-date");
     ipDate.addEventListener("change", (e) => {
