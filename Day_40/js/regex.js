@@ -6,7 +6,7 @@ const patternTel =
 const patternUrl =
     /((https?:\/\/|www\.)((?!www\.|youtube\.com|youtu\.be)[^\s/$.?#].[^\s]*))/g;
 const patternYoutubeUrl =
-    /(?:https?:\/\/)?(?:www\.)(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})[^\s]*/g;
+    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})[^\s]*/g;
 
 export const convertRegex = (content) => {
     console.log(content);
@@ -26,7 +26,7 @@ export const convertRegex = (content) => {
 
     content = content.replace(
         patternYoutubeUrl,
-        `<iframe width="580px" height="315px" src="https://www.youtube.com/embed/$1"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="mb-2"></iframe>`
+        `<iframe width="580px" height="315px" src="https://www.youtube.com/embed/$1"frameborder="0" class="mb-2"></iframe>`
     );
 
     content = content.replace(/\n+/g, "\n").replace(/\n/g, "<br> <br>");

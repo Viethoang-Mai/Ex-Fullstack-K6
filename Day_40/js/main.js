@@ -20,7 +20,7 @@ let isToLogin;
 let isSignUp;
 
 const query = {
-    _limit: 15,
+    _limit: 10,
     _page: 1,
     _order: "desc",
 };
