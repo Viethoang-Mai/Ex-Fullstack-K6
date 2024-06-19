@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+    font-size: 16px;
+}
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.header-input:focus + label {
+    font-size: 12px;
+    top: -50%;
+    translate: 0 80%;
+    left: 10px;
+    padding: 0 5px;
+    height: fit-content;
+    width: fit-content;
+    background: #fff;
+}
