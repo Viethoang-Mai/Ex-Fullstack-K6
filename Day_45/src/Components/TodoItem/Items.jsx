@@ -1,6 +1,6 @@
 import React from "react";
-import { httpClient } from "../../configs/client";
 import { useState, useEffect } from "react";
+import { httpClient } from "../../configs/client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function Items({
@@ -11,9 +11,10 @@ export default function Items({
     setIsLoading,
 }) {
     const [isEdit, setIsEdit] = useState(null);
+
     const [todoData, setTodoData] = useState({
-        todo: todo,
-        isCompleted: isCompleted,
+        todoItem: todo,
+        isCompletedItem: isCompleted,
     });
     const [prevState, setPrevState] = useState(todoData);
 
@@ -38,16 +39,15 @@ export default function Items({
             `/todos/${id}`,
             {
                 todo: todo,
-                isCompleted: todoData.isCompleted,
+                isCompleted: todoData.isCompletedItem,
             },
             {}
         );
         if (response.ok) {
-            console.log(data);
             setTodoData((todoData) => ({
                 ...todoData,
-                todo: data.data.todo,
-                isCompleted: data.data.isCompleted,
+                todoItem: data.data.todo,
+                isCompletedItem: data.data.isCompleted,
             }));
             setPrevState(todoData);
             toast.success(data.message);
@@ -56,18 +56,24 @@ export default function Items({
     };
     const handleUpdate = (e) => {
         const id = e.target.dataset.id;
-        const todo = todoData.todo;
-        console.log(todo);
-        if (!todo.trim().length) {
+        const todoUpdate = todoData.todoItem;
+        if (!todoUpdate.trim().length) {
             return alert("Không được để trống");
         }
-        updateTodo(id, todo);
+        updateTodo(id, todoUpdate);
         setIsEdit(null);
     };
     const handleEdit = (id) => {
         setIsEdit((isEdit) => (isEdit === id ? null : id));
     };
 
+    useEffect(() => {
+        setTodoData((todoData) => ({
+            ...todoData,
+            todoItem: todo,
+            isCompletedItem: isCompleted,
+        }));
+    }, [todo, isCompleted]);
     return (
         <li
             key={id}
@@ -76,17 +82,17 @@ export default function Items({
         >
             <input
                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  "
-                value={todoData.todo}
+                value={todoData.todoItem}
                 readOnly={!isEdit ? "readOnly" : ""}
                 style={{
-                    textDecoration: todoData.isCompleted
+                    textDecoration: todoData.isCompletedItem
                         ? "line-through"
                         : "none",
                 }}
                 onChange={(e) => {
                     setTodoData((todoData) => ({
                         ...todoData,
-                        todo: e.target.value,
+                        todoItem: e.target.value,
                     }));
                 }}
             ></input>
@@ -94,7 +100,7 @@ export default function Items({
                 {isEdit === id && (
                     <div className="flex items-center">
                         <label htmlFor={id} className="mr-2">
-                            {!todoData.isCompleted
+                            {!todoData.isCompletedItem
                                 ? "Not Completed"
                                 : "Completed"}
                         </label>
@@ -102,11 +108,11 @@ export default function Items({
                             id={id}
                             type="checkbox"
                             className="form-checkbox h-5 w-5 text-gray-600 "
-                            checked={todoData.isCompleted}
+                            checked={todoData.isCompletedItem}
                             onChange={(e) => {
                                 setTodoData((todoData) => ({
                                     ...todoData,
-                                    isCompleted: e.target.checked,
+                                    isCompletedItem: e.target.checked,
                                 }));
                             }}
                         />

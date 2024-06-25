@@ -40,7 +40,7 @@ function App() {
 
     useEffect(() => {
         if (!apiKey) {
-            let urlEmail = prompt("Nhập email", "example@email.com");
+            var urlEmail = prompt("Nhập email", "example@email.com");
             if (regexEmail(urlEmail)) {
                 urlEmail = urlEmail.replace(/@/g, "%40");
 
@@ -54,6 +54,7 @@ function App() {
                                     "api_key",
                                     data.data.apiKey
                                 );
+                                localStorage.setItem("email", response.url);
 
                                 setApiKey(data.data.apiKey);
                                 toast.success(data.message);
@@ -73,7 +74,12 @@ function App() {
                 }, 1500);
             }
         } else {
-            toast.success("Chào bạn đã quay trở lại", {
+            let emailUrl = localStorage.getItem("email").replace("%40", "@");
+            const email = emailUrl.slice(
+                emailUrl.indexOf("=") + 1,
+                emailUrl.indexOf("@")
+            );
+            toast.success("Chào bạn " + email + " quay trở lại", {
                 position: "top-right",
             });
         }
@@ -81,12 +87,12 @@ function App() {
 
     return (
         <main>
-            {console.log(listTodos)}
             <div className="container bg-slate-700 p-4 flex flex-col justify-center items-center mx-auto mt-5">
                 <Header />
                 <FormAction
                     setListTodos={setListTodos}
                     setIsLoading={setIsLoading}
+                    listTodos={listTodos}
                 />
                 <InputSearch
                     setSearch={setSearch}

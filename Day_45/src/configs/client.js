@@ -26,10 +26,10 @@ export const httpClient = {
             }
             response = await fetch(url, options);
             const data = await response.json();
-            console.log(data, response);
             if (!response.ok) {
                 if (data.code === 401) {
                     localStorage.removeItem("api_key");
+                    localStorage.removeItem("email");
                     setTimeout(() => {
                         window.location.reload();
                     }, 2000);
