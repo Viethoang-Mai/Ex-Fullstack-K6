@@ -5,52 +5,65 @@ import FormAction from "./Components/FormAction/FormAction";
 import { httpClient } from "./configs/client";
 import { SERVER_API } from "./configs/config";
 import { regexEmail } from "./Regex/regex";
+import InputSearch from "./Components/InputSearch/InputSearch";
+import Loading from "./Components/Loading/Loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 httpClient.baseUrl = SERVER_API;
-
 function App() {
-    let checkApiKey = localStorage.getItem("api_key");
+    const [search, setSearch] = useState({
+        keyWord: "",
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [apiKey, setApiKey] = useState(localStorage.getItem("api_key"));
     const [listTodos, setListTodos] = useState([]);
     const getTodos = async () => {
+        setIsLoading(true);
         httpClient.apiKey = localStorage.getItem("api_key");
-        const { response, data } = await httpClient.get("/todos", {});
+        const { response, data } = await httpClient.get(
+            `/todos?q=${search.keyWord ? search.keyWord : ""}`,
+            {}
+        );
         if (response.ok) {
             if (data.data) {
                 setListTodos(data.data.listTodo);
             }
         }
+        setIsLoading(false);
     };
     useEffect(() => {
-        if (checkApiKey) {
+        if (apiKey) {
             getTodos();
-            console.log(123);
         }
-    }, [checkApiKey]);
+    }, [apiKey, search.keyWord]);
+
     useEffect(() => {
-        if (!checkApiKey) {
+        if (!apiKey) {
             let urlEmail = prompt("Nhập email", "example@email.com");
             if (regexEmail(urlEmail)) {
                 urlEmail = urlEmail.replace(/@/g, "%40");
-                httpClient
-                    .get("/api-key?email=" + urlEmail)
-                    .then(({ response, data }) => {
-                        console.log({ response, data });
-                        if (response.ok) {
-                            localStorage.setItem("api_key", data.data.apiKey);
-                            toast.success("Đăng nhập thành công", {
-                                position: "top-right",
-                            });
-                        } else {
-                            toast.error("Đăng nhập thất bại", {
-                                position: "top-right",
-                            });
-                            setTimeout(() => {
-                                window.location.reload();
-                            }, 1500);
-                        }
-                    });
+
+                try {
+                    setIsLoading(true);
+                    httpClient
+                        .get("/api-key?email=" + urlEmail)
+                        .then(({ response, data }) => {
+                            if (response.ok) {
+                                localStorage.setItem(
+                                    "api_key",
+                                    data.data.apiKey
+                                );
+
+                                setApiKey(data.data.apiKey);
+                                toast.success(data.message);
+                            }
+                        });
+
+                    setIsLoading(false);
+                } catch (error) {
+                    // return toast.error(error.message);
+                }
             } else {
                 toast.error("Email không đúng định dạng", {
                     position: "top-right",
@@ -60,7 +73,6 @@ function App() {
                 }, 1500);
             }
         } else {
-            localStorage.setItem("api_key", checkApiKey);
             toast.success("Chào bạn đã quay trở lại", {
                 position: "top-right",
             });
@@ -69,15 +81,24 @@ function App() {
 
     return (
         <main>
+            {console.log(listTodos)}
             <div className="container bg-slate-700 p-4 flex flex-col justify-center items-center mx-auto mt-5">
                 <Header />
-                <FormAction setListTodos={setListTodos} />
+                <FormAction
+                    setListTodos={setListTodos}
+                    setIsLoading={setIsLoading}
+                />
+                <InputSearch
+                    setSearch={setSearch}
+                    setIsLoading={setIsLoading}
+                />
                 <ListItem
                     data={listTodos}
                     setListTodos={setListTodos}
-                    listTodos={listTodos}
+                    setIsLoading={setIsLoading}
                 />
             </div>
+            {isLoading && <Loading />}
         </main>
     );
 }

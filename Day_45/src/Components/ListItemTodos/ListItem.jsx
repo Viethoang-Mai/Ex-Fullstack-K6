@@ -1,7 +1,7 @@
 import React from "react";
-import Items from "./Items";
+import Items from "../TodoItem/Items";
 
-export default function ListItem({ data, setListTodos, lisTodos }) {
+export default function ListItem({ data, setListTodos, setIsLoading }) {
     return (
         <ul className="list-disc w-full max-w-3xl flex flex-col gap-4">
             {Array.isArray(data) && data.length ? (
@@ -12,7 +12,7 @@ export default function ListItem({ data, setListTodos, lisTodos }) {
                             isCompleted={isCompleted}
                             id={id}
                             setListTodos={setListTodos}
-                            lisTodos={lisTodos}
+                            setIsLoading={setIsLoading}
                         />
                     );
                 })

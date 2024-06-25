@@ -1,3 +1,6 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export const httpClient = {
     apiKey: null,
     baseUrl: null,
@@ -22,13 +25,28 @@ export const httpClient = {
                 options.body = JSON.stringify(body);
             }
             response = await fetch(url, options);
-            if (!response.ok) {
-                throw new Error(response.statusText);
-            }
             const data = await response.json();
+            console.log(data, response);
+            if (!response.ok) {
+                if (data.code === 401) {
+                    localStorage.removeItem("api_key");
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
+                    throw new Error(data.message);
+                }
+                throw new Error(data.message);
+            }
 
             return { response, data };
-        } catch (e) {}
+        } catch (e) {
+            toast.error(e.message);
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+
+            return { response };
+        }
     },
 
     get: function (url, headers = {}) {

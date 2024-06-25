@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { httpClient } from "../../configs/client";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,50 +8,56 @@ export default function Items({
     id,
     isCompleted,
     setListTodos,
-    listTodos,
+    setIsLoading,
 }) {
     const [isEdit, setIsEdit] = useState(null);
-    const [prevState, setPrevState] = useState({ todo, isCompleted });
+    const [todoData, setTodoData] = useState({
+        todo: todo,
+        isCompleted: isCompleted,
+    });
+    const [prevState, setPrevState] = useState(todoData);
+
     const deleteTodo = async (id) => {
+        setIsLoading(true);
         const { response, data } = await httpClient.delete(`/todos/${id}`);
         if (response.ok) {
             setListTodos((listTodos) =>
                 listTodos.filter((item) => item._id !== id)
             );
-            toast.success("Xoá thành công");
+            toast.success(data.message);
         }
+        setIsLoading(false);
     };
     const handleDelete = (e) => {
         const id = e.target.dataset.id;
         deleteTodo(id);
     };
     const updateTodo = async (id, todo) => {
+        setIsLoading(true);
         const { response, data } = await httpClient.patch(
             `/todos/${id}`,
             {
-                todo,
-                isCompleted,
+                todo: todo,
+                isCompleted: todoData.isCompleted,
             },
             {}
         );
         if (response.ok) {
-            setListTodos((listTodos) =>
-                listTodos.map((item) => {
-                    if (item._id === id) {
-                        return {
-                            ...item,
-                            todo: data.data.todo,
-                            isCompleted: data.data.isCompleted,
-                        };
-                    }
-                    return item;
-                })
-            );
-            toast.success("Cập nhật thành công");
+            console.log(data);
+            setTodoData((todoData) => ({
+                ...todoData,
+                todo: data.data.todo,
+                isCompleted: data.data.isCompleted,
+            }));
+            setPrevState(todoData);
+            toast.success(data.message);
         }
+        setIsLoading(false);
     };
     const handleUpdate = (e) => {
         const id = e.target.dataset.id;
+        const todo = todoData.todo;
+        console.log(todo);
         if (!todo.trim().length) {
             return alert("Không được để trống");
         }
@@ -61,23 +66,8 @@ export default function Items({
     };
     const handleEdit = (id) => {
         setIsEdit((isEdit) => (isEdit === id ? null : id));
-        console.log(123);
     };
-    const handleExit = (id) => {
-        setListTodos((listTodos) =>
-            listTodos.map((item) => {
-                if (item._id === id) {
-                    return {
-                        ...item,
-                        todo: prevState.todo,
-                        isCompleted: prevState.isCompleted,
-                    };
-                }
-                return item;
-            })
-        );
-        setIsEdit(null);
-    };
+
     return (
         <li
             key={id}
@@ -86,62 +76,38 @@ export default function Items({
         >
             <input
                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  "
-                value={todo}
-                autoFocus={isEdit === id ? true : false}
+                value={todoData.todo}
                 readOnly={!isEdit ? "readOnly" : ""}
                 style={{
-                    textDecoration: isCompleted ? "line-through" : "none",
+                    textDecoration: todoData.isCompleted
+                        ? "line-through"
+                        : "none",
                 }}
                 onChange={(e) => {
-                    setListTodos((listTodos) =>
-                        listTodos.map((item) => {
-                            if (item._id === id) {
-                                return {
-                                    ...item,
-                                    todo: e.target.value,
-                                };
-                            }
-                            return item;
-                        })
-                    );
+                    setTodoData((todoData) => ({
+                        ...todoData,
+                        todo: e.target.value,
+                    }));
                 }}
-                // onFocus={(e) => {
-                //     setListTodos((listTodos) =>
-                //         listTodos.map((item) => {
-                //             if (item._id === id) {
-                //                 return {
-                //                     ...item,
-                //                     todo: e.target.value,
-                //                 };
-                //             }
-                //             return item;
-                //         })
-                //     );
-                // }}
             ></input>
             <div className="flex items-center justify-between mt-4">
                 {isEdit === id && (
                     <div className="flex items-center">
                         <label htmlFor={id} className="mr-2">
-                            {!isCompleted ? "Not Completed" : "Completed"}
+                            {!todoData.isCompleted
+                                ? "Not Completed"
+                                : "Completed"}
                         </label>
                         <input
                             id={id}
                             type="checkbox"
                             className="form-checkbox h-5 w-5 text-gray-600 "
-                            checked={isCompleted}
+                            checked={todoData.isCompleted}
                             onChange={(e) => {
-                                setListTodos((listTodos) =>
-                                    listTodos.map((item) => {
-                                        if (item._id === id) {
-                                            return {
-                                                ...item,
-                                                isCompleted: e.target.checked,
-                                            };
-                                        }
-                                        return item;
-                                    })
-                                );
+                                setTodoData((todoData) => ({
+                                    ...todoData,
+                                    isCompleted: e.target.checked,
+                                }));
                             }}
                         />
                     </div>
@@ -150,7 +116,8 @@ export default function Items({
                     {isEdit && (
                         <button
                             onClick={() => {
-                                handleExit(id);
+                                setIsEdit(null);
+                                setTodoData(prevState);
                             }}
                             type="button"
                             className="bg-orange-500 hover:bg-orange-700 text-white  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
@@ -193,6 +160,6 @@ export default function Items({
         </li>
     );
 }
-Items.propTypes = {
-    arr: PropTypes.array.isRequired,
-};
+// Items.propTypes = {
+//     data: PropTypes.array.isRequired,
+// };

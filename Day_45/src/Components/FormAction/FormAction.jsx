@@ -1,13 +1,15 @@
 import React from "react";
 import { httpClient } from "../../configs/client";
 import { ToastContainer, toast } from "react-toastify";
-export default function FormAction({ setListTodos }) {
+export default function FormAction({ setListTodos, setIsLoading }) {
     const addTodo = async (todo) => {
+        setIsLoading(true);
         const { response, data } = await httpClient.post("/todos", todo, {});
         if (response.ok) {
             setListTodos((listTodos) => [data.data, ...listTodos]);
-            toast.success("Thêm mới thành công");
+            toast.success(data.message);
         }
+        setIsLoading(false);
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,7 +37,7 @@ export default function FormAction({ setListTodos }) {
                     Thêm mới
                 </button>
             </div>
-            <ToastContainer />
+            <ToastContainer position="top-right" autoClose={1500} />
         </form>
     );
 }
