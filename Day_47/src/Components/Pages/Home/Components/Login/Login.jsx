@@ -11,11 +11,12 @@ export default function Login() {
         useContext(AppContext);
 
     const getApiKey = (email) => {
+        setLoading(true);
+
         try {
             if (!regexEmail(email)) {
                 throw new Error("Email không đúng định dạng");
             }
-            setLoading(true);
 
             email = email.replace("@", "%40");
             httpClient
@@ -50,6 +51,7 @@ export default function Login() {
 
             setApiKey(Api);
         }
+        setLoading(false);
     };
     const handleSubmit = (e) => {
         e.preventDefault();
