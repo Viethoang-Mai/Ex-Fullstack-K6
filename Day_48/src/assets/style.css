@@ -3,6 +3,13 @@
 body {
     font-family: "Poppins", sans-serif;
 }
+input,
+input:placeholder,
+textarea,
+button,
+label {
+    font-family: "Poppins", sans-serif;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
