@@ -3,9 +3,11 @@ import React, { useContext } from "react";
 import LogoutButton from "./LogoutBtn";
 import emailjs from "@emailjs/browser";
 import { AppContext } from "../../App";
+import { toast } from "react-toastify";
+
 const Profile = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
-    const { setLoading, toast } = useContext(AppContext);
+    const { setLoading } = useContext(AppContext);
     if (isLoading)
         return (
             <div className="over-loading fixed inset-0 justify-center items-center">
@@ -13,7 +15,6 @@ const Profile = () => {
             </div>
         );
 
-    console.log(isAuthenticated);
     const handleSubmit = (e) => {
         e.preventDefault();
 

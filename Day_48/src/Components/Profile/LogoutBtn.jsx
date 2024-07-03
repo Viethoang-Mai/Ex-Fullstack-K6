@@ -1,9 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useContext } from "react";
 import { AppContext } from "../../App";
+import { toast } from "react-toastify";
 const LogoutButton = () => {
     const { logout } = useAuth0();
-    const { setLoading, toast } = useContext(AppContext);
+    const { setLoading } = useContext(AppContext);
     const handleLogout = () => {
         setLoading(true);
         setTimeout(() => {
