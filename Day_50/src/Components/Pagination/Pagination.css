@@ -1,0 +1,30 @@
+.pagination {
+    margin-top: 30px;
+}
+.pagination ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.pagination ul li {
+    padding: 0 15px;
+    cursor: pointer;
+}
+.pagination ul li.selected a {
+    color: #ffffff;
+    background-color: #4758f1;
+}
+.pagination ul li a {
+    display: block;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #999;
+    text-align: center;
+    line-height: 30px;
+    padding: 0 5px;
+    border-radius: 3px;
+}
+.pagination ul li i {
+    font-size: 1.5rem;
+}

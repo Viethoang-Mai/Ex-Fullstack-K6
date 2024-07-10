@@ -20,10 +20,14 @@ const Profile = () => {
 
         setLoading(true);
         emailjs
-            .sendForm(
+            .send(
                 "service_frl4cw8",
                 "template_jvqb3io",
-                e.target,
+                {
+                    from_name: user.nickname,
+                    from_email: e.target.from_email.value,
+                    message: e.target.message.value,
+                },
                 "FZ7g_teN0f0EydjB-"
             )
             .then(
@@ -68,14 +72,10 @@ const Profile = () => {
                             </label>
                             <input
                                 type="email"
-                                name="from_name"
+                                name="from_email"
                                 id="email"
                                 autoFocus={true}
-                                defaultValue={
-                                    user.email
-                                        ? user.email
-                                        : "example@email.com"
-                                }
+                                defaultValue={user?.email}
                                 className="w-full h-full border-2 border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:shadow-outline focus:border-blue-500 text-sm"
                             />
                         </div>
