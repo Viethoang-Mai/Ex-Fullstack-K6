@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetail } from "../../redux/middlewares/fetchProductMiddleware";
 import { add } from "../../redux/redux-toolkit/slices/productSlice";
 import { Navigate } from "react-router-dom";
+import BtnAddCart from "../Products/BtnAddCart";
 export default function ProductDetail() {
     const dispatch = useDispatch();
     const productDetail = useSelector((state) => state.product.productDetail);
@@ -54,12 +55,10 @@ export default function ProductDetail() {
                     <p className=" text-left">
                         Sản phẩm còn trong kho: {productDetail.quantity}
                     </p>
-                    <button
-                        onClick={() => dispatch(add(productDetail))}
-                        className="text-blue-500 font-semibold text-md px-2 py-1 border border-blue-500 rounded hover:bg-blue-500 hover:text-white transition duration-300 mt-5 absolute bottom-5 right-5"
-                    >
-                        Add to cart
-                    </button>
+
+                    <div className="absolute bottom-7 right-7">
+                        <BtnAddCart product={productDetail} />
+                    </div>
                 </div>
             </li>
         </div>
