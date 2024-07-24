@@ -9,12 +9,16 @@ import { useEffect, useState } from "react";
 export default function Header() {
     const { i18n } = useTranslation();
 
-    const [lang, setLang] = useState(localStorage.getItem("lang"));
+    const [lang, setLang] = useState(i18n.language || "vi");
 
     const handleChange = (lang) => {
         setLang(lang);
         i18n.changeLanguage(lang);
     };
+    useEffect(() => {
+        i18n.changeLanguage(lang);
+    }, [lang, i18n]);
+
     useEffect(() => {
         localStorage.setItem("lang", lang);
     }, [lang, i18n]);
@@ -28,9 +32,7 @@ export default function Header() {
             <div className="flex gap-1 ml-[1rem] font-semibold text-black">
                 <a
                     onClick={() => handleChange("vi")}
-                    className={`lang ${
-                        lang === "vi" && "active"
-                    } cursor-pointer`}
+                    className={` ${lang === "vi" && "active"} cursor-pointer`}
                 >
                     VI
                 </a>
