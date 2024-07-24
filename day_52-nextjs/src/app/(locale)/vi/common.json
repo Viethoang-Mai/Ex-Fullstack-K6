@@ -1,0 +1,20 @@
+{
+    "skills": {
+        "title": "Các kỹ năng của tôi",
+        "inTitle1": "Kỹ năng làm việc",
+        "inTitle2": "Các kỹ năng khác",
+        "descT2": "Kỹ năng nghiên cứu và tìm kiếm tương đối tốt. Tư duy làm việc, kỹ năng làm việc nhóm tốt so với độ tuổi"
+    },
+    "educate": "Học vấn",
+    "contact": "Thông tin liên hệ",
+    "project": "Dự án cá nhân",
+    "pjDesc1": "Một dự án được thực hiện trong ba ngày. Một trang web blog social với các bài viết về lập trình và học tập. Sử dụng React.js.",
+    "pjDesc2": "Một dự án game được làm trong một ngày. Một trò chơi giải đố dựa trên trò chơi 2048. Sử dụng Next.js và Tailwind CSS.",
+    "pjDesc3": "Một dự án nhỏ hoàn thành trong vòng một ngày. Một trang web đơn giản cho phép tạo và chia sẻ các đoạn code. Sử dụng HTML, CSS, JS và custom elements.",
+    "hobby": {
+        "title": "Sở thích cá nhân",
+        "content1": "Thưởng Thức Nhạc Nhẹ, Nhạc Rap Của Đen Vâu Và Các Nghệ Sĩ Khác,…",
+        "content2": "Đọc Sách, Học Hỏi Thêm Về Các Ngôn Ngữ Lập Trình Mới Mẻ. Hiện Tại, Tôi Đang Tự Học Python",
+        "content3": "Theo Dõi Các Xu Hướng Công Nghệ, Tin Tức Về Các Sản Phẩm Nổi Tiếng Như Iphone, Huawei, GoogleAI,…"
+    }
+}

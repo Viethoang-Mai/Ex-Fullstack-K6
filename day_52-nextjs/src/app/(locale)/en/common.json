@@ -1,0 +1,21 @@
+{
+    "skills": {
+        "title": "My Skills",
+        "inTitle1": "Web developer",
+        "inTitle2": "Others skills",
+        "descT2": "Relatively good research and search skills. Working thinking, good teamwork skills compared to age"
+    },
+    "educate": "Education",
+    "contact": "Contact",
+    "project": "Self Projects",
+    "pjDesc1": "A bigger project done in three days. A personal blog website with posts about programming and learning. Using React.js.",
+    "pjDesc2": "A fun project made in a day. A puzzle game based on the 2048 game. Using Next.js and Tailwind CSS.",
+    "pjDesc3": "A small project completed within a day. A simple website that allows you to create and share code snippets. Using HTML, CSS, JS and custom elements.",
+    "hobby": {
+        "title": "Hobbies",
+        "content": "Enjoy Relaxing Music, Rap Music From Đen Vâu And Other Artists,…",
+
+        "content2": "Read Books, Learn More About New Programming Languages. Currently, I Am Self-Studying Python",
+        "content3": "Follow The Technology Trends, News About Famous Products Like Iphone, Huawei, GoogleAI,…"
+    }
+}
