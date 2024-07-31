@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+    font-size: 16px;
+}
+body {
+    user-select: none;
+}
+
+.gr-btn > button {
+    border-radius: 0.25rem;
+    border: 1px solid #5088f8;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    &:hover {
+        background-color: #5088f8;
+        color: #fff;
+    }
+}
+
+.active-nav {
+    color: #5088f8;
+}
