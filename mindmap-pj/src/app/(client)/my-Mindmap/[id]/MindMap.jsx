@@ -36,6 +36,8 @@ function MindMap({ id: mindMapId, mapData, dataJson, userId, checkMode }) {
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
     const currentNodeId = useRef(null);
 
+    //
+
     const handleSave = useCallback(async () => {
         try {
             const res = await fetch(
@@ -43,7 +45,6 @@ function MindMap({ id: mindMapId, mapData, dataJson, userId, checkMode }) {
             );
             const data = await res.json();
 
-            // Tìm người dùng với ID cụ thể
             const userIndex = data.findIndex((user) => user.id === userId);
 
             if (userIndex === -1) {
@@ -89,6 +90,7 @@ function MindMap({ id: mindMapId, mapData, dataJson, userId, checkMode }) {
             return await updateRes.json();
         } catch (err) {}
     }, [mapData, edges, nodes, title, description, mode, dataJson]);
+
     const getMaxId = useCallback(() => {
         return (
             nodes
@@ -105,9 +107,11 @@ function MindMap({ id: mindMapId, mapData, dataJson, userId, checkMode }) {
         },
         [setEdges]
     );
+
     const onConnectStart = useCallback((_, { nodeId }) => {
         currentNodeId.current = nodeId;
     }, []);
+
     const onConnectEnd = useCallback(
         (event, _) => {
             const { clientX, clientY } = event;

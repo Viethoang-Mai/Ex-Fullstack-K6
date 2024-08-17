@@ -17,7 +17,6 @@ export default async function MindMapPage({ params }) {
     const user = session?.user || null;
     getId(idMap);
 
-    // Lấy mind map và ownerId
     const { mindMap, ownerId } = await findMindMap(idMap);
 
     if (!mindMap) {
@@ -26,9 +25,8 @@ export default async function MindMapPage({ params }) {
 
     let mapData = mindMap.data;
     let dataJson = mindMap;
-    let checkMode = "Edit"; // Mặc định cho phép chỉnh sửa
+    let checkMode = "Edit";
 
-    // Nếu người dùng không phải là chủ sở hữu và mind map là "private"
     if (ownerId !== user?.sub) {
         checkMode = "NoneEdit";
     }
