@@ -1,0 +1,188 @@
+{
+  "users": [
+    {
+      "id": "github|133215042",
+      "mindMapData": [
+        {
+          "idMap": "7eff9b0a-c4d9-4cef-ae18-b950f5eb0ae2",
+          "title": "Mind Map chưa có tên",
+          "createdAt": "8/17/2024, 7:44:09 PM",
+          "data": {
+            "nodes": [
+              {
+                "id": "0",
+                "position": {
+                  "x": 103.5,
+                  "y": -13
+                },
+                "data": {
+                  "label": "My MindMap"
+                },
+                "origin": [
+                  0.5,
+                  0
+                ],
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                },
+                "selected": false,
+                "dragging": false
+              },
+              {
+                "id": "1",
+                "position": {
+                  "x": -60,
+                  "y": 105
+                },
+                "data": {
+                  "label": "ahihihi"
+                },
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                },
+                "selected": false
+              },
+              {
+                "id": "2",
+                "position": {
+                  "x": 285,
+                  "y": 75
+                },
+                "data": {
+                  "label": "Node 2"
+                },
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "0-1",
+                "source": "0",
+                "target": "1"
+              },
+              {
+                "id": "0-2",
+                "source": "0",
+                "target": "2"
+              }
+            ]
+          },
+          "description": "Chưa có mô tả",
+          "checkStatus": "public",
+          "type": "textUpdater"
+        },
+        {
+          "idMap": "797cd8ae-ca0a-4f7c-b9e3-7c87b1c72924",
+          "title": "Mind Map chưa có tên",
+          "createdAt": "8/17/2024, 7:44:43 PM",
+          "data": {
+            "nodes": [
+              {
+                "id": "0",
+                "position": {
+                  "x": 100,
+                  "y": 50
+                },
+                "data": {
+                  "label": "My MindMap"
+                },
+                "origin": [
+                  0.5,
+                  0
+                ],
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                }
+              }
+            ],
+            "edges": []
+          },
+          "description": "Chưa có mô tả",
+          "checkStatus": "public",
+          "type": "textUpdater"
+        },
+        {
+          "idMap": "b81a656d-52cb-48ff-9c3b-33937c1e9f3e",
+          "title": "Mind Map final demo",
+          "createdAt": "8/17/2024, 7:46:55 PM",
+          "data": {
+            "nodes": [
+              {
+                "id": "0",
+                "position": {
+                  "x": 100,
+                  "y": 50
+                },
+                "data": {
+                  "label": "My MindMap"
+                },
+                "origin": [
+                  0.5,
+                  0
+                ],
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                }
+              }
+            ],
+            "edges": []
+          },
+          "description": "ahihihi",
+          "checkStatus": "public",
+          "type": "textUpdater"
+        }
+      ]
+    },
+    {
+      "id": "google-oauth2|101365124655675723805",
+      "mindMapData": [
+        {
+          "idMap": "26ba6da0-e34c-4d52-a7eb-c42574b540c1",
+          "title": "Mind Map chưa có tên",
+          "createdAt": "8/17/2024, 4:02:46 PM",
+          "data": {
+            "nodes": [
+              {
+                "id": "0",
+                "position": {
+                  "x": 70,
+                  "y": -42.5
+                },
+                "data": {
+                  "label": "My MindMap"
+                },
+                "origin": [
+                  0.5,
+                  0
+                ],
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                },
+                "selected": true,
+                "dragging": false
+              }
+            ],
+            "edges": []
+          },
+          "description": "Chưa có mô tả",
+          "checkStatus": "private",
+          "type": "textUpdater"
+        }
+      ]
+    }
+  ]
+}
