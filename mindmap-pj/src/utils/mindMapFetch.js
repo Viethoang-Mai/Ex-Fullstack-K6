@@ -1,29 +1,22 @@
 export const getMindMapById = async (id) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}/${id}`, {
-        cache: "no-cache",
-    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}/${id}`);
     const data = await res.json();
     return data;
 };
 export const postMindMap = async (mindMap, userId) => {
-    // Fetch toàn bộ dữ liệu người dùng từ JSON Server
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}`);
     const data = await res.json();
 
-    // Tìm người dùng với ID cụ thể
     let user = data.find((user) => user.id === userId);
 
     if (!user) {
-        // Nếu người dùng chưa tồn tại, tạo người dùng mới
         user = {
             id: userId,
             mindMapData: mindMap,
         };
 
-        // Thêm người dùng mới vào mảng users
         data.push(user);
 
-        // Gửi yêu cầu POST để thêm người dùng mới vào JSON Server
         const createRes = await fetch(
             `${process.env.NEXT_PUBLIC_URL_MINDMAP}`,
             {
@@ -41,11 +34,9 @@ export const postMindMap = async (mindMap, userId) => {
 
         return await createRes.json();
     } else {
-        // Nếu người dùng đã tồn tại, thêm bản đồ mới vào mindMapData của người đó
         user.mindMapData.push(...mindMap);
         console.log(user.mindMapData);
 
-        // Gửi yêu cầu PUT để cập nhật người dùng hiện có với dữ liệu mới
         const updateRes = await fetch(
             `${process.env.NEXT_PUBLIC_URL_MINDMAP}/${userId}`,
             {
@@ -84,9 +75,7 @@ export const findMindMap = async (idMap) => {
 };
 
 export const getMinMap = async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_URL_MINDMAP, {
-        cache: "no-cache",
-    });
+    const res = await fetch(process.env.NEXT_PUBLIC_URL_MINDMAP);
     const data = await res.json();
     return data;
 };
