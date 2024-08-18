@@ -157,8 +157,8 @@
               {
                 "id": "0",
                 "position": {
-                  "x": 70,
-                  "y": -42.5
+                  "x": 76,
+                  "y": -130.5
                 },
                 "data": {
                   "label": "My MindMap"
@@ -172,17 +172,137 @@
                   "width": 206,
                   "height": 42
                 },
-                "selected": true,
+                "selected": false,
                 "dragging": false
+              },
+              {
+                "id": "1",
+                "position": {
+                  "x": 240,
+                  "y": 30
+                },
+                "data": {
+                  "label": "Node 1"
+                },
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                }
+              },
+              {
+                "id": "2",
+                "position": {
+                  "x": -135,
+                  "y": 0
+                },
+                "data": {
+                  "label": "Node 2"
+                },
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                }
               }
             ],
-            "edges": []
+            "edges": [
+              {
+                "id": "0-1",
+                "source": "0",
+                "target": "1"
+              },
+              {
+                "id": "0-2",
+                "source": "0",
+                "target": "2"
+              }
+            ]
+          },
+          "description": "Chưa có mô tả",
+          "checkStatus": "private",
+          "type": "textUpdater"
+        },
+        {
+          "idMap": "4c365cf4-da93-4b70-9ca7-c90c433382fe",
+          "title": "Mind Map chưa có tên",
+          "createdAt": "8/18/2024, 12:21:28 PM",
+          "data": {
+            "nodes": [
+              {
+                "id": "0",
+                "position": {
+                  "x": 137.5,
+                  "y": -26
+                },
+                "data": {
+                  "label": "My MindMap"
+                },
+                "origin": [
+                  0.5,
+                  0
+                ],
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                },
+                "selected": false,
+                "dragging": false
+              },
+              {
+                "id": "1",
+                "position": {
+                  "x": 285,
+                  "y": 135
+                },
+                "data": {
+                  "label": "Node 1"
+                },
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                }
+              },
+              {
+                "id": "2",
+                "position": {
+                  "x": -270,
+                  "y": 75
+                },
+                "data": {
+                  "label": "Node 2"
+                },
+                "type": "textUpdater",
+                "measured": {
+                  "width": 206,
+                  "height": 42
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "0-1",
+                "source": "0",
+                "target": "1"
+              },
+              {
+                "id": "0-2",
+                "source": "0",
+                "target": "2"
+              }
+            ]
           },
           "description": "Chưa có mô tả",
           "checkStatus": "private",
           "type": "textUpdater"
         }
       ]
+    },
+    {
+      "id": "google-oauth2|110268919377397473866",
+      "mindMapData": []
     }
   ]
 }
