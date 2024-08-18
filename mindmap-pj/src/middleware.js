@@ -1,4 +1,7 @@
-import { getSession } from "@auth0/nextjs-auth0/edge";
+import {
+    getSession,
+    withMiddlewareAuthRequired,
+} from "@auth0/nextjs-auth0/edge";
 import { NextResponse } from "next/server";
 
 export const middleware = async (req) => {
@@ -27,6 +30,7 @@ export const middleware = async (req) => {
 
         const session = await getSession(req);
         const user = session?.user;
+        console.log(user, session);
 
         if (status === "private") {
             if (!user) {
@@ -36,6 +40,12 @@ export const middleware = async (req) => {
             }
             if (user.sub !== ownerId) {
                 return NextResponse.redirect(new URL("/notFound", req.url));
+            }
+        } else if (path.includes("/my-Mindmap")) {
+            if (!user) {
+                return NextResponse.redirect(
+                    new URL("/api/auth/login", req.url)
+                );
             }
         }
 
