@@ -6,9 +6,7 @@ export const middleware = async (req) => {
     const idMap = path.replace("/my-Mindmap", "").replace("/", "");
 
     // Fetch toàn bộ dữ liệu từ JSON Server
-    const response = await fetch(
-        `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}`
-    );
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}`);
 
     const data = await response.json();
 

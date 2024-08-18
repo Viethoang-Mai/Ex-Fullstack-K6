@@ -40,9 +40,7 @@ function MindMap({ id: mindMapId, mapData, dataJson, userId, checkMode }) {
 
     const handleSave = useCallback(async () => {
         try {
-            const res = await fetch(
-                `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}`
-            );
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}`);
             const data = await res.json();
 
             const userIndex = data.findIndex((user) => user.id === userId);
@@ -71,7 +69,7 @@ function MindMap({ id: mindMapId, mapData, dataJson, userId, checkMode }) {
 
             data[userIndex].mindMapData = updatedMindMapData;
             const updateRes = fetch(
-                `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}/${userId}`,
+                `${process.env.NEXT_PUBLIC_URL_MINDMAP}/${userId}`,
 
                 {
                     method: "PUT",

@@ -1,18 +1,13 @@
-import { log } from "console";
-
 export const getMindMapById = async (id) => {
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}/${id}`,
-        {
-            cache: "no-cache",
-        }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}/${id}`, {
+        cache: "no-cache",
+    });
     const data = await res.json();
     return data;
 };
 export const postMindMap = async (mindMap, userId) => {
     // Fetch toàn bộ dữ liệu người dùng từ JSON Server
-    const res = await fetch(`${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}`);
     const data = await res.json();
 
     // Tìm người dùng với ID cụ thể
@@ -30,7 +25,7 @@ export const postMindMap = async (mindMap, userId) => {
 
         // Gửi yêu cầu POST để thêm người dùng mới vào JSON Server
         const createRes = await fetch(
-            `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}`,
+            `${process.env.NEXT_PUBLIC_URL_MINDMAP}`,
             {
                 method: "POST",
                 headers: {
@@ -52,7 +47,7 @@ export const postMindMap = async (mindMap, userId) => {
 
         // Gửi yêu cầu PUT để cập nhật người dùng hiện có với dữ liệu mới
         const updateRes = await fetch(
-            `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}/${userId}`,
+            `${process.env.NEXT_PUBLIC_URL_MINDMAP}/${userId}`,
             {
                 method: "PUT",
                 headers: {
@@ -71,7 +66,7 @@ export const postMindMap = async (mindMap, userId) => {
 };
 
 export const findMindMap = async (idMap) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}`);
     const data = await res.json();
 
     let mindMap;
@@ -89,7 +84,7 @@ export const findMindMap = async (idMap) => {
 };
 
 export const getMinMap = async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP, {
+    const res = await fetch(process.env.NEXT_PUBLIC_URL_MINDMAP, {
         cache: "no-cache",
     });
     const data = await res.json();

@@ -2,7 +2,7 @@ import Link from "next/link";
 import DeleteButton from "./DeleteMindMap";
 export default async function ListMindMap({ userId }) {
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}/${userId}`,
+        `${process.env.NEXT_PUBLIC_URL_MINDMAP}/${userId}`,
         {
             cache: "no-cache",
         }

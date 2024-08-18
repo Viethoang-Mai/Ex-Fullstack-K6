@@ -15,9 +15,7 @@ export default function DeleteButton({ id, userId }) {
             setLoading(true);
             setError(null);
 
-            const res = await fetch(
-                `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}`
-            );
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}`);
             const data = await res.json();
 
             // Tìm người dùng với ID cụ thể
@@ -35,7 +33,7 @@ export default function DeleteButton({ id, userId }) {
             data[userIndex].mindMapData = updatedMindMapData;
 
             const updateRes = await fetch(
-                `${process.env.NEXT_PUBLIC_LOCALE_URL_MINDMAP}/${userId}`,
+                `${process.env.NEXT_PUBLIC_URL_MINDMAP}/${userId}`,
                 {
                     method: "PUT",
                     headers: {
