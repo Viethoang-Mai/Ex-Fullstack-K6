@@ -20,6 +20,7 @@ const roboto = Roboto({
 });
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Footer from "@/components/Footer/Footer";
+
 export default function RootLayout({ children }) {
     return (
         <html lang="en">

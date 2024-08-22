@@ -1,20 +1,26 @@
 -- Create database
-CREATE DATABASE database_01_viethoangmai
+CREATE DATABASE database_02_viethoangmai
 
 
-CREATE TABLE IF NOT EXISTS courses(
-    id INT NOT NULL,
+
+CREATE TABLE IF NOT EXISTS customers(
+    id INT NOT NULL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    price FLOAT,
-    detail TEXT,
-    teacher_id INT NOT NULL,
-    active INT,
-    created_at  TIMESTAMP with TIME ZONE,
-    updated_at  TIMESTAMP with TIME ZONE
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+   status BOOLEAN DEFAULT TRUE NOT NULL,
+    created_at  TIMESTAMP with TIME ZONE DEFAULT NOW() NOT NULL,
+    updated_at  TIMESTAMP with TIME ZONE DEFAULT NOW() NOT NULL
 );
 
--- Thêm trường description trước trường detail với kiểu dữ liệu và ràng buộc sau: Text , NULL
+CREATE TABLE IF NOT EXISTS products(
+    id INT NOT NULL PRIMARY KEY,
+    quantity INT NOT NULL,
+    price REAL NOT NULL,
+    created_at  TIMESTAMP with TIME ZONE DEFAULT NOW() NOT NULL,
+    updated_at  TIMESTAMP with TIME ZONE DEFAULT NOW() NOT NULL
 
+);
 
 ALTER TABLE courses ADD COLUMN description TEXT;
 
