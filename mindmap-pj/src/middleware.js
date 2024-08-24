@@ -41,7 +41,8 @@ export const middleware = async (req) => {
             if (user.sub !== ownerId) {
                 return NextResponse.redirect(new URL("/notFound", req.url));
             }
-        } else if (path.includes("/my-Mindmap")) {
+        }
+        if (path.includes("/my-Mindmap")) {
             if (!user) {
                 return NextResponse.redirect(
                     new URL("/api/auth/login", req.url)
