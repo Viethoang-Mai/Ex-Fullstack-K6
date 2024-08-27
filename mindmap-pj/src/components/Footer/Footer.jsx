@@ -33,7 +33,7 @@ export default function Footer() {
                                 href="#!"
                                 className="hover:bg-[#2563eb] hover:text-white hover:border-[#2563eb] hover:border-2"
                             >
-                                <i class="fa-brands fa-facebook "></i>
+                                <i className="fa-brands fa-facebook "></i>
                             </a>
                             <a
                                 href="#!"
@@ -45,7 +45,7 @@ export default function Footer() {
                                 href="#!"
                                 className="hover:bg-[#dc2626] hover:text-white hover:border-[#dc2626] hover:border-2"
                             >
-                                <i class="fa-brands fa-google-plus-g"></i>
+                                <i className="fa-brands fa-google-plus-g"></i>
                             </a>
                         </div>
                     </div>

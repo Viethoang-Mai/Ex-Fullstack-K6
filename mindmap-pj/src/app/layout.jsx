@@ -9,8 +9,10 @@ export const metadata = {
 
     icons: [
         {
-            url: "https://fullstack.edu.vn/assets/f8-icon-lV2rGpF0.png",
+            url: "https://w7.pngwing.com/pngs/967/939/png-transparent-mindmeister-mind-map-android-learning-tool.png",
             type: "image/png",
+            sizes: "32x32",
+            purpose: "any maskable",
         },
     ],
 };

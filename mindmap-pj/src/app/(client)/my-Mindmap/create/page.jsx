@@ -31,7 +31,7 @@ export default async function CreatePage() {
         };
 
         // Gọi hàm post để lưu bản đồ mới
-        await postMindMap([newMindMap], userId);
+        // await postMindMap([newMindMap], userId);
 
         // Chuyển hướng đến trang của bản đồ mới
         return <ToId id={idMap} />;

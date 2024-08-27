@@ -42,9 +42,7 @@ function MindMap({ id: mindMapId, mapData, dataJson, userId, checkMode }) {
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_URL_MINDMAP}`);
             const data = await res.json();
-
             const userIndex = data.findIndex((user) => user.id === userId);
-
             if (userIndex === -1) {
                 throw new Error("User not found");
             }
@@ -197,7 +195,7 @@ function MindMap({ id: mindMapId, mapData, dataJson, userId, checkMode }) {
     useEffect(() => {
         document.addEventListener("keyup", (e) => {
             e.preventDefault();
-            if (e.key === "Delete") {
+            if (e.key === "Delete" && selected != 0) {
                 setNodes((nds) => nds.filter((node) => node.id !== selected));
                 setEdges((eds) =>
                     eds.filter(

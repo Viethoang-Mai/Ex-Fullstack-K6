@@ -25,7 +25,7 @@ export default function Header() {
         <header className="header ">
             <div className="container px-4 h-20 mx-auto flex justify-between items-center">
                 <h1 className="font-semibold text-primary text-2xl">
-                    Mindmap Flow
+                    <Link href="/">Mindmap Flow</Link>
                 </h1>
                 <nav className="nav flex gap-5 items-center">
                     <Link
