@@ -19,7 +19,7 @@ module.exports = {
                 type: Sequelize.STRING(150),
             },
             status: {
-                type: Sequelize.BOOLEAN,
+                type: Sequelize.INTEGER,
             },
             created_at: {
                 allowNull: false,

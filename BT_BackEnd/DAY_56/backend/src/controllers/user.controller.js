@@ -1,9 +1,41 @@
-const { Sequelize, where } = require("sequelize");
 const { User } = require("../models/index");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { Op } = require("sequelize");
 
 module.exports = {
+    register: async (req, res) => {
+        const { email, password, name } = req.body;
+        try {
+            const existUser = await User.findOne({
+                where: {
+                    [Op.or]: [{ email: email }, { name: name }],
+                },
+            });
+            if (existUser) {
+                return res.status(400).json({
+                    error: "Username hoặc email đã tồn tại",
+                });
+            }
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            const newUser = await User.create({
+                name,
+                email,
+                password: hashedPassword,
+                status: 0,
+            });
+            console.log(newUser);
+
+            res.status(201).json({
+                message: "Đăng ký thành công",
+            });
+        } catch (error) {
+            console.log(error);
+
+            res.status(500).json({ error: "Đã xảy ra lỗi" });
+        }
+    },
     login: async (req, res) => {
         const { email, password } = req.body;
 
@@ -13,7 +45,13 @@ module.exports = {
             if (!user) {
                 return res.status(401).json({
                     error: "Email hoặc mật khẩu không đúng",
-                    ok: false,
+                });
+            }
+
+            // Kiểm tra status
+            if (user.status !== 1) {
+                return res.status(403).json({
+                    error: "Tài khoản chưa được kích hoạt",
                 });
             }
 
@@ -22,23 +60,37 @@ module.exports = {
             if (!match) {
                 return res.status(401).json({
                     error: "Email hoặc mật khẩu không đúng",
-                    ok: false,
                 });
             }
 
             // Tạo JWT token
-            const token = jwt.sign({ userId: user._id }, "abcd1234", {
+            const token = jwt.sign({ userId: user.id }, "abcd1234", {
                 expiresIn: "1h",
             });
 
-            res.json({ token, message: "Đăng nhập thành công", ok: true });
+            // Set cookie
+            res.cookie("token", token, {
+                maxAge: 1000 * 60 * 60 * 24, // 1 ngày
+                httpOnly: true,
+                sameSite: "strict", // Bảo mật chống CSRF
+            });
+
+            res.json({ message: "Đăng nhập thành công", ok: true });
         } catch (error) {
             res.status(500).json({ message: "Đã xảy ra lỗi" });
         }
     },
+
     logout: async (req, res) => {
-        return res.json({
+        // Xóa cookie
+        res.clearCookie("token", {
+            httpOnly: true,
+            sameSite: "strict",
+        });
+
+        res.json({
             message: "Đăng xuất thành công",
+            ok: true,
         });
     },
 };

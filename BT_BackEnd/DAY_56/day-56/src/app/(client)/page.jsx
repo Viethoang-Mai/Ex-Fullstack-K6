@@ -1,18 +1,27 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function Homepage() {
     const router = useRouter();
-    const handleClick = () => {
-        localStorage.removeItem("login_token");
-        return router.push("/login");
-    };
-    useEffect(() => {
-        if (!localStorage.getItem("login_token")) {
-            return router.push("/login");
+
+    const handleClick = async () => {
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/logout`,
+                {
+                    method: "POST",
+
+                    credentials: "include",
+                }
+            );
+            if (!response.ok) throw new Error("Logout failed");
+
+            return router.push("/login?logoutSuccess=true");
+        } catch (error) {
+            console.log(error);
         }
-    });
+    };
+
     return (
         <div className="homepage text-center mt-10">
             <h1 className="text-3xl">F8 - Học lập trình để đi làm</h1>

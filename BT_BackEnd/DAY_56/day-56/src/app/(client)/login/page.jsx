@@ -1,58 +1,96 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+import Link from "next/link";
+
 export default function LoginPage() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+    const searchParams = useSearchParams();
     const router = useRouter();
 
-    const login = async () => {
-        const res = await fetch("http://localhost:8000/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email,
-                password,
-            }),
-        });
-        const data = await res.json();
-        if (!res.ok) {
-            setError(data.error);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    const LoginSchema = Yup.object().shape({
+        email: Yup.string()
+            .matches(emailRegEx, "Email khong hop le")
+            .required("Vui lòng nhập địa chỉ email"),
+        password: Yup.string()
+            .min(6, "Mật khẩu quá ngắn")
+            .required("Vui lòng nhập mật khẩu"),
+    });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(LoginSchema),
+        defaultValues: {
+            email: "admin@gmail.com",
+            password: "123456",
+        },
+    });
+
+    const onSubmit = async ({ email, password }) => {
+        setError("");
+        setSuccess("");
+
+        try {
+            const res = await fetch(apiUrl + "/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                }),
+                credentials: "include",
+            });
+            const data = await res.json();
+            console.log(data);
+
+            if (!res.ok) {
+                throw new Error(data.error);
+            }
+            return router.push("/");
+        } catch (e) {
+            setError(e.message);
         }
-        localStorage.setItem("login_token", JSON.stringify(data.token));
-        return router.push("/");
-    };
-    const handleLogin = (e) => {
-        e.preventDefault();
-        login();
     };
     useEffect(() => {
-        const token = localStorage.getItem("login_token");
-
-        if (token) {
-            return router.push("/");
+        if (searchParams.get("logoutSuccess") === "true") {
+            setSuccess("Đăng xuất thành công");
+        } else if (searchParams.get("registerSuccess") === "true") {
+            setSuccess("Đăng ký thành công");
         }
-    }, []);
+    }, [searchParams]);
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <img
-                    className="mx-auto h-10 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt="Your Company"
-                />
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                     Sign in to your account
                 </h2>
+                <div className=" mt-2 h-10">
+                    {error && (
+                        <p className="text-red-500 text-center mt-5 bg-blue-100 p-2 rounded">
+                            {error}
+                        </p>
+                    )}
+                    {success && (
+                        <p className="text-green-500 text-center mt-5 bg-blue-100 p-2 rounded">
+                            {success}
+                        </p>
+                    )}
+                </div>
             </div>
 
-            {error && <p className="text-red-500 text-center mt-5">{error}</p>}
-
-            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form className="space-y-6" onSubmit={handleLogin}>
+            <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
+                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                     <div>
                         <label
                             htmlFor="email"
@@ -67,10 +105,12 @@ export default function LoginPage() {
                                 type="email"
                                 autoComplete="email"
                                 required
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                {...register("email")}
                                 className="block w-full rounded-md border-0 px-3  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 outline-none"
                             />
+                            <p className="text-red-400 text-sm mt-2">
+                                {errors.email?.message}
+                            </p>
                         </div>
                     </div>
 
@@ -98,10 +138,12 @@ export default function LoginPage() {
                                 type="password"
                                 autoComplete="current-password"
                                 required
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                {...register("password")}
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3 outline-none "
                             />
+                            <p className="text-red-400  text-sm mt-2">
+                                {errors.password?.message}
+                            </p>
                         </div>
                     </div>
 
@@ -117,12 +159,12 @@ export default function LoginPage() {
 
                 <p className="mt-10 text-center text-sm text-gray-500">
                     Not a member?
-                    <a
-                        href="#"
+                    <Link
+                        href="/register"
                         className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
                     >
-                        Start a 14 day free trial
-                    </a>
+                        &nbsp;Register now
+                    </Link>
                 </p>
             </div>
         </div>
