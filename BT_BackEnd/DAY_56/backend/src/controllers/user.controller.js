@@ -40,7 +40,6 @@ module.exports = {
         const { email, password } = req.body;
 
         try {
-            // Kiểm tra email tồn tại
             const user = await User.findOne({ where: { email } });
             if (!user) {
                 return res.status(401).json({
@@ -48,7 +47,6 @@ module.exports = {
                 });
             }
 
-            // Kiểm tra status
             if (user.status !== 1) {
                 return res.status(403).json({
                     error: "Tài khoản chưa được kích hoạt",
@@ -70,9 +68,9 @@ module.exports = {
 
             // Set cookie
             res.cookie("token", token, {
-                maxAge: 1000 * 60 * 60 * 24, // 1 ngày
+                maxAge: 1000 * 60 * 60 * 24,
                 httpOnly: true,
-                sameSite: "strict", // Bảo mật chống CSRF
+                sameSite: "strict",
             });
 
             res.json({ message: "Đăng nhập thành công", ok: true });
@@ -82,7 +80,6 @@ module.exports = {
     },
 
     logout: async (req, res) => {
-        // Xóa cookie
         res.clearCookie("token", {
             httpOnly: true,
             sameSite: "strict",
