@@ -1,12 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import Link from "next/link";
 
-export default function LoginPage() {
+function LoginPage() {
     const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -168,5 +168,13 @@ export default function LoginPage() {
                 </p>
             </div>
         </div>
+    );
+}
+
+export default function Login() {
+    return (
+        <Suspense>
+            <LoginPage />
+        </Suspense>
     );
 }

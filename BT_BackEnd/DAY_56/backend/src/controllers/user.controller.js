@@ -25,14 +25,11 @@ module.exports = {
                 password: hashedPassword,
                 status: 0,
             });
-            console.log(newUser);
 
             res.status(201).json({
                 message: "Đăng ký thành công",
             });
         } catch (error) {
-            console.log(error);
-
             res.status(500).json({ error: "Đã xảy ra lỗi" });
         }
     },

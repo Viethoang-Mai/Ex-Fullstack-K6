@@ -12,20 +12,18 @@ export function middleware(req) {
         return NextResponse.redirect(new URL("/", req.url));
     }
 
-    // if (pathname === "/register" && token) {
-    //     return NextResponse.redirect(new URL("/", req.url));
-    // }
+   
 
     // Nếu không có token và cố gắng truy cập trang bảo mật, chuyển hướng về trang login
     if (!token && pathname !== "/login" && pathname !== "/register") {
         return NextResponse.redirect(new URL("/login", req.url));
     }
 
-    // Cho phép tiếp tục truy cập nếu điều kiện trên không thỏa mãn
+
     return NextResponse.next();
 }
 
-// Áp dụng middleware cho tất cả các trang
+
 export const config = {
-    matcher: ["/", "/login", "/register"], // Các route cần middleware xử lý
+    matcher: ["/", "/login", "/register"], 
 };
